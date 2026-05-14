@@ -301,8 +301,8 @@ ul, ol { list-style: none; }
 .hero-bg {
   position: absolute; inset: 0;
   background-size: cover;
-  background-position: center 35%;
-  filter: brightness(0.78) contrast(1.05) saturate(1.05);
+  background-position: center 40%;
+  filter: brightness(1.05) contrast(1.05) saturate(1.1);
   transform: scale(1.04);
   animation: heroDrift 18s ease-in-out infinite alternate;
 }
@@ -320,8 +320,20 @@ ul, ol { list-style: none; }
 .hero-overlay {
   position: absolute; inset: 0;
   background:
-    linear-gradient(105deg, rgba(15,12,10,.85) 0%, rgba(15,12,10,.55) 45%, rgba(15,12,10,.25) 70%, rgba(15,12,10,.55) 100%),
-    radial-gradient(ellipse at 20% 100%, rgba(230,57,70,.22), transparent 55%);
+    linear-gradient(100deg, rgba(15,12,10,.92) 0%, rgba(15,12,10,.78) 35%, rgba(15,12,10,.45) 60%, rgba(15,12,10,.55) 100%),
+    radial-gradient(ellipse at 15% 80%, rgba(230,57,70,.28), transparent 50%);
+}
+/* Extra readability scrim behind the text column */
+.hero-bleed-text {
+  position: relative;
+}
+.hero-bleed-text::before {
+  content: "";
+  position: absolute;
+  top: -40px; bottom: -40px; left: -60px; right: -10%;
+  background: radial-gradient(ellipse at 30% 50%, rgba(0,0,0,.55), transparent 70%);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .hero-bleed-inner {
@@ -376,7 +388,7 @@ ul, ol { list-style: none; }
   line-height: 1.05;
   color: #fff;
   margin-bottom: 28px;
-  text-shadow: 0 8px 40px rgba(0,0,0,.45);
+  text-shadow: 0 4px 16px rgba(0,0,0,.65), 0 12px 50px rgba(0,0,0,.5);
 }
 .hero-title .ht-line { display: block; }
 .hero-title .accent {
@@ -400,16 +412,16 @@ ul, ol { list-style: none; }
   line-height: 1.55;
   color: #fff;
   margin-bottom: 28px;
-  text-shadow: 0 4px 20px rgba(0,0,0,.4);
+  text-shadow: 0 3px 14px rgba(0,0,0,.6), 0 8px 30px rgba(0,0,0,.45);
 }
 
 .hero-subtitle {
   font-family: var(--jp);
   font-size: 14px; font-weight: 500;
   line-height: 1.95;
-  color: rgba(255,255,255,.8);
+  color: rgba(255,255,255,.92);
   max-width: 540px;
-  text-shadow: 0 2px 8px rgba(0,0,0,.3);
+  text-shadow: 0 2px 10px rgba(0,0,0,.7);
 }
 
 .hero-meta {

@@ -116,13 +116,13 @@ ul, ol { list-style: none; }
 .sidenav.visible { opacity: 1; pointer-events: auto; }
 
 .sn-card {
-  background: rgba(255,255,255,.85);
+  background: rgba(255,255,255,.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--line);
   border-radius: 0;
-  padding: 18px 14px 14px;
-  min-width: 184px;
+  padding: 16px 12px 12px;
+  width: 168px;
   box-shadow: 0 24px 50px -25px rgba(20,18,17,.18);
   transition: background .35s ease, border-color .35s ease, box-shadow .35s ease;
 }
@@ -288,21 +288,36 @@ ul, ol { list-style: none; }
 }
 
 /* ============================================================
-   HERO (split layout)
+   HERO (split layout — sidenav-aware)
    ============================================================ */
 .hero {
   padding: 130px 0 70px;
   background: #fff;
   overflow: hidden;
+  position: relative;
+}
+/* Subtle accent background block on right edge */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 80px; right: 0; bottom: 30%;
+  width: 38%;
+  background: var(--tint);
+  z-index: 0;
 }
 .hero-wrap {
-  max-width: 1280px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 0 48px;
+  padding: 0 48px 0 280px;       /* leave space on the left for fixed sidenav */
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
   gap: 56px;
   align-items: center;
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 1280px) {
+  .hero-wrap { padding: 0 32px; }   /* sidenav hidden below 1280px, restore symmetric padding */
 }
 
 .hero-eyebrow {
@@ -322,14 +337,15 @@ ul, ol { list-style: none; }
 }
 
 .hero-title {
-  font-family: var(--en);
-  font-size: clamp(64px, 8vw, 120px);
+  font-family: var(--jp);
+  font-size: clamp(40px, 4.4vw, 64px);
   font-weight: 800;
   letter-spacing: -0.02em;
-  line-height: .9;
+  line-height: 1.1;
   color: var(--ink);
   margin-bottom: 28px;
 }
+.hero-title .ht-line { display: block; }
 .hero-title .ht-line { display: inline-block; }
 .hero-title .accent {
   position: relative;
@@ -427,12 +443,17 @@ ul, ol { list-style: none; }
 
 /* Hero CTAs Wrap - full width below split */
 .hero-ctas-wrap {
-  max-width: 1280px;
+  max-width: 1320px;
   margin: 80px auto 0;
-  padding: 0 48px;
+  padding: 0 48px 0 280px;
   display: flex;
   align-items: center;
   gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 1280px) {
+  .hero-ctas-wrap { padding: 0 32px; }
 }
 .hero-ctas {
   display: grid; grid-template-columns: 1fr 1fr; gap: 14px;

@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RECRUIT 2026 ｜ WonderPrax株式会社</title>
-<meta name="description" content="WonderPrax株式会社 採用サイト。コンサルタント／セールス職、新卒・中途を募集中。事業成長の伴走者として、一緒に走る仲間を探しています。">
+<title>RECRUIT ｜ WonderPrax株式会社</title>
+<meta name="description" content="WonderPrax株式会社の採用情報。私たちの組織や考え、募集中の職種についてご紹介します。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script>
-  // Inline preboot: hide site until auth check completes, prevents flash
   document.documentElement.classList.add('locked');
   try { if (sessionStorage.getItem('wp_recruit_auth') === 'ok') document.documentElement.classList.remove('locked'); } catch (e) {}
 </script>
@@ -45,408 +44,336 @@
 
 <!-- ===== HEADER ===== -->
 <header class="site-header" id="header">
-  <div class="wrap">
+  <div class="header-inner">
     <a href="#top" class="logo">
       <img src="assets/logo_wonderprax.png" alt="WonderPrax">
-      <span class="logo-sub">RECRUIT</span>
     </a>
     <nav class="nav">
-      <a href="#message">MESSAGE</a>
-      <a href="#why">WHY US</a>
-      <a href="#numbers">NUMBERS</a>
-      <a href="#jobs">JOB</a>
-      <a href="#members">MEMBER</a>
-      <a href="#process">PROCESS</a>
-      <a href="#faq">FAQ</a>
+      <a href="#philosophy">PHILOSOPHY</a>
+      <a href="#principles">PRINCIPLES</a>
+      <a href="#evaluation">EVALUATION</a>
+      <a href="#team">TEAM</a>
+      <a href="#jobs">JOBS</a>
     </nav>
-    <a href="#entry" class="btn-entry">ENTRY <span>→</span></a>
-    <button class="hamburger" aria-label="menu" id="hamburger"><span></span><span></span><span></span></button>
+    <a href="#contact" class="btn-entry">CONTACT</a>
   </div>
 </header>
 
+<main class="main" id="top">
+
 <!-- ===== HERO ===== -->
-<section class="hero" id="top">
-  <div class="hero-bg" style="background-image: url('assets/team.jpg');"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-grid">
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-  </div>
-  <div class="hero-inner">
-    <div class="hero-eyebrow">
-      <span class="dot"></span>RECRUITING TALENT 2026 — 2027
-    </div>
-    <h1 class="hero-title">
-      <span class="line"><em>走り続ける、</em></span>
-      <span class="line">伴走者へ。</span>
-    </h1>
-    <p class="hero-sub">
-      コンサルではない。事業を、一緒に走り切るチームへ。<br>
-      WonderPrax は、いま倍速で仲間を増やしています。
+<section class="hero" id="hero">
+  <div class="container">
+    <p class="hero-eyebrow"><span></span>WONDERPRAX RECRUITING</p>
+    <h1 class="hero-title">RECRUIT</h1>
+    <p class="hero-subtitle">
+      WonderPrax 株式会社の採用情報です。私たちの組織や考え、<br>
+      募集中の職種についてご紹介します。
     </p>
-    <div class="hero-cta">
-      <a href="#jobs" class="btn-primary">募集職種を見る <span>→</span></a>
-      <a href="#message" class="btn-ghost">代表メッセージ</a>
+
+    <figure class="hero-figure">
+      <img src="assets/workshop.jpg" alt="">
+    </figure>
+
+    <div class="hero-ctas">
+      <a href="#contact" class="hero-cta">
+        <span class="cta-icon">✉</span>
+        <span class="cta-body">
+          <b>気になる方は<br>お話だけでも</b>
+          <small>カジュアル面談を申し込む →</small>
+        </span>
+      </a>
+      <a href="#jobs" class="hero-cta">
+        <span class="cta-icon">↗</span>
+        <span class="cta-body">
+          <b>応募したい方は<br>こちらから</b>
+          <small>募集要項を見る →</small>
+        </span>
+      </a>
     </div>
-  </div>
-  <a href="#message" class="hero-scroll" aria-label="scroll">
-    <span class="line"></span>
-    <span class="label">SCROLL</span>
-  </a>
-  <div class="hero-meta">
-    <div><b>2026</b><span>HIRING</span></div>
-    <div><b>×2.0</b><span>HEADCOUNT</span></div>
-    <div><b>4</b><span>BUSINESS PILLARS</span></div>
   </div>
 </section>
 
-<!-- ===== MESSAGE ===== -->
-<section class="section message" id="message">
-  <div class="wrap narrow">
-    <div class="section-label"><span class="num">01</span><span class="en">MESSAGE</span></div>
-    <h2 class="section-title">
-      コンサルは、<br>「教える」時代を終える。
-    </h2>
-    <div class="msg-grid">
-      <div class="msg-body">
-        <p>
-          私たちは、アドバイザリーを超える存在でありたい。<br>
-          顧客の課題を、口だけで整理して終わる仕事ではなく、<br>
-          <strong>事業の現場で、一緒に走り、一緒に成果を出す。</strong>
-        </p>
-        <p>
-          WonderPrax が掲げるのは「マーケティングイネーブルメント」。<br>
-          戦略・戦術・人材・データを高度に連携させ、企業の中に<br>
-          再現性のあるマーケティング力を残していく仕事です。
-        </p>
-        <p>
-          そのために、いま私たちは仲間を増やしている。<br>
-          来年、人員を倍に増やすという挑戦に、本気で踏み込みます。
-        </p>
-        <p class="signature">代表取締役  丸山 ◯◯</p>
-      </div>
-      <figure class="msg-figure">
-        <div class="frame">
-          <img src="assets/silhouette.jpg" alt="">
+<!-- ===== PHILOSOPHY ===== -->
+<section class="section" id="philosophy">
+  <div class="container">
+    <span class="section-num">01</span>
+    <h2 class="section-title">私たちの中心にある考え方</h2>
+    <div class="section-body">
+      <p>
+        WonderPrax は、コンサルティングという仕事の在り方を、もう一度問い直すために生まれた会社です。
+      </p>
+      <p>
+        これまでのコンサルは、戦略を描いてクライアントに渡すまでが仕事でした。<br>
+        私たちは違います。戦略の隣に立ち、戦術を回し、数字を動かす。
+        事業の現場に踏み込み、<em>「教える」のではなく「一緒に走る」</em>。
+        その先にしか、企業の本当の変化は生まれないと信じています。
+      </p>
+      <p>
+        私たちが掲げるのは「マーケティングイネーブルメント」。
+        戦略・戦術・人材・データを高度に連携させ、企業の中に再現性のあるマーケティング力を残していく取り組みです。
+        新規事業開発・マーケティング・営業・AI/DX という 4 つの事業領域は、すべてこの思想で繋がっています。
+      </p>
+      <blockquote class="pull-quote">
+        <p>事業の隣に、伴走者を。</p>
+        <cite>— 代表取締役  丸山</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRINCIPLES ===== -->
+<section class="section section-tinted" id="principles">
+  <div class="container">
+    <span class="section-num">02</span>
+    <h2 class="section-title">そのために大事にしている<br>3 つの譲らないこと</h2>
+    <div class="section-body">
+      <p>
+        伴走者であり続けるために、組織として絶対に手放さない 3 つの原則があります。
+        どんなに合理的でも、これらを犠牲にする選択はしません。
+      </p>
+
+      <ol class="principles">
+        <li>
+          <div class="p-num">01</div>
+          <div class="p-text">
+            <h3>実行責任を、提案責任の手前に置かない</h3>
+            <p>
+              提案で終わる仕事はしません。クライアントの KPI が動かなければ、それは私たちの責任です。
+              戦略レイヤーと実行レイヤーを職種で分断せず、同じ人間が両方を担います。
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="p-num">02</div>
+          <div class="p-text">
+            <h3>領域で人を閉じ込めない</h3>
+            <p>
+              マーケの人だから営業のことは知らない、というメンバーを作りません。
+              4 つの事業柱を行き来できる人材が、事業の本当の課題を解ける、という前提に立っています。
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="p-num">03</div>
+          <div class="p-text">
+            <h3>意思決定の階層を、増やさない</h3>
+            <p>
+              承認を通すための承認、報告のための報告は作りません。
+              代表との距離が近いまま、若手でも経営の目線で意思決定する組織であり続けます。
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EVALUATION ===== -->
+<section class="section" id="evaluation">
+  <div class="container">
+    <span class="section-num">03</span>
+    <h2 class="section-title">評価・報酬・制度</h2>
+    <div class="section-body">
+
+      <h3 class="sub-title">給与レンジについて</h3>
+      <p>
+        職種・経験・成果に応じて柔軟に設計します。下記は中途採用の参考レンジです（年俸／インセンティブ込）。
+      </p>
+      <div class="salary-table">
+        <div class="salary-row salary-head">
+          <div>職種</div><div>年収レンジ</div><div>備考</div>
         </div>
-        <figcaption>
-          <span class="kanji">伴走</span>
-          <span class="meaning">PARTNER, NOT ADVISOR.</span>
-        </figcaption>
-      </figure>
+        <div class="salary-row">
+          <div>マーケティングコンサルタント</div>
+          <div><b>600 〜 1,200 万円</b></div>
+          <div>マネージャー以上は別枠</div>
+        </div>
+        <div class="salary-row">
+          <div>セールス（事業開発・パートナー）</div>
+          <div><b>550 〜 1,500 万円</b></div>
+          <div>インセンティブ込</div>
+        </div>
+        <div class="salary-row">
+          <div>新卒</div>
+          <div><b>450 〜 550 万円</b></div>
+          <div>初年度モデル</div>
+        </div>
+      </div>
+
+      <h3 class="sub-title">制度</h3>
+      <ul class="bullet-list">
+        <li>裁量労働制 ／ コアタイムなしのフレックス</li>
+        <li>リモート・出社はプロジェクト単位で柔軟に選択</li>
+        <li>副業可（事前申請制、競合・利益相反を除く）</li>
+        <li>書籍・研修・カンファレンス参加費の補助</li>
+        <li>クライアント先訪問・地方出張の交通費／宿泊費全額会社負担</li>
+      </ul>
+
+      <h3 class="sub-title">福利厚生</h3>
+      <ul class="bullet-list">
+        <li>各種社会保険完備</li>
+        <li>健康診断・人間ドック補助</li>
+        <li>退職金制度（中退共）</li>
+        <li>慶弔休暇 ／ 結婚祝金 ／ 出産祝金</li>
+      </ul>
+
     </div>
   </div>
 </section>
 
-<!-- ===== WHY US ===== -->
-<section class="section why" id="why">
-  <div class="wrap">
-    <div class="section-label"><span class="num">02</span><span class="en">WHY WONDERPRAX</span></div>
-    <h2 class="section-title">「コンサル然」とした<br>会社では、ない。</h2>
-    <div class="why-grid">
-      <article class="why-card">
-        <div class="why-num">01</div>
-        <h3>実行まで、責任を持つ。</h3>
-        <p>戦略の提案で終わらない。クライアントの現場に入り、施策を回し、KPI を動かす。実行責任を持つから、得られる成長がある。</p>
-        <span class="why-line"></span>
-      </article>
-      <article class="why-card accent">
-        <div class="why-num">02</div>
-        <h3>4 つの事業柱、横断する。</h3>
-        <p>新規事業開発／マーケティング／営業／AI・DX。職種で閉じない、領域で閉じない。事業の成長に必要なら、何でもやる。</p>
-        <span class="why-line"></span>
-      </article>
-      <article class="why-card">
-        <div class="why-num">03</div>
-        <h3>少数精鋭。意思決定が、速い。</h3>
-        <p>承認の階層も、政治もない。良い案はすぐ通る。代表との距離が近いから、若手でも経営の目線で仕事ができる。</p>
-        <span class="why-line"></span>
-      </article>
-    </div>
-  </div>
-</section>
+<!-- ===== TEAM ===== -->
+<section class="section section-tinted" id="team">
+  <div class="container">
+    <span class="section-num">04</span>
+    <h2 class="section-title">WonderPrax で 働くメンバー</h2>
 
-<!-- ===== NUMBERS ===== -->
-<section class="section numbers" id="numbers">
-  <div class="numbers-bg" style="background-image: url('assets/workshop.jpg');"></div>
-  <div class="numbers-overlay"></div>
-  <div class="wrap">
-    <div class="section-label light"><span class="num">03</span><span class="en">NUMBERS</span></div>
-    <h2 class="section-title light">数字で見る WonderPrax</h2>
+    <h3 class="sub-title">数字で見るメンバー</h3>
     <div class="num-grid">
       <div class="num-item">
-        <span class="num-value"><em>×</em>2.0</span>
+        <span class="num-value">×2.0</span>
         <span class="num-label">人員拡大目標<br><small>2026 → 2027</small></span>
       </div>
       <div class="num-item">
         <span class="num-value">4</span>
-        <span class="num-label">事業領域<br><small>マーケ／営業／新規事業／AI・DX</small></span>
+        <span class="num-label">事業領域<br><small>マーケ・営業・新規事業・AI/DX</small></span>
       </div>
       <div class="num-item">
         <span class="num-value">100<em>%</em></span>
         <span class="num-label">伴走実行率<br><small>提案で終わらせない</small></span>
       </div>
       <div class="num-item">
-        <span class="num-value">9<em>:00</em></span>
-        <span class="num-label">標準勤務開始<br><small>裁量労働、フレックスあり</small></span>
+        <span class="num-value">35<em>歳</em></span>
+        <span class="num-label">平均年齢<br><small>少数精鋭、フラットな組織</small></span>
       </div>
     </div>
+
+    <h3 class="sub-title">働くメンバーの声</h3>
+    <article class="member-card">
+      <figure class="member-photo">
+        <img src="assets/member_01.jpg" alt="">
+      </figure>
+      <div class="member-text">
+        <p>
+          コンサルティング会社からの転職でしたが、最初の一週間で「ここは考えて終わる場所じゃない」と分かりました。
+          施策を回し、数字を見ながら次を打つ。現場で動くから、提案が研ぎ澄まされていく実感があります。
+        </p>
+        <footer>
+          <strong>M.K</strong>
+          <span>マーケティングコンサルタント／中途 2024 年入社</span>
+        </footer>
+      </div>
+    </article>
+
   </div>
 </section>
 
 <!-- ===== JOBS ===== -->
-<section class="section jobs" id="jobs">
-  <div class="wrap">
-    <div class="section-label"><span class="num">04</span><span class="en">JOB</span></div>
-    <h2 class="section-title">募集職種</h2>
-    <p class="section-lead">中途・新卒、いずれも積極採用中。経験よりも、走りきる意志を見ています。</p>
-
-    <div class="jobs-grid">
-      <article class="job-card">
-        <div class="job-tag">FRONT — STRATEGY</div>
-        <h3 class="job-title">マーケティング<br>コンサルタント</h3>
-        <p class="job-desc">クライアントの経営戦略に紐づくマーケティング戦略の立案から、KPI 設計、戦術の実行まで一気通貫で担当。事業の意思決定に踏み込む仕事です。</p>
-        <ul class="job-points">
-          <li>マーケ戦略・KGI/KPI 設計</li>
-          <li>STP／競合・市場分析</li>
-          <li>クライアント経営層との折衝</li>
-          <li>新規事業のマーケ立ち上げ</li>
-        </ul>
-        <div class="job-foot">
-          <div>
-            <span class="label">想定年収</span>
-            <span class="value">600〜1,200万円</span>
-          </div>
-          <a href="#entry" class="job-cta">この職種に応募 →</a>
-        </div>
-      </article>
-
-      <article class="job-card primary">
-        <div class="job-tag">FRONT — REVENUE</div>
-        <h3 class="job-title">セールス<br>（事業開発／パートナー）</h3>
-        <p class="job-desc">顧問・既存ネットワーク経由のリードに対し、課題ヒアリングから提案、契約、初期グリップまで担当。受注して終わらず、伴走の入口まで責任を持ちます。</p>
-        <ul class="job-points">
-          <li>大手・中堅企業の経営層への提案</li>
-          <li>紹介・マッチング媒体経由の商談化</li>
-          <li>パートナー企業（紹介経由）との関係構築</li>
-          <li>受注後の伴走チームへのハンドオフ</li>
-        </ul>
-        <div class="job-foot">
-          <div>
-            <span class="label">想定年収</span>
-            <span class="value">550〜1,500万円<small>（インセン込）</small></span>
-          </div>
-          <a href="#entry" class="job-cta">この職種に応募 →</a>
-        </div>
-      </article>
-    </div>
-
-    <div class="jobs-note">
-      ※ 新卒採用も同職種で募集中。インターン制度あり。応募フォームよりお問い合わせください。
-    </div>
-  </div>
-</section>
-
-<!-- ===== MEMBER VOICE ===== -->
-<section class="section members" id="members">
-  <div class="wrap">
-    <div class="section-label"><span class="num">05</span><span class="en">MEMBER VOICE</span></div>
-    <h2 class="section-title">人を、見て決めてほしい。</h2>
-
-    <div class="member-feature">
-      <figure class="member-photo">
-        <img src="assets/member_01.jpg" alt="Member portrait">
-        <span class="badge">CONSULTANT</span>
-      </figure>
-      <div class="member-text">
-        <span class="quote-mark">"</span>
-        <blockquote>
-          コンサルティング会社からの転職でしたが、最初の一週間で、<br>
-          ここは <em>「考えて終わる」</em> 場所じゃないと分かりました。<br>
-          施策を回し、数字を見ながら次を打つ。<br>
-          現場で動くから、提案が研ぎ澄まされていく実感があります。
-        </blockquote>
-        <div class="member-info">
-          <div>
-            <span class="name">M.K</span>
-            <span class="role">マーケティングコンサルタント／中途 2024 年入社</span>
-          </div>
-          <a href="#" class="member-more">インタビューを読む →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="member-row">
-      <article class="member-mini">
-        <div class="mini-photo" style="background-image: url('assets/silhouette.jpg');"></div>
-        <h4>事業を見る仕事</h4>
-        <p>セールス／中途 2023 入社</p>
-      </article>
-      <article class="member-mini">
-        <div class="mini-photo" style="background-image: url('assets/workshop.jpg');"></div>
-        <h4>新卒でも、経営の前に立てる</h4>
-        <p>コンサル／新卒 2025 入社</p>
-      </article>
-      <article class="member-mini">
-        <div class="mini-photo" style="background-image: url('assets/banner.jpg');"></div>
-        <h4>少数精鋭の意思決定速度</h4>
-        <p>セールス／中途 2024 入社</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ===== A DAY / WORK ===== -->
-<section class="section work" id="work">
-  <div class="wrap">
-    <div class="section-label"><span class="num">06</span><span class="en">A DAY</span></div>
-    <h2 class="section-title">ある一日の流れ。</h2>
-
-    <ol class="timeline">
-      <li>
-        <div class="t-time">09:00</div>
-        <div class="t-body">
-          <h3>朝のスタンドアップ（15 分）</h3>
-          <p>担当プロジェクトの進捗・ブロッカーを共有。承認待ちなし、その場で判断する文化。</p>
-        </div>
-      </li>
-      <li>
-        <div class="t-time">10:00</div>
-        <div class="t-body">
-          <h3>クライアント MTG ／ 戦略レビュー</h3>
-          <p>大手 SaaS 企業の経営層とマーケ戦略の方向性を擦り合わせ。先方の CMO 候補と直接対峙する仕事。</p>
-        </div>
-      </li>
-      <li>
-        <div class="t-time">13:00</div>
-        <div class="t-body">
-          <h3>チーム内ブレスト</h3>
-          <p>新規事業立ち上げの仮説検証プランを 3 人で詰める。代表もたまに乱入。</p>
-        </div>
-      </li>
-      <li>
-        <div class="t-time">16:00</div>
-        <div class="t-body">
-          <h3>実行支援 — 数字を見て、次の手を打つ</h3>
-          <p>クライアントの BI ダッシュボードを見ながら、施策の改善提案を即時に投げる。</p>
-        </div>
-      </li>
-      <li>
-        <div class="t-time">19:00</div>
-        <div class="t-body">
-          <h3>退社／たまに飲みに行く</h3>
-          <p>裁量労働。早く上がる日もあれば、勝負どころで遅くまで残ることも。自分で決める。</p>
-        </div>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<!-- ===== PROCESS ===== -->
-<section class="section process" id="process">
-  <div class="wrap">
-    <div class="section-label"><span class="num">07</span><span class="en">PROCESS</span></div>
-    <h2 class="section-title">選考プロセス</h2>
-    <div class="process-steps">
-      <div class="p-step">
-        <span class="p-num">STEP 01</span>
-        <h3>エントリー</h3>
-        <p>フォームより<br>ご応募ください</p>
-      </div>
-      <div class="p-arrow">→</div>
-      <div class="p-step">
-        <span class="p-num">STEP 02</span>
-        <h3>カジュアル面談</h3>
-        <p>現場メンバーと<br>30 分の会話</p>
-      </div>
-      <div class="p-arrow">→</div>
-      <div class="p-step">
-        <span class="p-num">STEP 03</span>
-        <h3>1 次選考</h3>
-        <p>マネージャー面接<br>＋ ケース課題</p>
-      </div>
-      <div class="p-arrow">→</div>
-      <div class="p-step">
-        <span class="p-num">STEP 04</span>
-        <h3>最終選考</h3>
-        <p>代表面接<br>条件すり合わせ</p>
-      </div>
-      <div class="p-arrow">→</div>
-      <div class="p-step final">
-        <span class="p-num">STEP 05</span>
-        <h3>内定</h3>
-        <p>最短 2 週間で<br>内定まで</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FAQ ===== -->
-<section class="section faq" id="faq">
-  <div class="wrap narrow">
-    <div class="section-label"><span class="num">08</span><span class="en">FAQ</span></div>
-    <h2 class="section-title">よくある質問</h2>
-    <div class="faq-list">
-      <details>
-        <summary>未経験でも応募できますか？</summary>
-        <p>はい。コンサル経験は必須ではありません。事業会社で営業／マーケ／企画を経験された方、新卒の方も対象です。重視するのは「走りきる意志」と「学習速度」です。</p>
-      </details>
-      <details>
-        <summary>働き方（リモート／フレックス）について教えてください。</summary>
-        <p>裁量労働制で、コアタイムなしのフレックスです。リモート／オフィスはプロジェクトと本人の判断で柔軟に。クライアント先への訪問は適宜発生します。</p>
-      </details>
-      <details>
-        <summary>選考はオンラインで完結しますか？</summary>
-        <p>カジュアル面談・1 次選考まではオンラインで実施可能です。最終選考は原則対面でお願いしております。</p>
-      </details>
-      <details>
-        <summary>研修制度はありますか？</summary>
-        <p>OJT が中心です。入社後は現場プロジェクトに即配属し、シニアメンバーが伴走します。少数精鋭のため、座学よりも実戦の中で力をつけていただく設計です。</p>
-      </details>
-      <details>
-        <summary>副業は可能ですか？</summary>
-        <p>競合・利益相反でなければ可能です。事前申請制となります。</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ===== ENTRY CTA ===== -->
-<section class="section entry" id="entry">
-  <div class="entry-bg" style="background-image: url('assets/office_skyline.jpg');"></div>
-  <div class="entry-overlay"></div>
-  <div class="wrap">
-    <div class="entry-inner">
-      <div class="entry-eyebrow"><span class="dot"></span>JOIN US</div>
-      <h2 class="entry-title">
-        走り続ける、<br>
-        その一員になる。
-      </h2>
-      <p class="entry-sub">
-        一次選考までは、まず会話から。<br>
-        いまの会社を辞める気がなくても、構いません。
+<section class="section" id="jobs">
+  <div class="container">
+    <span class="section-num">05</span>
+    <h2 class="section-title">募集中の職種</h2>
+    <div class="section-body">
+      <p>
+        中途・新卒、いずれも積極採用中です。経験よりも、走りきる意志と学習速度を重視します。
+        まずはカジュアル面談からお気軽にご応募ください。
       </p>
-      <div class="entry-cta">
-        <a href="#" class="btn-primary big">エントリーフォーム <span>→</span></a>
-        <a href="#" class="btn-ghost light">カジュアル面談を希望</a>
-      </div>
-      <div class="entry-info">
-        <div>
-          <span class="k">採用担当</span>
-          <span class="v">WonderPrax株式会社 人事チーム</span>
-        </div>
-        <div>
-          <span class="k">Email</span>
-          <span class="v">recruit@wonderprax.co.jp</span>
-        </div>
+
+      <div class="job-list">
+
+        <article class="job-row">
+          <header>
+            <span class="job-tag">STRATEGY</span>
+            <h3>マーケティングコンサルタント</h3>
+          </header>
+          <div class="job-body">
+            <p>
+              クライアントの経営戦略に紐づくマーケティング戦略の立案から、KGI/KPI 設計、戦術の実行までを一気通貫で担当。
+              事業の意思決定に踏み込む仕事です。
+            </p>
+            <dl>
+              <dt>仕事内容</dt>
+              <dd>マーケ戦略設計／STP・競合市場分析／クライアント経営層との折衝／新規事業のマーケ立ち上げ</dd>
+              <dt>想定年収</dt>
+              <dd>600 〜 1,200 万円</dd>
+              <dt>求める経験</dt>
+              <dd>マーケまたは事業企画の実務経験 3 年以上（コンサル経験は不問）</dd>
+            </dl>
+            <a href="#contact" class="job-cta">この職種に応募する →</a>
+          </div>
+        </article>
+
+        <article class="job-row">
+          <header>
+            <span class="job-tag">REVENUE</span>
+            <h3>セールス（事業開発・パートナー）</h3>
+          </header>
+          <div class="job-body">
+            <p>
+              顧問・既存ネットワーク・マッチング媒体経由のリードに対し、課題ヒアリングから提案、契約、初期グリップまで担当。
+              受注して終わらず、伴走の入口まで責任を持ちます。
+            </p>
+            <dl>
+              <dt>仕事内容</dt>
+              <dd>大手・中堅企業の経営層への提案／紹介経由の商談化／パートナー企業との関係構築／受注後の伴走チームへのハンドオフ</dd>
+              <dt>想定年収</dt>
+              <dd>550 〜 1,500 万円（インセンティブ込）</dd>
+              <dt>求める経験</dt>
+              <dd>B2B 営業 3 年以上、または事業会社での事業開発経験</dd>
+            </dl>
+            <a href="#contact" class="job-cta">この職種に応募する →</a>
+          </div>
+        </article>
+
+        <article class="job-row">
+          <header>
+            <span class="job-tag">NEW GRAD</span>
+            <h3>新卒採用（コンサル・セールス）</h3>
+          </header>
+          <div class="job-body">
+            <p>
+              2027 年卒・2028 年卒の新卒採用も行っています。インターン制度あり。
+              入社後は OJT 中心で、シニアメンバーが伴走しながら実戦で力をつけていただきます。
+            </p>
+            <dl>
+              <dt>想定年収</dt>
+              <dd>450 〜 550 万円（初年度モデル）</dd>
+              <dt>選考</dt>
+              <dd>カジュアル面談 → ケース課題 → 1 次面接 → 最終面接（代表）</dd>
+            </dl>
+            <a href="#contact" class="job-cta">エントリーする →</a>
+          </div>
+        </article>
+
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- ===== CONTACT CTA ===== -->
+<section class="section section-cta" id="contact">
+  <div class="container">
+    <span class="section-num light">06</span>
+    <h2 class="section-title light">WonderPrax を<br>もっと知りたい方へ</h2>
+    <p class="cta-lead">
+      いまの会社を辞める気がなくても、まずは話だけ、で構いません。<br>
+      一次選考までの面談はオンラインで完結します。
+    </p>
+    <div class="cta-buttons">
+      <a href="mailto:recruit@wonderprax.co.jp" class="cta-btn primary">エントリーフォーム<span>→</span></a>
+      <a href="mailto:recruit@wonderprax.co.jp" class="cta-btn ghost">カジュアル面談を希望する</a>
+    </div>
+    <dl class="cta-info">
+      <dt>採用担当</dt><dd>WonderPrax株式会社 人事チーム</dd>
+      <dt>E-mail</dt><dd>recruit@wonderprax.co.jp</dd>
+    </dl>
+  </div>
+</section>
+
+</main>
+
 <footer class="site-footer">
-  <div class="wrap">
+  <div class="container">
     <div class="foot-grid">
       <div>
         <img src="assets/logo_wonderprax.png" alt="WonderPrax" class="foot-logo">
@@ -454,12 +381,12 @@
       </div>
       <nav class="foot-nav">
         <a href="https://wonderprax.co.jp/">コーポレートサイト</a>
-        <a href="#jobs">募集職種</a>
-        <a href="#members">メンバー</a>
-        <a href="#entry">エントリー</a>
+        <a href="#jobs">募集中の職種</a>
+        <a href="#team">メンバー</a>
+        <a href="#contact">エントリー</a>
       </nav>
       <div class="foot-meta">
-        <p>© WonderPrax Inc. All rights reserved.</p>
+        <p>© WonderPrax Inc.</p>
         <p>本サイトはコンセプト案（モックアップ）です。</p>
       </div>
     </div>

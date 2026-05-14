@@ -184,31 +184,31 @@ ul, ol { list-style: none; }
     radial-gradient(circle at 10% 90%, rgba(255,212,58,.08), transparent 40%);
 }
 
-/* Marquee text band scrolling near top of hero */
+/* Marquee text band — visible ticker just below the fixed header */
 .hero-marquee {
   position: absolute;
-  top: 22%; left: 0; right: 0;
+  top: 88px; left: 0; right: 0;
   z-index: 1;
   overflow: hidden;
   pointer-events: none;
-  opacity: .08;
-  border-top: 1px solid var(--line-2);
-  border-bottom: 1px solid var(--line-2);
+  border-top: 1px solid rgba(255,255,255,.18);
+  border-bottom: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.02);
 }
 .marquee-track {
   display: inline-flex;
   white-space: nowrap;
-  animation: marquee 40s linear infinite;
-  padding: 14px 0;
+  animation: marquee 45s linear infinite;
+  padding: 10px 0;
 }
 .marquee-track span {
   font-family: var(--display);
-  font-size: 64px; line-height: 1;
-  color: var(--ink);
-  padding: 0 32px;
-  letter-spacing: .03em;
+  font-size: 38px; line-height: 1;
+  color: rgba(255,255,255,.62);
+  padding: 0 26px;
+  letter-spacing: .04em;
 }
-.marquee-track span:nth-child(even) { color: var(--accent); }
+.marquee-track span:nth-child(even) { color: var(--accent); opacity: .85; }
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }

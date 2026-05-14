@@ -51,10 +51,24 @@ ul, ol { list-style: none; }
 .site-header.scrolled { border-bottom-color: var(--line); }
 .header-inner {
   max-width: 1200px; margin: 0 auto;
-  padding: 16px 32px;
+  padding: 18px 32px;
   display: flex; align-items: center; gap: 32px;
 }
-.site-header .logo img { height: 18px; }
+.site-header .logo {
+  display: flex; align-items: center; gap: 14px;
+}
+.site-header .logo img {
+  height: 30px;
+  transition: opacity .2s;
+}
+.site-header .logo:hover img { opacity: .75; }
+.site-header .logo-tag {
+  font-family: var(--en); font-size: 10px; font-weight: 700;
+  letter-spacing: .3em;
+  color: var(--muted);
+  padding-left: 14px;
+  border-left: 1px solid var(--line-strong);
+}
 .site-header .nav {
   margin-left: auto;
   display: flex; gap: 28px;
@@ -74,6 +88,68 @@ ul, ol { list-style: none; }
   transition: background .2s, transform .2s;
 }
 .btn-entry:hover { background: var(--accent); transform: translateY(-1px); }
+
+/* ============================================================
+   STICKY SIDEBAR NAV
+   ============================================================ */
+.sidenav {
+  position: fixed;
+  left: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease;
+}
+.sidenav.visible { opacity: 1; pointer-events: auto; }
+.sidenav ol {
+  display: flex; flex-direction: column;
+  gap: 4px;
+  padding: 18px 0;
+  border-left: 1px solid var(--line-strong);
+}
+.sidenav a {
+  display: flex; align-items: center; gap: 14px;
+  padding: 8px 0 8px 18px;
+  position: relative;
+  transition: color .2s ease;
+}
+.sidenav a::before {
+  content: ""; position: absolute;
+  left: -1px; top: 50%; transform: translateY(-50%);
+  width: 3px; height: 0;
+  background: var(--accent);
+  transition: height .25s ease;
+}
+.sidenav a:hover::before, .sidenav a.active::before { height: 24px; }
+.sidenav .sn-num {
+  font-family: var(--en); font-size: 11px; font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--muted);
+  transition: color .2s ease;
+}
+.sidenav .sn-label {
+  font-family: var(--jp); font-size: 12px; font-weight: 600;
+  color: var(--muted);
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  transition: max-width .35s ease, opacity .25s ease .05s, color .2s ease;
+}
+.sidenav:hover .sn-label,
+.sidenav a.active .sn-label {
+  max-width: 160px;
+  opacity: 1;
+}
+.sidenav a:hover .sn-num,
+.sidenav a:hover .sn-label,
+.sidenav a.active .sn-num,
+.sidenav a.active .sn-label {
+  color: var(--ink);
+}
+.sidenav a.active .sn-num { color: var(--accent); }
 
 /* ============================================================
    HERO
@@ -165,16 +241,35 @@ ul, ol { list-style: none; }
   padding: 96px 0;
 }
 .section.section-tinted { background: var(--tint); }
-.section-num {
-  display: inline-block;
-  font-family: var(--en); font-size: 12px; font-weight: 700;
-  letter-spacing: .35em;
-  color: var(--accent);
+
+.section-eyebrow {
+  display: inline-flex; align-items: center; gap: 14px;
   margin-bottom: 24px;
   padding-bottom: 18px;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line-strong);
 }
-.section-num.light { color: #fff; border-bottom-color: rgba(255,255,255,.6); }
+.section-eyebrow .se-num {
+  font-family: var(--en); font-size: 13px; font-weight: 700;
+  letter-spacing: .12em;
+  color: var(--accent);
+  background: rgba(230,57,70,.08);
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+.section-eyebrow .se-divider {
+  display: inline-block;
+  width: 16px; height: 1px;
+  background: var(--ink);
+}
+.section-eyebrow .se-label {
+  font-family: var(--en); font-size: 11px; font-weight: 700;
+  letter-spacing: .3em;
+  color: var(--ink);
+}
+.section-eyebrow.light { border-bottom-color: rgba(255,255,255,.3); }
+.section-eyebrow.light .se-divider { background: rgba(255,255,255,.6); }
+.section-eyebrow.light .se-label { color: #fff; }
+.section-eyebrow.light .se-num { background: rgba(255,255,255,.1); }
 .section-title {
   font-family: var(--jp);
   font-size: clamp(26px, 3vw, 32px);
@@ -637,10 +732,15 @@ html.locked body > *:not(.gate) { visibility: hidden; }
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+@media (max-width: 1180px) {
+  .sidenav { display: none; }
+}
 @media (max-width: 880px) {
   .container { padding: 0 20px; }
   .section, .hero, .section-cta { padding-left: 0; padding-right: 0; }
   .header-inner { padding: 12px 20px; gap: 16px; }
+  .site-header .logo img { height: 24px; }
+  .site-header .logo-tag { display: none; }
   .site-header .nav { display: none; }
   .hero { padding: 110px 0 60px; }
   .hero-ctas { grid-template-columns: 1fr; }

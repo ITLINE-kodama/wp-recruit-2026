@@ -54,12 +54,41 @@ function unlockSite() {
 
 // 1. Header scroll effect
 const header = document.getElementById('header');
+const sidenav = document.getElementById('sidenav');
+const hero = document.getElementById('hero');
 const onScroll = () => {
   if (window.scrollY > 60) header.classList.add('scrolled');
   else header.classList.remove('scrolled');
+  // Show sidenav after scrolling past hero
+  if (sidenav && hero) {
+    const heroBottom = hero.offsetTop + hero.offsetHeight - 200;
+    if (window.scrollY > heroBottom) sidenav.classList.add('visible');
+    else sidenav.classList.remove('visible');
+  }
 };
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
+
+// 1b. Active section tracking for sidenav
+const sidenavLinks = document.querySelectorAll('.sidenav a[data-target]');
+const sectionMap = new Map();
+sidenavLinks.forEach(a => {
+  const sec = document.getElementById(a.dataset.target);
+  if (sec) sectionMap.set(sec, a);
+});
+if (sectionMap.size > 0) {
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      const a = sectionMap.get(e.target);
+      if (!a) return;
+      if (e.isIntersecting) {
+        sidenavLinks.forEach(x => x.classList.remove('active'));
+        a.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -55% 0px', threshold: 0 });
+  sectionMap.forEach((_, sec) => navObserver.observe(sec));
+}
 
 // 2. Reveal on intersect
 const revealTargets = document.querySelectorAll(

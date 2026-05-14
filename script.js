@@ -57,7 +57,7 @@ const header = document.getElementById('header');
 const sidenav = document.getElementById('sidenav');
 const progress = document.getElementById('scrollProgress');
 
-const darkSections = document.querySelectorAll('.section-cta, .hero--bleed');
+const darkSections = document.querySelectorAll('.section-cta');
 
 const onScroll = () => {
   if (window.scrollY > 60) header.classList.add('scrolled');

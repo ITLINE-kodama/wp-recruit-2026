@@ -304,7 +304,7 @@ ul, ol { list-style: none; }
 
 /* Left: text card on white, padded clear of sidenav */
 .hero-light-text {
-  padding: 140px 64px 60px 280px;
+  padding: 130px 48px 56px 280px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -312,7 +312,7 @@ ul, ol { list-style: none; }
   background: #fff;
 }
 @media (max-width: 1280px) {
-  .hero-light-text { padding: 120px 48px 60px 48px; }
+  .hero-light-text { padding: 120px 40px 56px 40px; }
 }
 
 /* Subtle red accent strip on the left edge of the text card */
@@ -329,30 +329,57 @@ ul, ol { list-style: none; }
   to { opacity: 1; }
 }
 
-/* Right: full-height photo */
+/* Right: contained editorial photo card on a tinted background */
 .hero-light-photo {
   position: relative;
-  overflow: hidden;
   background: var(--tint);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 56px 48px;
+  overflow: hidden;
+}
+/* decorative red corner accent */
+.hero-light-photo::before {
+  content: "";
+  position: absolute;
+  top: 56px; right: 48px;
+  width: 64px; height: 64px;
+  border-top: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-light-photo::after {
+  content: "";
+  position: absolute;
+  bottom: 56px; left: 48px;
+  width: 64px; height: 64px;
+  border-bottom: 2px solid var(--ink);
+  border-left: 2px solid var(--ink);
+  z-index: 1;
+  pointer-events: none;
 }
 .hero-light-photo img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transform: scale(1.02);
-  animation: heroDrift 22s ease-in-out infinite alternate;
-}
-@keyframes heroDrift {
-  from { transform: scale(1.02) translateY(0); }
-  to   { transform: scale(1.08) translateY(-2%); }
+  display: block;
+  width: 100%;
+  max-width: 643px;          /* natural width — no upscaling */
+  height: auto;
+  object-fit: contain;
+  background: #fff;
+  padding: 14px;
+  box-shadow:
+    0 30px 60px -25px rgba(20,18,17,.35),
+    0 12px 24px -10px rgba(20,18,17,.18);
+  position: relative;
+  z-index: 2;
 }
 .hero-light-photo figcaption {
-  position: absolute; left: 20px; bottom: 18px;
-  font-family: var(--en); font-size: 10px; font-weight: 700; letter-spacing: .25em;
-  color: #fff;
-  padding: 6px 12px;
-  background: rgba(20,18,17,.65);
-  backdrop-filter: blur(8px);
+  margin-top: 18px;
+  font-family: var(--en); font-size: 10px; font-weight: 700; letter-spacing: .3em;
+  color: var(--muted);
+  z-index: 2;
 }
 
 @media (max-width: 980px) {
@@ -380,12 +407,12 @@ ul, ol { list-style: none; }
 
 .hero-title {
   font-family: var(--jp);
-  font-size: clamp(44px, 4.6vw, 72px);
+  font-size: clamp(30px, 2.8vw, 44px);
   font-weight: 800;
-  letter-spacing: -0.025em;
-  line-height: 1.1;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
   color: var(--ink);
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 .hero-title .ht-line { display: block; }
 .hero-title .accent {

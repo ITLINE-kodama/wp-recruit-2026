@@ -740,6 +740,60 @@ ul, ol { list-style: none; }
 }
 
 /* ============================================================
+   GROUP BUSINESSES
+   ============================================================ */
+.biz-list {
+  margin-top: 32px;
+  display: flex; flex-direction: column;
+  gap: 0;
+}
+.biz-row {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 24px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+.biz-row:last-child { border-bottom: 1px solid var(--line); }
+.biz-row.featured { background: rgba(230,57,70,.04); padding-left: 16px; padding-right: 16px; }
+.biz-row .biz-num {
+  font-family: var(--en);
+  font-size: 28px; font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.biz-row .biz-body h3 {
+  font-family: var(--jp);
+  font-size: 18px; font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 8px;
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+}
+.biz-row .biz-now {
+  display: inline-block;
+  font-family: var(--en); font-size: 10px; font-weight: 700;
+  letter-spacing: .15em;
+  color: var(--accent);
+  background: rgba(230,57,70,.1);
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+.biz-row .biz-tag {
+  display: inline-block;
+  font-family: var(--jp); font-size: 11px; font-weight: 600;
+  color: var(--muted);
+  letter-spacing: .04em;
+  margin-bottom: 12px;
+}
+.biz-row .biz-body p {
+  font-size: 13.5px; line-height: 1.95;
+  color: var(--ink-2);
+}
+
+/* ============================================================
    JOBS
    ============================================================ */
 .job-list { margin-top: 40px; display: flex; flex-direction: column; gap: 8px; }
@@ -749,6 +803,8 @@ ul, ol { list-style: none; }
   transition: border-color .25s;
 }
 .job-row:hover { border-color: var(--ink); }
+.job-row.featured { border-color: var(--accent); box-shadow: 0 20px 40px -25px rgba(230,57,70,.25); }
+.job-row.featured header { background: rgba(230,57,70,.04); border-bottom-color: rgba(230,57,70,.2); }
 .job-row header {
   padding: 24px 28px;
   display: flex; align-items: center; gap: 16px;

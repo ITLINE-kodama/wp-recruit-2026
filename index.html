@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20260514-8">
+<link rel="stylesheet" href="style.css?v=20260514-9">
 <script>
   document.documentElement.classList.add('locked');
   try { if (sessionStorage.getItem('wp_recruit_auth') === 'ok') document.documentElement.classList.remove('locked'); } catch (e) {}
@@ -100,11 +100,15 @@
 
 <main class="main" id="top">
 
-<!-- ===== HERO (split layout) ===== -->
-<section class="hero" id="hero">
-  <div class="hero-wrap">
-    <div class="hero-text">
-      <p class="hero-eyebrow"><span></span>JOIN US <em>WONDERLABO GROUP</em></p>
+<!-- ===== HERO (full-bleed photo background) ===== -->
+<section class="hero hero--bleed" id="hero">
+  <div class="hero-bg" style="background-image: url('assets/team.jpg');"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-bleed-inner">
+    <div class="hero-bleed-text">
+      <p class="hero-eyebrow"><span></span>JOIN US <em>— WONDERLABO GROUP</em></p>
       <h1 class="hero-title">
         <span class="ht-line"><span class="accent">面白くないもの</span>を</span>
         <span class="ht-line">面白く。</span>
@@ -113,26 +117,27 @@
         仲間と一緒に、ワクワクを実現しよう。
       </p>
       <p class="hero-subtitle">
-        WonderPrax 株式会社（Wonderlabo Holdings グループ）の採用サイトです。<br>
-        私たちの想い、価値観、募集中の職種についてご紹介します。
+        WonderPrax 株式会社（Wonderlabo Holdings グループ）の採用サイト。<br>
+        私たちの想い、価値観、募集中の職種をご紹介します。
       </p>
+    </div>
+
+    <div class="hero-bleed-bottom">
       <div class="hero-meta">
-        <div><span class="hm-num">2022</span><span class="hm-lbl">FOUNDED<br>ベンチャー</span></div>
+        <div><span class="hm-num">2022</span><span class="hm-lbl">FOUNDED<br>ベンチャー企業</span></div>
         <div><span class="hm-num">04</span><span class="hm-lbl">GROUP<br>COMPANIES</span></div>
         <div><span class="hm-num">∞</span><span class="hm-lbl">ワクワクの<br>追求</span></div>
       </div>
-    </div>
-    <div class="hero-photo">
-      <figure class="hp-main">
-        <img src="assets/team.jpg" alt="WonderPrax / Wonderlabo Holdings メンバー集合写真">
-        <figcaption>Wonderlabo Holdings — Members</figcaption>
-      </figure>
-      <figure class="hp-sub">
-        <img src="assets/workshop.jpg" alt="">
-      </figure>
+      <a href="#philosophy" class="scroll-hint" aria-label="scroll">
+        <span class="sh-text">SCROLL</span>
+        <span class="sh-line"></span>
+      </a>
     </div>
   </div>
+</section>
 
+<!-- ===== HERO CTA STRIP (below hero, white bg) ===== -->
+<section class="hero-cta-strip">
   <div class="hero-ctas-wrap">
     <div class="hero-ctas">
       <a href="#contact" class="hero-cta">
@@ -143,7 +148,7 @@
           </svg>
         </span>
         <span class="cta-body">
-          <b>まずは<br>話してみる</b>
+          <b>まずは話してみる</b>
           <small>カジュアル面談を申し込む →</small>
         </span>
       </a>
@@ -155,15 +160,11 @@
           </svg>
         </span>
         <span class="cta-body">
-          <b>応募したい方は<br>こちらから</b>
+          <b>応募したい方はこちら</b>
           <small>募集要項を見る →</small>
         </span>
       </a>
     </div>
-    <a href="#philosophy" class="scroll-hint" aria-label="scroll">
-      <span class="sh-text">SCROLL</span>
-      <span class="sh-line"></span>
-    </a>
   </div>
 </section>
 
@@ -534,6 +535,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=20260514-8"></script>
+<script src="script.js?v=20260514-9"></script>
 </body>
 </html>

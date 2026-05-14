@@ -57,7 +57,7 @@ const header = document.getElementById('header');
 const sidenav = document.getElementById('sidenav');
 const progress = document.getElementById('scrollProgress');
 
-const darkSections = document.querySelectorAll('.section-cta');
+const darkSections = document.querySelectorAll('.section-cta, .hero--bleed');
 
 const onScroll = () => {
   if (window.scrollY > 60) header.classList.add('scrolled');
@@ -145,14 +145,13 @@ if (sectionMap.size > 0) {
   sectionMap.forEach((_, sec) => navObserver.observe(sec));
 }
 
-// Also handle the hero / above-philosophy region (default state: light, no active)
+// Hero region: clear active section state (hero is now dark itself, on-dark handled by darkSections detection above)
 const heroEl = document.getElementById('hero');
 if (heroEl && sidenav) {
   const heroObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         sidenavLinks.forEach(x => x.classList.remove('active'));
-        sidenav.classList.remove('on-dark');
       }
     });
   }, { rootMargin: '0px 0px -60% 0px', threshold: 0 });

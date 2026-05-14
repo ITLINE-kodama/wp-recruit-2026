@@ -364,8 +364,9 @@ ul, ol { list-style: none; }
 .hero-light-photo img {
   display: block;
   width: 100%;
-  max-width: 643px;          /* natural width — no upscaling */
+  max-width: 643px;          /* natural width — no upscaling, all 5 members visible */
   height: auto;
+  box-sizing: content-box;   /* keep image native width; padding adds outside */
   object-fit: contain;
   background: #fff;
   padding: 14px;

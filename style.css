@@ -169,11 +169,12 @@ ul, ol { list-style: none; }
 .sidenav a.active .sn-num { color: var(--accent); }
 
 /* Dark-theme variant: when current section has dark background */
-.sidenav.on-dark .sn-label-head { color: rgba(255,255,255,.5); }
-.sidenav.on-dark ol { border-left-color: rgba(255,255,255,.25); }
-.sidenav.on-dark .sn-num { color: #fff; }
-.sidenav.on-dark .sn-label { color: #fff; }
-.sidenav.on-dark a.active .sn-num { color: var(--accent); }
+.sidenav.on-dark .sn-label-head { color: rgba(255,255,255,.6) !important; }
+.sidenav.on-dark ol { border-left-color: rgba(255,255,255,.25) !important; }
+.sidenav.on-dark .sn-num { color: #fff !important; }
+.sidenav.on-dark .sn-label { color: #fff !important; }
+.sidenav.on-dark a.active .sn-num { color: var(--accent) !important; }
+.sidenav.on-dark a.active .sn-label { color: #fff !important; }
 
 /* ============================================================
    HERO SCROLL HINT

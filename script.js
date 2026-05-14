@@ -57,6 +57,8 @@ const header = document.getElementById('header');
 const sidenav = document.getElementById('sidenav');
 const progress = document.getElementById('scrollProgress');
 
+const darkSections = document.querySelectorAll('.section-cta');
+
 const onScroll = () => {
   if (window.scrollY > 60) header.classList.add('scrolled');
   else header.classList.remove('scrolled');
@@ -65,6 +67,18 @@ const onScroll = () => {
     const max = document.documentElement.scrollHeight - window.innerHeight;
     const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
     progress.style.width = pct + '%';
+  }
+
+  // Fallback dark-bg detection on every scroll tick (more reliable than IntersectionObserver alone)
+  if (sidenav && darkSections.length > 0) {
+    const midY = window.innerHeight * 0.45;
+    let onDark = false;
+    for (const ds of darkSections) {
+      const r = ds.getBoundingClientRect();
+      if (r.top < midY && r.bottom > midY) { onDark = true; break; }
+    }
+    if (onDark) sidenav.classList.add('on-dark');
+    else sidenav.classList.remove('on-dark');
   }
 };
 window.addEventListener('scroll', onScroll, { passive: true });

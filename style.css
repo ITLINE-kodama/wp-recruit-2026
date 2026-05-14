@@ -337,29 +337,128 @@ ul, ol { list-style: none; }
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 56px 48px;
-  overflow: hidden;
+  padding: 56px 56px;
+  overflow: visible;          /* allow badge to overhang */
 }
-/* decorative red corner accent */
-.hero-light-photo::before {
-  content: "";
+/* ----- Registration marks (proof / film camera style) ----- */
+.reg-mark {
   position: absolute;
-  top: 56px; right: 48px;
-  width: 64px; height: 64px;
-  border-top: 2px solid var(--accent);
-  border-right: 2px solid var(--accent);
-  z-index: 1;
+  width: 22px; height: 22px;
+  z-index: 3;
   pointer-events: none;
 }
-.hero-light-photo::after {
+.reg-mark::before, .reg-mark::after {
   content: "";
   position: absolute;
-  bottom: 56px; left: 48px;
-  width: 64px; height: 64px;
-  border-bottom: 2px solid var(--ink);
-  border-left: 2px solid var(--ink);
-  z-index: 1;
+  background: var(--ink);
+}
+.reg-mark::before { /* horizontal */
+  height: 1.5px; width: 100%; top: 50%;
+}
+.reg-mark::after { /* vertical */
+  width: 1.5px; height: 100%; left: 50%;
+}
+.reg-mark--tl { top: 100px; left: 22px; }   /* clear header */
+.reg-mark--tr { top: 100px; right: 22px; }
+.reg-mark--bl { bottom: 28px; left: 22px; }
+.reg-mark--br { bottom: 28px; right: 22px; }
+.reg-mark--tr::before, .reg-mark--tr::after,
+.reg-mark--tl::before, .reg-mark--tl::after { background: var(--accent); }
+
+/* ----- Vertical accent strip on left side ----- */
+.photo-vline {
+  position: absolute;
+  top: 130px; bottom: 70px; left: 18px;
+  display: flex; flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  z-index: 3;
   pointer-events: none;
+}
+.photo-vline span {
+  flex: 1;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--ink) 30%, var(--ink) 70%, transparent);
+}
+.photo-vline em {
+  font-style: normal;
+  font-family: var(--en); font-size: 9px; font-weight: 700;
+  letter-spacing: .35em;
+  color: var(--accent);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* ----- Tilted editorial badge (top-right, overlapping the photo) ----- */
+.photo-badge {
+  position: absolute;
+  top: 110px; right: 22px;     /* below fixed header, inside viewport */
+  z-index: 4;
+  background: var(--accent);
+  color: #fff;
+  padding: 14px 18px 12px;
+  display: flex; flex-direction: column;
+  gap: 2px;
+  transform: rotate(4deg);
+  box-shadow:
+    0 18px 30px -15px rgba(230,57,70,.55),
+    0 4px 8px -4px rgba(20,18,17,.25);
+  font-family: var(--en);
+  letter-spacing: .12em;
+  animation: badgeDrop .9s 1.2s cubic-bezier(.2,.7,.2,1) backwards;
+}
+@keyframes badgeDrop {
+  from { transform: rotate(-4deg) translateY(-12px); opacity: 0; }
+  to   { transform: rotate(4deg) translateY(0); opacity: 1; }
+}
+.photo-badge::after { /* tape-like nick */
+  content: "";
+  position: absolute;
+  top: 100%; right: 6px;
+  border: 6px solid transparent;
+  border-top-color: #b1242f;   /* darker accent for depth */
+  border-right-width: 0;
+}
+.photo-badge .pb-num {
+  font-size: 18px; font-weight: 800;
+  line-height: 1;
+}
+.photo-badge .pb-year {
+  font-size: 9px; font-weight: 600;
+  letter-spacing: .25em;
+  opacity: .9;
+}
+.photo-badge .pb-tag {
+  font-size: 9px; font-weight: 800;
+  letter-spacing: .35em;
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255,255,255,.45);
+}
+
+/* ----- Brand tag at bottom-right ----- */
+.photo-tag {
+  position: absolute;
+  bottom: 24px; right: 24px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center; gap: 8px;
+  font-family: var(--en); font-size: 10px; font-weight: 700;
+  letter-spacing: .25em;
+  color: #fff;
+  background: rgba(20,18,17,.85);
+  backdrop-filter: blur(6px);
+  padding: 7px 12px;
+}
+.photo-tag .pt-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: dotPulse 2s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%, 100% { opacity: .55; transform: scale(1); }
+  50%      { opacity: 1; transform: scale(1.25); }
 }
 .hero-light-photo img {
   display: block;

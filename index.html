@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20260514-14">
+<link rel="stylesheet" href="style.css?v=20260514-16">
 <script>
   document.documentElement.classList.add('locked');
   try { if (sessionStorage.getItem('wp_recruit_auth') === 'ok') document.documentElement.classList.remove('locked'); } catch (e) {}
@@ -129,7 +129,33 @@
     </div>
 
     <figure class="hero-light-photo">
+      <!-- Registration marks at all four corners -->
+      <span class="reg-mark reg-mark--tl" aria-hidden="true"></span>
+      <span class="reg-mark reg-mark--tr" aria-hidden="true"></span>
+      <span class="reg-mark reg-mark--bl" aria-hidden="true"></span>
+      <span class="reg-mark reg-mark--br" aria-hidden="true"></span>
+
+      <!-- Vertical accent strip + JOIN US label -->
+      <div class="photo-vline" aria-hidden="true">
+        <span></span>
+        <em>JOIN US</em>
+      </div>
+
       <img src="assets/team_kitchen.jpg" alt="WonderPrax / Wonderlabo Holdings メンバー">
+
+      <!-- Tilted editorial badge over top-right -->
+      <div class="photo-badge" aria-hidden="true">
+        <span class="pb-num">VOL.01</span>
+        <span class="pb-year">2026 — 27</span>
+        <span class="pb-tag">RECRUIT</span>
+      </div>
+
+      <!-- Bottom-right: brand tag -->
+      <div class="photo-tag" aria-hidden="true">
+        <span class="pt-dot"></span>
+        WONDERLABO HD
+      </div>
+
       <figcaption>Wonderlabo Holdings — Members</figcaption>
     </figure>
 
@@ -535,6 +561,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=20260514-14"></script>
+<script src="script.js?v=20260514-16"></script>
 </body>
 </html>

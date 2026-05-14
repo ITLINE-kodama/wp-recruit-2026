@@ -89,6 +89,32 @@ if (sidenav) {
   setTimeout(() => sidenav.classList.add('visible'), 400);
 }
 
+// Floating CTA: show after small scroll, persistent thereafter
+const floatingCta = document.getElementById('floatingCta');
+if (floatingCta) {
+  const showFc = () => {
+    if (window.scrollY > 200) floatingCta.classList.add('visible');
+  };
+  window.addEventListener('scroll', showFc, { passive: true });
+  showFc();
+  // Also show once after 1.5s on load even if user hasn't scrolled
+  setTimeout(() => floatingCta.classList.add('visible'), 1500);
+}
+
+// Favorite button: persist state in localStorage
+const favBtn = document.getElementById('favBtn');
+if (favBtn) {
+  try {
+    if (localStorage.getItem('wp_recruit_fav') === '1') favBtn.classList.add('is-fav');
+  } catch (e) {}
+  favBtn.addEventListener('click', () => {
+    const on = favBtn.classList.toggle('is-fav');
+    try { localStorage.setItem('wp_recruit_fav', on ? '1' : '0'); } catch (e) {}
+    const label = favBtn.querySelector('.fc-label');
+    if (label) label.textContent = on ? 'お気に入り済み' : 'お気に入り';
+  });
+}
+
 // 1b. Active section tracking + dark-section detection for sidenav
 const sidenavLinks = document.querySelectorAll('.sidenav a[data-target]');
 const sectionMap = new Map();

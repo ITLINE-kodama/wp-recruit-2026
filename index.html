@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20260514-3">
+<link rel="stylesheet" href="style.css?v=20260514-4">
 <script>
   document.documentElement.classList.add('locked');
   try { if (sessionStorage.getItem('wp_recruit_auth') === 'ok') document.documentElement.classList.remove('locked'); } catch (e) {}
@@ -65,50 +65,101 @@
 
 <!-- ===== STICKY SIDEBAR NAV ===== -->
 <aside class="sidenav" id="sidenav" aria-label="Page navigation">
-  <div class="sn-label-head">CHAPTERS</div>
-  <ol>
-    <li><a href="#philosophy" data-target="philosophy"><span class="sn-num">01</span><span class="sn-label">私たちの仕事観</span></a></li>
-    <li><a href="#principles" data-target="principles"><span class="sn-num">02</span><span class="sn-label">3 つの原則</span></a></li>
-    <li><a href="#evaluation" data-target="evaluation"><span class="sn-num">03</span><span class="sn-label">報酬と働き方</span></a></li>
-    <li><a href="#team" data-target="team"><span class="sn-num">04</span><span class="sn-label">ここで働く人たち</span></a></li>
-    <li><a href="#jobs" data-target="jobs"><span class="sn-num">05</span><span class="sn-label">募集ポジション</span></a></li>
-    <li><a href="#contact" data-target="contact"><span class="sn-num">06</span><span class="sn-label">まず話してみる</span></a></li>
-  </ol>
+  <div class="sn-card">
+    <div class="sn-head">
+      <span class="sn-head-en">INDEX</span>
+      <span class="sn-head-jp">目次</span>
+    </div>
+    <ol>
+      <li><a href="#philosophy" data-target="philosophy"><span class="sn-num">01</span><span class="sn-label">私たちの仕事観</span></a></li>
+      <li><a href="#principles" data-target="principles"><span class="sn-num">02</span><span class="sn-label">3 つの原則</span></a></li>
+      <li><a href="#evaluation" data-target="evaluation"><span class="sn-num">03</span><span class="sn-label">報酬と働き方</span></a></li>
+      <li><a href="#team" data-target="team"><span class="sn-num">04</span><span class="sn-label">ここで働く人たち</span></a></li>
+      <li><a href="#jobs" data-target="jobs"><span class="sn-num">05</span><span class="sn-label">募集ポジション</span></a></li>
+      <li><a href="#contact" data-target="contact"><span class="sn-num">06</span><span class="sn-label">話してみる</span></a></li>
+    </ol>
+  </div>
 </aside>
+
+<!-- ===== FLOATING CTA BUTTONS (right-bottom) ===== -->
+<div class="floating-cta" id="floatingCta" aria-label="クイックアクション">
+  <button type="button" class="fc-btn fc-fav" id="favBtn" aria-label="お気に入りに追加" title="お気に入り">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+    </svg>
+    <span class="fc-label">お気に入り</span>
+  </button>
+  <a href="#contact" class="fc-btn fc-entry">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14"/>
+      <path d="M13 6l6 6-6 6"/>
+    </svg>
+    <span class="fc-label">エントリー</span>
+  </a>
+</div>
 
 <main class="main" id="top">
 
-<!-- ===== HERO ===== -->
+<!-- ===== HERO (split layout) ===== -->
 <section class="hero" id="hero">
-  <div class="container">
-    <p class="hero-eyebrow"><span></span>WONDERPRAX RECRUITING</p>
-    <h1 class="hero-title">RECRUIT</h1>
-    <p class="hero-subtitle">
-      WonderPrax 株式会社の採用情報です。私たちの組織や考え、<br>
-      募集中の職種についてご紹介します。
-    </p>
+  <div class="hero-wrap">
+    <div class="hero-text">
+      <p class="hero-eyebrow"><span></span>WONDERPRAX RECRUITING <em>2026—27</em></p>
+      <h1 class="hero-title">
+        <span class="ht-line">RE<span class="accent">CRUI</span>T</span>
+      </h1>
+      <p class="hero-tagline">
+        事業の隣に、<br>
+        伴走者を。
+      </p>
+      <p class="hero-subtitle">
+        WonderPrax 株式会社の採用情報です。<br>
+        私たちの組織や考え、募集中の職種についてご紹介します。
+      </p>
+      <div class="hero-meta">
+        <div><span class="hm-num">×2.0</span><span class="hm-lbl">2026 → 2027<br>HEADCOUNT</span></div>
+        <div><span class="hm-num">02</span><span class="hm-lbl">CONSULTANT<br>/ SALES</span></div>
+        <div><span class="hm-num">100<em>%</em></span><span class="hm-lbl">ONLINE<br>1ST INTERVIEW</span></div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <figure class="hp-main">
+        <img src="assets/sales_team.jpg" alt="">
+        <figcaption>WonderPrax Office, Tokyo</figcaption>
+      </figure>
+      <figure class="hp-sub">
+        <img src="assets/workshop.jpg" alt="">
+      </figure>
+    </div>
+  </div>
 
-    <figure class="hero-figure">
-      <img src="assets/workshop.jpg" alt="">
-    </figure>
-
+  <div class="hero-ctas-wrap">
     <div class="hero-ctas">
       <a href="#contact" class="hero-cta">
-        <span class="cta-icon">✉</span>
+        <span class="cta-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16v16H4z"/>
+            <polyline points="4,4 12,13 20,4"/>
+          </svg>
+        </span>
         <span class="cta-body">
-          <b>気になる方は<br>お話だけでも</b>
+          <b>まずは<br>話してみる</b>
           <small>カジュアル面談を申し込む →</small>
         </span>
       </a>
-      <a href="#jobs" class="hero-cta">
-        <span class="cta-icon">↗</span>
+      <a href="#jobs" class="hero-cta primary">
+        <span class="cta-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/>
+            <path d="M13 6l6 6-6 6"/>
+          </svg>
+        </span>
         <span class="cta-body">
           <b>応募したい方は<br>こちらから</b>
           <small>募集要項を見る →</small>
         </span>
       </a>
     </div>
-
     <a href="#philosophy" class="scroll-hint" aria-label="scroll">
       <span class="sh-text">SCROLL</span>
       <span class="sh-line"></span>
@@ -457,6 +508,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=20260514-3"></script>
+<script src="script.js?v=20260514-4"></script>
 </body>
 </html>

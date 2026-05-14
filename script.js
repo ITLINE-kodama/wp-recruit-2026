@@ -52,30 +52,40 @@ function unlockSite() {
 })();
 
 
-// 1. Header scroll effect
+// 1. Header scroll effect + scroll progress bar
 const header = document.getElementById('header');
 const sidenav = document.getElementById('sidenav');
-const hero = document.getElementById('hero');
+const progress = document.getElementById('scrollProgress');
+
 const onScroll = () => {
   if (window.scrollY > 60) header.classList.add('scrolled');
   else header.classList.remove('scrolled');
-  // Show sidenav after scrolling past hero
-  if (sidenav && hero) {
-    const heroBottom = hero.offsetTop + hero.offsetHeight - 200;
-    if (window.scrollY > heroBottom) sidenav.classList.add('visible');
-    else sidenav.classList.remove('visible');
+
+  if (progress) {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+    progress.style.width = pct + '%';
   }
 };
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-// 1b. Active section tracking for sidenav
+// Sidenav: show immediately on load (slight delay for visual rhythm)
+if (sidenav) {
+  setTimeout(() => sidenav.classList.add('visible'), 400);
+}
+
+// 1b. Active section tracking + dark-section detection for sidenav
 const sidenavLinks = document.querySelectorAll('.sidenav a[data-target]');
 const sectionMap = new Map();
 sidenavLinks.forEach(a => {
   const sec = document.getElementById(a.dataset.target);
   if (sec) sectionMap.set(sec, a);
 });
+
+// Selectors that count as "dark-bg" sections (sidenav switches color when over them)
+const isDarkSection = (sec) => sec && sec.classList.contains('section-cta');
+
 if (sectionMap.size > 0) {
   const navObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -84,10 +94,29 @@ if (sectionMap.size > 0) {
       if (e.isIntersecting) {
         sidenavLinks.forEach(x => x.classList.remove('active'));
         a.classList.add('active');
+        // Adapt sidenav color to current section background
+        if (sidenav) {
+          if (isDarkSection(e.target)) sidenav.classList.add('on-dark');
+          else sidenav.classList.remove('on-dark');
+        }
       }
     });
   }, { rootMargin: '-30% 0px -55% 0px', threshold: 0 });
   sectionMap.forEach((_, sec) => navObserver.observe(sec));
+}
+
+// Also handle the hero / above-philosophy region (default state: light, no active)
+const heroEl = document.getElementById('hero');
+if (heroEl && sidenav) {
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        sidenavLinks.forEach(x => x.classList.remove('active'));
+        sidenav.classList.remove('on-dark');
+      }
+    });
+  }, { rootMargin: '0px 0px -60% 0px', threshold: 0 });
+  heroObserver.observe(heroEl);
 }
 
 // 2. Reveal on intersect

@@ -90,6 +90,17 @@ ul, ol { list-style: none; }
 .btn-entry:hover { background: var(--accent); transform: translateY(-1px); }
 
 /* ============================================================
+   SCROLL PROGRESS BAR
+   ============================================================ */
+.scroll-progress {
+  position: fixed; top: 0; left: 0;
+  height: 2px; width: 0;
+  background: var(--accent);
+  z-index: 200;
+  transition: width .1s linear;
+}
+
+/* ============================================================
    STICKY SIDEBAR NAV
    ============================================================ */
 .sidenav {
@@ -100,18 +111,27 @@ ul, ol { list-style: none; }
   z-index: 50;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .4s ease;
+  transition: opacity .6s ease;
 }
 .sidenav.visible { opacity: 1; pointer-events: auto; }
+.sn-label-head {
+  font-family: var(--en); font-size: 9px; font-weight: 700;
+  letter-spacing: .35em;
+  color: var(--muted);
+  margin-bottom: 14px;
+  padding-left: 18px;
+  transition: color .3s ease;
+}
 .sidenav ol {
   display: flex; flex-direction: column;
   gap: 4px;
-  padding: 18px 0;
+  padding: 14px 0;
   border-left: 1px solid var(--line-strong);
+  transition: border-color .3s ease;
 }
 .sidenav a {
   display: flex; align-items: center; gap: 14px;
-  padding: 8px 0 8px 18px;
+  padding: 7px 0 7px 18px;
   position: relative;
   transition: color .2s ease;
 }
@@ -122,34 +142,70 @@ ul, ol { list-style: none; }
   background: var(--accent);
   transition: height .25s ease;
 }
-.sidenav a:hover::before, .sidenav a.active::before { height: 24px; }
+.sidenav a:hover::before, .sidenav a.active::before { height: 22px; }
 .sidenav .sn-num {
   font-family: var(--en); font-size: 11px; font-weight: 700;
   letter-spacing: .1em;
-  color: var(--muted);
-  transition: color .2s ease;
+  color: var(--ink);
+  opacity: .55;
+  transition: opacity .2s ease, color .3s ease;
 }
 .sidenav .sn-label {
   font-family: var(--jp); font-size: 12px; font-weight: 600;
-  color: var(--muted);
+  color: var(--ink);
+  opacity: 0;
   max-width: 0;
   overflow: hidden;
   white-space: nowrap;
-  opacity: 0;
-  transition: max-width .35s ease, opacity .25s ease .05s, color .2s ease;
+  transition: max-width .35s ease, opacity .25s ease .05s, color .3s ease;
 }
 .sidenav:hover .sn-label,
 .sidenav a.active .sn-label {
-  max-width: 160px;
-  opacity: 1;
+  max-width: 180px;
+  opacity: .85;
 }
 .sidenav a:hover .sn-num,
-.sidenav a:hover .sn-label,
-.sidenav a.active .sn-num,
-.sidenav a.active .sn-label {
-  color: var(--ink);
-}
+.sidenav a.active .sn-num { opacity: 1; }
 .sidenav a.active .sn-num { color: var(--accent); }
+
+/* Dark-theme variant: when current section has dark background */
+.sidenav.on-dark .sn-label-head { color: rgba(255,255,255,.5); }
+.sidenav.on-dark ol { border-left-color: rgba(255,255,255,.25); }
+.sidenav.on-dark .sn-num { color: #fff; }
+.sidenav.on-dark .sn-label { color: #fff; }
+.sidenav.on-dark a.active .sn-num { color: var(--accent); }
+
+/* ============================================================
+   HERO SCROLL HINT
+   ============================================================ */
+.scroll-hint {
+  display: inline-flex; align-items: center; gap: 14px;
+  margin-top: 56px;
+  font-family: var(--en); font-size: 11px; font-weight: 600;
+  letter-spacing: .3em;
+  color: var(--muted);
+  transition: color .2s;
+}
+.scroll-hint:hover { color: var(--accent); }
+.scroll-hint .sh-line {
+  display: inline-block;
+  width: 60px; height: 1px;
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+.scroll-hint .sh-line::after {
+  content: "";
+  position: absolute; left: 0; top: 0;
+  width: 30%; height: 100%;
+  background: var(--accent);
+  animation: scrollHint 2.2s ease-in-out infinite;
+}
+@keyframes scrollHint {
+  0%   { transform: translateX(-100%); }
+  50%  { transform: translateX(330%); }
+  100% { transform: translateX(330%); }
+}
 
 /* ============================================================
    HERO
@@ -243,33 +299,42 @@ ul, ol { list-style: none; }
 .section.section-tinted { background: var(--tint); }
 
 .section-eyebrow {
-  display: inline-flex; align-items: center; gap: 14px;
-  margin-bottom: 24px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--line-strong);
+  display: flex; flex-direction: column;
+  gap: 18px;
+  margin-bottom: 36px;
+}
+.section-eyebrow .se-row {
+  display: flex; align-items: baseline; gap: 20px;
 }
 .section-eyebrow .se-num {
-  font-family: var(--en); font-size: 13px; font-weight: 700;
-  letter-spacing: .12em;
+  font-family: var(--en);
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
   color: var(--accent);
-  background: rgba(230,57,70,.08);
-  padding: 4px 10px;
-  border-radius: 2px;
+  line-height: 1;
 }
 .section-eyebrow .se-divider {
   display: inline-block;
-  width: 16px; height: 1px;
-  background: var(--ink);
+  width: 1px; height: 28px;
+  background: var(--line-strong);
+  align-self: center;
 }
 .section-eyebrow .se-label {
-  font-family: var(--en); font-size: 11px; font-weight: 700;
-  letter-spacing: .3em;
+  font-family: var(--en);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .35em;
   color: var(--ink);
 }
-.section-eyebrow.light { border-bottom-color: rgba(255,255,255,.3); }
-.section-eyebrow.light .se-divider { background: rgba(255,255,255,.6); }
+.section-eyebrow .se-line {
+  display: block;
+  width: 100%; height: 1px;
+  background: var(--line-strong);
+}
+.section-eyebrow.light .se-divider { background: rgba(255,255,255,.25); }
 .section-eyebrow.light .se-label { color: #fff; }
-.section-eyebrow.light .se-num { background: rgba(255,255,255,.1); }
+.section-eyebrow.light .se-line { background: rgba(255,255,255,.15); }
 .section-title {
   font-family: var(--jp);
   font-size: clamp(26px, 3vw, 32px);

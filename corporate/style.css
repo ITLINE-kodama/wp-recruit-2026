@@ -176,11 +176,21 @@ ul, ol { list-style: none; }
   overflow: hidden;
   background: var(--tint);
 }
+/* lift the residual dark vignette in lower-right corner of source */
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 95%, rgba(255,255,255,.35), transparent 55%);
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-photo .hp-tag { z-index: 2; }
 .hero-photo img {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: center 35%;        /* keep heads + table in frame */
-  filter: brightness(1.02) contrast(1.05) saturate(1.1);
+  object-position: center 35%;        /* keep heads in frame */
+  filter: brightness(1.02) contrast(1.02) saturate(1.05);
   transform: scale(1.04);
   animation: heroDrift 22s ease-in-out infinite alternate;
 }

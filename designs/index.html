@@ -3,35 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WonderPrax デザイン案 ｜ 提案 4 案 一覧</title>
-<meta name="description" content="WonderPrax 株式会社 様 サイトリニューアル デザイン提案 4 案一覧。株式会社インフォネット × 株式会社 ITLINE 共同提案。">
+<title>WonderPrax デザイン案</title>
+<meta name="description" content="WonderPrax 株式会社 様 サイトリニューアル デザイン案一覧。提供：株式会社インフォネット × 株式会社 ITLINE">
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
   body {
-    font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Yu Gothic UI", "Hiragino Sans", sans-serif;
+    font-family: "Noto Sans JP", -apple-system, "Yu Gothic UI", "Hiragino Sans", sans-serif;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 1.8;
+    font-size: 15px;
+    line-height: 1.7;
     color: #1d1917;
     background: #fafaf7;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
   }
-  img { max-width: 100%; display: block; }
   a { color: inherit; text-decoration: none; }
-  ul, ol { list-style: none; }
+  ul { list-style: none; padding: 0; margin: 0; }
 
   :root {
     --ink: #1d1917;
-    --ink-2: #4a4543;
     --muted: #837d7a;
     --line: #e8e4e1;
-    --line-strong: #d4cfca;
     --paper: #fafaf7;
     --tint: #f6f3ee;
     --accent: #e63946;
@@ -39,487 +34,238 @@
     --jp: "Noto Sans JP", sans-serif;
   }
 
-  /* ========== HEADER ========== */
-  .top-header {
-    padding: 36px 32px 0;
-    max-width: 1280px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== HEADER ===== */
+  header.top {
+    padding: 56px 24px 0;
+    text-align: center;
   }
-  .th-brand {
+  header.top h1 {
+    font-family: var(--jp);
+    font-size: clamp(28px, 3.4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  header.top .sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+
+  /* ===== GROUP ===== */
+  .group {
+    margin-top: 56px;
+    padding: 0 24px;
+  }
+  .group-label {
+    max-width: 880px;
+    margin: 0 auto 16px;
     font-family: var(--en);
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: .3em;
-    color: var(--muted);
-  }
-  .th-brand b { color: var(--ink); font-weight: 800; }
-  .th-meta {
-    font-family: var(--en);
-    font-size: 10px;
-    font-weight: 600;
     letter-spacing: .25em;
-    color: var(--muted);
-  }
-
-  /* ========== HERO ========== */
-  .top-hero {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 80px 32px 64px;
-    text-align: center;
-    border-bottom: 1px solid var(--line);
-  }
-  .th-eyebrow {
-    display: inline-flex; align-items: center; gap: 14px;
-    font-family: var(--en); font-size: 11px; font-weight: 700;
-    letter-spacing: .35em;
     color: var(--accent);
-    margin-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
   }
-  .th-eyebrow::before, .th-eyebrow::after {
-    content: ""; width: 36px; height: 1px; background: var(--accent);
-  }
-  .top-hero h1 {
+  .group-label .gl-jp {
     font-family: var(--jp);
-    font-size: clamp(36px, 5vw, 64px);
-    font-weight: 800;
-    letter-spacing: -0.025em;
-    line-height: 1.2;
+    font-size: 13px;
+    font-weight: 700;
     color: var(--ink);
-    margin-bottom: 24px;
-  }
-  .top-hero h1 em {
-    font-style: normal; color: var(--accent);
-    position: relative;
-  }
-  .top-hero h1 em::after {
-    content: ""; position: absolute;
-    left: -2%; right: -2%; bottom: 4%;
-    height: 14%;
-    background: rgba(230,57,70,.18);
-    z-index: -1;
-  }
-  .top-hero p {
-    font-size: 15px;
-    line-height: 1.95;
-    color: var(--ink-2);
-    max-width: 620px;
-    margin: 0 auto 32px;
-  }
-  .th-providers {
-    display: inline-flex;
-    align-items: center; gap: 18px;
-    font-family: var(--en); font-size: 11px; font-weight: 700;
-    letter-spacing: .25em;
-    color: var(--ink);
-    padding: 14px 26px;
-    background: #fff;
-    border: 1px solid var(--line-strong);
-  }
-  .th-providers .tp-sep {
-    width: 1px; height: 14px;
-    background: var(--line-strong);
-  }
-  .th-providers .tp-x {
-    color: var(--accent); font-weight: 800;
+    letter-spacing: 0;
+    margin-left: 12px;
   }
 
-  /* ========== PROPOSALS GRID ========== */
-  .proposals {
-    max-width: 1280px;
+  /* ===== LIST ===== */
+  .design-list {
+    max-width: 880px;
     margin: 0 auto;
-    padding: 72px 32px 96px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-  .proposal-card {
-    background: #fff;
-    border: 1px solid var(--line);
-    padding: 40px 36px 32px;
     display: flex;
     flex-direction: column;
-    position: relative;
-    transition: transform .35s ease, border-color .25s, box-shadow .3s;
-    overflow: hidden;
+    gap: 0;
+    border-top: 1px solid var(--line);
   }
-  .proposal-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--ink);
-    box-shadow: 0 30px 50px -25px rgba(20,18,17,.18);
+  .design-row {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    gap: 24px;
+    align-items: center;
+    padding: 22px 8px;
+    border-bottom: 1px solid var(--line);
+    transition: background .2s;
   }
-  .proposal-card .pc-watermark {
-    position: absolute;
-    right: -10px; top: -10px;
+  .design-row:hover { background: #fff; }
+  .dr-no {
     font-family: var(--en);
-    font-size: 180px;
-    font-weight: 900;
-    line-height: 1;
-    color: var(--paper);
-    letter-spacing: -0.06em;
-    z-index: 0;
-    pointer-events: none;
-    transition: color .25s;
-  }
-  .proposal-card:hover .pc-watermark { color: rgba(230,57,70,.06); }
-
-  .proposal-card .pc-tag {
-    position: relative; z-index: 1;
-    font-family: var(--en); font-size: 11px; font-weight: 700;
-    letter-spacing: .35em;
+    font-size: 22px;
+    font-weight: 700;
     color: var(--accent);
-    margin-bottom: 14px;
+    letter-spacing: -0.02em;
   }
-  .proposal-card .pc-author {
-    position: relative; z-index: 1;
+  .dr-body { min-width: 0; }
+  .dr-title {
     font-family: var(--jp);
-    font-size: 14px; font-weight: 600;
-    color: var(--muted);
-    margin-bottom: 12px;
-  }
-  .proposal-card h2 {
-    position: relative; z-index: 1;
-    font-family: var(--jp);
-    font-size: 26px; font-weight: 800;
-    letter-spacing: -0.015em;
+    font-size: 16px;
+    font-weight: 700;
     color: var(--ink);
-    line-height: 1.4;
-    margin-bottom: 18px;
+    margin-bottom: 4px;
   }
-  .proposal-card .pc-desc {
-    position: relative; z-index: 1;
-    font-size: 13px; line-height: 1.9;
-    color: var(--ink-2);
-    margin-bottom: 28px;
+  .dr-meta {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.65;
   }
-  .proposal-card .pc-actions {
-    position: relative; z-index: 1;
-    margin-top: auto;
-    display: flex; flex-direction: column;
+  .dr-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+  .dr-btn {
+    display: inline-flex;
+    align-items: center;
     gap: 8px;
-  }
-  .pc-btn {
-    display: inline-flex; align-items: center; justify-content: space-between;
-    padding: 14px 18px;
-    background: var(--paper);
+    padding: 10px 16px;
+    background: #fff;
     border: 1px solid var(--line);
-    font-family: var(--jp); font-size: 13px; font-weight: 700;
+    font-family: var(--jp);
+    font-size: 12px;
+    font-weight: 700;
     color: var(--ink);
     transition: background .2s, border-color .2s, color .2s;
+    white-space: nowrap;
   }
-  .pc-btn:hover {
-    background: var(--ink);
-    color: #fff;
-    border-color: var(--ink);
-  }
-  .pc-btn:hover .pc-arrow { color: var(--accent); }
-  .pc-btn .pc-arrow {
-    font-family: var(--en); font-size: 14px; font-weight: 700;
-    color: var(--accent);
-    transition: color .2s;
-  }
-  .pc-btn--primary {
-    background: var(--accent);
-    color: #fff;
-    border-color: var(--accent);
-  }
-  .pc-btn--primary .pc-arrow { color: #fff; }
-  .pc-btn--primary:hover {
-    background: var(--ink);
-    border-color: var(--ink);
-    color: #fff;
-  }
-  .pc-btn--primary:hover .pc-arrow { color: var(--accent); }
+  .dr-btn:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .dr-btn .ar { font-family: var(--en); font-weight: 700; color: var(--accent); }
+  .dr-btn:hover .ar { color: #fff; }
+  .dr-btn--xd { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .dr-btn--xd:hover { background: var(--accent); border-color: var(--accent); }
+  .dr-btn--xd .ar { color: var(--accent); }
+  .dr-btn--xd:hover .ar { color: #fff; }
 
-  .pc-external {
-    display: inline-block;
-    font-family: var(--en); font-size: 9px; font-weight: 700;
-    letter-spacing: .2em;
-    color: var(--accent);
-    margin-left: 8px;
-  }
-
-  /* ========== RECRUIT SECTION ========== */
-  .recruit-section {
-    background: var(--ink);
-    color: #fff;
-    padding: 96px 32px;
-  }
-  .recruit-inner {
-    max-width: 1080px;
-    margin: 0 auto;
-  }
-  .recruit-header {
+  /* ===== FOOTER ===== */
+  footer.top {
+    margin-top: 96px;
+    padding: 32px 24px;
     text-align: center;
-    margin-bottom: 56px;
-  }
-  .rh-eyebrow {
-    display: inline-flex; align-items: center; gap: 14px;
-    font-family: var(--en); font-size: 11px; font-weight: 700;
-    letter-spacing: .35em;
-    color: var(--accent);
-    margin-bottom: 24px;
-  }
-  .rh-eyebrow span {
-    display: inline-block;
-    width: 36px; height: 1px; background: var(--accent);
-  }
-  .rh-title {
-    font-family: var(--jp);
-    font-size: clamp(28px, 3.6vw, 44px);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
-    color: #fff;
-    margin-bottom: 20px;
-  }
-  .rh-sub {
-    font-size: 14px;
-    line-height: 1.95;
-    color: rgba(255,255,255,.7);
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  .recruit-card {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 48px;
-    background: rgba(255,255,255,.04);
-    border: 1px solid rgba(255,255,255,.12);
-    padding: 48px 44px;
-    overflow: hidden;
-    transition: border-color .25s, background .25s;
-  }
-  .recruit-card:hover {
-    border-color: var(--accent);
-    background: rgba(255,255,255,.06);
-  }
-  .recruit-card .rc-watermark {
-    position: absolute;
-    right: -20px; top: -30px;
-    font-family: var(--en);
-    font-size: 220px;
-    font-weight: 900;
-    line-height: 1;
-    color: rgba(255,255,255,.04);
-    letter-spacing: -0.05em;
-    pointer-events: none;
-    transition: color .3s;
-  }
-  .recruit-card:hover .rc-watermark { color: rgba(230,57,70,.18); }
-  .recruit-card .rc-body { position: relative; z-index: 1; }
-  .recruit-card .rc-tag {
-    display: inline-block;
-    font-family: var(--en); font-size: 11px; font-weight: 700;
-    letter-spacing: .3em;
-    color: var(--accent);
-    margin-bottom: 14px;
-  }
-  .recruit-card h3 {
-    font-family: var(--jp); font-size: 26px; font-weight: 800;
-    letter-spacing: -0.015em;
-    line-height: 1.35;
-    color: #fff;
-    margin-bottom: 18px;
-  }
-  .recruit-card .rc-desc {
-    font-size: 13px;
-    line-height: 1.9;
-    color: rgba(255,255,255,.75);
-    margin-bottom: 24px;
-  }
-  .recruit-card .rc-meta {
-    display: flex;
-    gap: 28px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,.12);
-  }
-  .recruit-card .rc-meta > div { display: flex; flex-direction: column; gap: 4px; }
-  .recruit-card .rc-meta b {
-    font-family: var(--en); font-size: 9px; font-weight: 700;
-    letter-spacing: .25em;
-    color: var(--accent);
-  }
-  .recruit-card .rc-meta span {
-    font-family: var(--jp); font-size: 14px; font-weight: 600;
-    color: #fff;
-  }
-  .recruit-card .rc-meta code {
-    font-family: var(--en); font-weight: 700;
-    letter-spacing: .08em;
-    background: rgba(230,57,70,.15);
-    color: var(--accent);
-    padding: 2px 8px;
-    border-radius: 2px;
-  }
-  .recruit-card .rc-actions {
-    position: relative; z-index: 1;
-    display: flex; flex-direction: column;
-    justify-content: center;
-    gap: 12px;
-  }
-  .recruit-card .rc-note {
-    font-size: 11px;
-    color: rgba(255,255,255,.5);
-    line-height: 1.7;
-  }
-
-  /* ========== FOOTER ========== */
-  .top-footer {
     border-top: 1px solid var(--line);
     background: #fff;
-    padding: 40px 32px;
-    text-align: center;
   }
-  .top-footer p {
+  footer.top p {
     font-size: 11px;
     color: var(--muted);
     margin-bottom: 4px;
   }
-  .top-footer .tf-meta {
-    font-family: var(--en); font-size: 10px; font-weight: 600;
-    letter-spacing: .25em;
-  }
 
-  /* ========== RESPONSIVE ========== */
-  @media (max-width: 880px) {
-    .top-header { padding: 24px 20px 0; flex-direction: column; gap: 12px; align-items: flex-start; }
-    .top-hero { padding: 48px 20px 40px; }
-    .proposals { grid-template-columns: 1fr; padding: 48px 20px 64px; gap: 16px; }
-    .proposal-card { padding: 32px 24px 28px; }
-    .proposal-card .pc-watermark { font-size: 120px; }
-    .th-providers { font-size: 10px; gap: 12px; padding: 12px 18px; }
-    .recruit-section { padding: 64px 20px; }
-    .recruit-card { grid-template-columns: 1fr; gap: 24px; padding: 32px 24px; }
-    .recruit-card .rc-watermark { font-size: 140px; }
-    .recruit-card .rc-meta { flex-direction: column; gap: 14px; }
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 720px) {
+    .design-row {
+      grid-template-columns: 40px 1fr;
+      gap: 12px;
+      padding: 18px 4px;
+    }
+    .dr-actions {
+      grid-column: 1 / -1;
+      justify-content: flex-start;
+      padding-left: 52px;
+      gap: 6px;
+    }
+    .dr-btn { font-size: 11px; padding: 8px 12px; }
   }
 </style>
 </head>
 <body>
 
-<header class="top-header">
-  <div class="th-brand">CONFIDENTIAL ／ <b>WONDERPRAX × INFONET × ITLINE</b></div>
-  <div class="th-meta">2026 SUBMISSION</div>
+<header class="top">
+  <h1>WonderPrax デザイン案</h1>
+  <p class="sub">提供：株式会社インフォネット × 株式会社 ITLINE</p>
 </header>
 
-<section class="top-hero">
-  <p class="th-eyebrow">DESIGN PROPOSALS</p>
-  <h1>WonderPrax<br><em>デザイン案</em></h1>
-  <p>
-    WonderPrax 株式会社 様 サイトリニューアルプロジェクトの<br>
-    デザイン提案 4 案一覧です。各案をクリックしてご覧ください。
-  </p>
-  <div class="th-providers">
-    <span>株式会社インフォネット</span>
-    <span class="tp-x">×</span>
-    <span>株式会社 ITLINE</span>
-  </div>
-</section>
+<!-- ========== コーポレートサイト 4 案 ========== -->
+<section class="group">
+  <div class="group-label">CORPORATE SITE<span class="gl-jp">コーポレートサイト デザイン案</span></div>
+  <ul class="design-list">
 
-<section class="proposals">
-
-  <!-- A 案 -->
-  <article class="proposal-card">
-    <span class="pc-watermark">A</span>
-    <span class="pc-tag">PLAN A — XD PROTOTYPE</span>
-    <h2>WonderPrax<br>デザイン案 A</h2>
-    <p class="pc-desc">
-      Adobe XD で作成されたプロトタイプ。デザインフローと画面遷移を実機操作で確認できます。
-    </p>
-    <div class="pc-actions">
-      <a href="https://xd.adobe.com/view/e3ea0dcf-b623-4977-917d-7c7fd3b1259d-b6b9/?fullscreen" target="_blank" rel="noopener" class="pc-btn pc-btn--primary">
-        Adobe XD で開く（フルスクリーン）<span class="pc-external">外部リンク</span><span class="pc-arrow">↗</span>
-      </a>
-    </div>
-  </article>
-
-  <!-- B 案 -->
-  <article class="proposal-card">
-    <span class="pc-watermark">B</span>
-    <span class="pc-tag">PLAN B — HTML × 3 VARIANTS</span>
-    <h2>WonderPrax<br>デザイン案 B</h2>
-    <p class="pc-desc">
-      TOP 構成 3 パターン。それぞれの世界観 ／ コンポジション ／ コンテンツ配置を比較いただけます。
-    </p>
-    <div class="pc-actions">
-      <a href="b/01.html" target="_blank" rel="noopener" class="pc-btn">構成案 01 を見る<span class="pc-arrow">→</span></a>
-      <a href="b/02.html" target="_blank" rel="noopener" class="pc-btn">構成案 02 を見る<span class="pc-arrow">→</span></a>
-      <a href="b/03.html" target="_blank" rel="noopener" class="pc-btn">構成案 03 を見る<span class="pc-arrow">→</span></a>
-    </div>
-  </article>
-
-  <!-- C 案 -->
-  <article class="proposal-card">
-    <span class="pc-watermark">C</span>
-    <span class="pc-tag">PLAN C — FULL HTML SITE</span>
-    <h2>WonderPrax<br>デザイン案 C</h2>
-    <p class="pc-desc">
-      「プロフェッショナル × 躍動感 × カッチョいい」を体現する単独動作 HTML。実物に近いブラウザ表示でご確認ください。
-    </p>
-    <div class="pc-actions">
-      <a href="c/" target="_blank" rel="noopener" class="pc-btn pc-btn--primary">サイトを開く<span class="pc-arrow">→</span></a>
-    </div>
-  </article>
-
-  <!-- D 案 -->
-  <article class="proposal-card">
-    <span class="pc-watermark">D</span>
-    <span class="pc-tag">PLAN D — HTML × 2 VARIANTS</span>
-    <h2>WonderPrax<br>デザイン案 D</h2>
-    <p class="pc-desc">
-      2 パターンのテイスト違いをご用意。それぞれのトーン ／ レイアウトの方向性をご比較ください。
-    </p>
-    <div class="pc-actions">
-      <a href="d/a/" target="_blank" rel="noopener" class="pc-btn">パターン A を見る<span class="pc-arrow">→</span></a>
-      <a href="d/b/" target="_blank" rel="noopener" class="pc-btn">パターン B を見る<span class="pc-arrow">→</span></a>
-    </div>
-  </article>
-
-</section>
-
-<!-- ========== RECRUIT SITE SECTION ========== -->
-<section class="recruit-section">
-  <div class="recruit-inner">
-    <div class="recruit-header">
-      <p class="rh-eyebrow"><span></span>RECRUIT SITE PROPOSAL<span></span></p>
-      <h2 class="rh-title">採用サイト デザイン案</h2>
-      <p class="rh-sub">
-        WonderPrax 採用サイト（コーポレートとは別枠）のデザイン案です。<br>
-        コーポレートと別軸でブランディングを展開する想定でご提案しています。
-      </p>
-    </div>
-
-    <article class="recruit-card">
-      <span class="rc-watermark">R</span>
-      <div class="rc-body">
-        <span class="rc-tag">RECRUIT — DESIGN PLAN</span>
-        <h3>WonderPrax<br>採用サイト デザイン案</h3>
-        <p class="rc-desc">
-          コーポレートとは別ドメイン・別世界観で構築する採用サイトのデザイン案。<br>
-          MEMBERS／PHILOSOPHY／VALUES／BUSINESS／JOBS／ENTRY の章立てで構成。
-        </p>
-        <div class="rc-meta">
-          <div><b>PASSCODE</b><span><code>itline2026</code></span></div>
-          <div><b>STATUS</b><span>関係者限定プレビュー</span></div>
-        </div>
+    <li class="design-row">
+      <span class="dr-no">A</span>
+      <div class="dr-body">
+        <div class="dr-title">WonderPrax デザイン案 A</div>
+        <div class="dr-meta">Adobe XD プロトタイプ（フルスクリーン表示）</div>
       </div>
-      <div class="rc-actions">
-        <a href="https://itline-kodama.github.io/wp-recruit-2026/" target="_blank" rel="noopener" class="pc-btn pc-btn--primary">
-          採用サイト デザイン案を開く<span class="pc-arrow">→</span>
-        </a>
-        <p class="rc-note">※ パスコード入力後、デザイン案サイトが表示されます。</p>
+      <div class="dr-actions">
+        <a href="https://xd.adobe.com/view/e3ea0dcf-b623-4977-917d-7c7fd3b1259d-b6b9/?fullscreen" target="_blank" rel="noopener" class="dr-btn dr-btn--xd">Adobe XD で開く <span class="ar">↗</span></a>
       </div>
-    </article>
-  </div>
+    </li>
+
+    <li class="design-row">
+      <span class="dr-no">B</span>
+      <div class="dr-body">
+        <div class="dr-title">WonderPrax デザイン案 B</div>
+        <div class="dr-meta">TOP 構成 3 パターン</div>
+      </div>
+      <div class="dr-actions">
+        <a href="b/01.html" target="_blank" rel="noopener" class="dr-btn">構成 01 <span class="ar">→</span></a>
+        <a href="b/02.html" target="_blank" rel="noopener" class="dr-btn">構成 02 <span class="ar">→</span></a>
+        <a href="b/03.html" target="_blank" rel="noopener" class="dr-btn">構成 03 <span class="ar">→</span></a>
+      </div>
+    </li>
+
+    <li class="design-row">
+      <span class="dr-no">C</span>
+      <div class="dr-body">
+        <div class="dr-title">WonderPrax デザイン案 C</div>
+        <div class="dr-meta">単体動作 HTML（フル構成）</div>
+      </div>
+      <div class="dr-actions">
+        <a href="c/" target="_blank" rel="noopener" class="dr-btn">サイトを開く <span class="ar">→</span></a>
+      </div>
+    </li>
+
+    <li class="design-row">
+      <span class="dr-no">D</span>
+      <div class="dr-body">
+        <div class="dr-title">WonderPrax デザイン案 D</div>
+        <div class="dr-meta">2 パターンのテイスト違い</div>
+      </div>
+      <div class="dr-actions">
+        <a href="d/a/" target="_blank" rel="noopener" class="dr-btn">パターン A <span class="ar">→</span></a>
+        <a href="d/b/" target="_blank" rel="noopener" class="dr-btn">パターン B <span class="ar">→</span></a>
+      </div>
+    </li>
+
+  </ul>
 </section>
 
-<footer class="top-footer">
-  <p class="tf-meta">© 2026 WONDERPRAX DESIGN PROPOSAL</p>
+<!-- ========== 採用サイト 2 案 ========== -->
+<section class="group">
+  <div class="group-label">RECRUIT SITE<span class="gl-jp">採用サイト デザイン案</span></div>
+  <ul class="design-list">
+
+    <li class="design-row">
+      <span class="dr-no">A</span>
+      <div class="dr-body">
+        <div class="dr-title">採用サイト デザイン案 A</div>
+        <div class="dr-meta">編集型ライトトーン（MOLTS 系 / Public Sans + Noto Sans JP）</div>
+      </div>
+      <div class="dr-actions">
+        <a href="https://itline-kodama.github.io/wp-recruit-2026/" target="_blank" rel="noopener" class="dr-btn">サイトを開く <span class="ar">→</span></a>
+      </div>
+    </li>
+
+    <li class="design-row">
+      <span class="dr-no">B</span>
+      <div class="dr-body">
+        <div class="dr-title">採用サイト デザイン案 B</div>
+        <div class="dr-meta">シネマティック ダークトーン（巨大タイポ + 流し文字マーキー）</div>
+      </div>
+      <div class="dr-actions">
+        <a href="https://itline-kodama.github.io/wp-recruit-2026/b/" target="_blank" rel="noopener" class="dr-btn">サイトを開く <span class="ar">→</span></a>
+      </div>
+    </li>
+
+  </ul>
+</section>
+
+<footer class="top">
   <p>提供：株式会社インフォネット × 株式会社 ITLINE</p>
   <p>本ページは提案検討用に限定公開しています。第三者への共有はお控えください。</p>
 </footer>

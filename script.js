@@ -1,57 +1,5 @@
 // WonderPrax RECRUIT - lightweight interactions
 
-// ---------- Password Gate ----------
-// SHA-256 of the passcode. The plain passcode is never stored in source.
-const GATE_HASH = '3b546614344f894f49a1c2a8020c376f6a815063d5569660445bdb0d235c8e33';
-
-async function sha256Hex(s) {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
-function unlockSite() {
-  document.documentElement.classList.remove('locked');
-  const gate = document.getElementById('gate');
-  if (gate) {
-    gate.classList.add('hidden');
-    setTimeout(() => gate.remove(), 500);
-  }
-}
-
-(function initGate() {
-  const gate = document.getElementById('gate');
-  if (!gate) return;
-  // If already authenticated in this session, skip the gate
-  try {
-    if (sessionStorage.getItem('wp_recruit_auth') === 'ok') {
-      unlockSite();
-      return;
-    }
-  } catch (e) { /* sessionStorage unavailable, fall through to gate */ }
-
-  const form = document.getElementById('gate-form');
-  const input = document.getElementById('gate-pw');
-  const err = document.getElementById('gate-error');
-  form.addEventListener('submit', async (ev) => {
-    ev.preventDefault();
-    err.hidden = true;
-    const pw = (input.value || '').trim();
-    if (!pw) return;
-    const hex = await sha256Hex(pw);
-    if (hex === GATE_HASH) {
-      try { sessionStorage.setItem('wp_recruit_auth', 'ok'); } catch (e) {}
-      unlockSite();
-    } else {
-      err.hidden = false;
-      // Re-trigger shake animation
-      err.style.animation = 'none'; void err.offsetWidth; err.style.animation = '';
-      input.value = '';
-      input.focus();
-    }
-  });
-})();
-
-
 // 1. Header scroll effect + scroll progress bar
 const header = document.getElementById('header');
 const sidenav = document.getElementById('sidenav');

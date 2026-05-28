@@ -10,7 +10,7 @@ window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
 // 2. Reveal animation on scroll
-const revealTargets = document.querySelectorAll('.huge, .big, .massive, .lead, .manifesto-body, .manifesto-quote, .pillars li, .biz-b, .job-rows li, .entry-actions, .entry-info');
+const revealTargets = document.querySelectorAll('.hero-text, .hero-visual, .sec-head, .sec-title, .sec-lead, .manifesto-body, .manifesto-quote, .value-list li, .group-row, .job-row, .entry-massive, .entry-lead, .entry-actions, .entry-info');
 revealTargets.forEach(el => el.classList.add('reveal'));
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {

@@ -829,8 +829,6 @@
     .footer-bottom{flex-direction:column;gap:18px;align-items:flex-start;}
     .footer-bottom .links{flex-wrap:wrap;gap:14px 20px;}
 
-    /* gate */
-    #wp-gate > div{padding:36px 24px !important;}
   }
 
   /* tiny phones */
@@ -845,59 +843,6 @@
 </style>
 </head>
 <body>
-
-<!-- ════════ PASSWORD GATE ════════ -->
-<div id="wp-gate" style="position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;align-items:center;justify-content:center;font-family:'Inter','Helvetica Neue',sans-serif;">
-  <div style="width:100%;max-width:420px;padding:48px 40px;text-align:center;">
-    <div style="display:flex;align-items:center;justify-content:center;margin-bottom:36px;">
-      <img src="images/wp_logo.png" alt="WonderPrax" style="height:28px;width:auto;">
-    </div>
-    <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.24em;color:#e63946;font-weight:700;margin-bottom:14px;">— PRIVATE PREVIEW</div>
-    <h1 style="font-weight:900;font-size:24px;color:#f4f1ec;letter-spacing:-.01em;line-height:1.4;margin-bottom:10px;font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;">パスワードを入力してください</h1>
-    <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;line-height:1.8;color:#8a8a8a;margin-bottom:28px;">本サイトは関係者限定のプレビューです。<br>ご担当者よりお知らせした閲覧用パスワードをご入力ください。</p>
-    <form id="wp-gate-form" style="display:flex;flex-direction:column;gap:14px;">
-      <input id="wp-gate-pw" type="password" autocomplete="off" autofocus placeholder="Password"
-        style="width:100%;padding:16px 18px;background:transparent;border:1px solid #2a2a2a;color:#f4f1ec;font-family:'Inter',sans-serif;font-size:14px;letter-spacing:.06em;text-align:center;outline:none;transition:border-color .2s;">
-      <button type="submit" style="padding:16px 22px;background:#e63946;color:#fff;border:1px solid #e63946;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;cursor:pointer;transition:all .25s;">
-        ENTER →
-      </button>
-    </form>
-    <div id="wp-gate-err" style="margin-top:18px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#e63946;opacity:0;transition:opacity .2s;">× INCORRECT PASSWORD</div>
-    <div style="margin-top:48px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#444;">© 2026 WonderPrax Inc.</div>
-  </div>
-</div>
-<script>
-  (function(){
-    const KEY = 'wp_gate_ok_v1';
-    const PW  = 'itlineWP';
-    const gate = document.getElementById('wp-gate');
-    const form = document.getElementById('wp-gate-form');
-    const pw   = document.getElementById('wp-gate-pw');
-    const err  = document.getElementById('wp-gate-err');
-    if (sessionStorage.getItem(KEY) === '1') {
-      gate.remove();
-      document.body.style.overflow = '';
-    } else {
-      document.body.style.overflow = 'hidden';
-      pw.addEventListener('input', ()=>{ err.style.opacity = 0; pw.style.borderColor = '#2a2a2a'; });
-      form.addEventListener('submit', (e)=>{
-        e.preventDefault();
-        if (pw.value === PW) {
-          sessionStorage.setItem(KEY, '1');
-          gate.style.transition = 'opacity .35s';
-          gate.style.opacity = '0';
-          document.body.style.overflow = '';
-          setTimeout(()=>gate.remove(), 360);
-        } else {
-          err.style.opacity = 1;
-          pw.style.borderColor = '#e63946';
-          pw.value = '';
-          pw.focus();
-        }
-      });
-    }
-  })();
-</script>
 
 <!-- ════════ HEADER ════════ -->
 <header class="site" data-screen-label="Header">

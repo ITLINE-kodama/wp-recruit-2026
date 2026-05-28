@@ -2435,61 +2435,6 @@
 </head>
 <body data-screen-label="WonderPrax Top B">
 
-<!-- ═════════ PASSWORD GATE ═════════ -->
-<div id="pwGate" style="position:fixed;inset:0;z-index:9999;background:#0a0a0a;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Inter Tight','Noto Sans JP',sans-serif;padding:32px;">
-  <div style="width:100%;max-width:420px;text-align:center;">
-    <div style="font-family:'Archivo Black','Archivo',sans-serif;font-size:64px;line-height:1;letter-spacing:-.04em;margin-bottom:12px;">WP<span style="color:#dc2a2a;">.</span></div>
-    <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.3em;color:rgba(255,255,255,.5);text-transform:uppercase;margin-bottom:48px;">— PRIVATE PREVIEW / WONDERPRAX</div>
-    <div style="text-align:left;margin-bottom:24px;">
-      <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.25em;color:rgba(255,255,255,.5);text-transform:uppercase;margin-bottom:12px;">Password</label>
-      <input id="pwInput" type="password" autocomplete="off" placeholder="閲覧パスワードを入力" style="width:100%;padding:18px 20px;background:#1b1b1b;border:1px solid #2a2622;color:#fff;font-family:'Inter Tight','Noto Sans JP',sans-serif;font-size:15px;letter-spacing:.05em;outline:none;transition:border-color .2s;">
-      <div id="pwError" style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#dc2a2a;letter-spacing:.1em;margin-top:12px;min-height:18px;"></div>
-    </div>
-    <button id="pwSubmit" style="width:100%;padding:18px;background:#dc2a2a;color:#fff;border:none;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;font-weight:500;">Enter Site →</button>
-    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.2em;margin-top:48px;text-transform:uppercase;">© 2026 WonderPrax Inc. — Confidential preview</div>
-  </div>
-</div>
-<script>
-  (function() {
-    var PW = "itlineWP";
-    var STORAGE_KEY = "wp_preview_auth_v1";
-    var gate = document.getElementById('pwGate');
-    var input = document.getElementById('pwInput');
-    var btn = document.getElementById('pwSubmit');
-    var err = document.getElementById('pwError');
-
-    function unlock() {
-      gate.style.display = 'none';
-      document.body.style.overflow = '';
-      try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch(e) {}
-    }
-    function check() {
-      var v = (input.value || '').trim();
-      if (v.toLowerCase() === PW.toLowerCase()) {
-        unlock();
-      } else {
-        err.textContent = "パスワードが正しくありません / Invalid password";
-        input.style.borderColor = "#dc2a2a";
-        input.focus();
-        input.select();
-      }
-    }
-
-    // Already unlocked this session?
-    try { if (sessionStorage.getItem(STORAGE_KEY) === '1') { gate.style.display = 'none'; return; } } catch(e) {}
-
-    document.body.style.overflow = 'hidden';
-    btn.addEventListener('click', check);
-    input.addEventListener('keydown', function(e) { if (e.key === 'Enter') check(); });
-    input.addEventListener('input', function() {
-      err.textContent = '';
-      input.style.borderColor = '#2a2622';
-    });
-    setTimeout(function() { input.focus(); }, 100);
-  })();
-</script>
-
-
 <!-- ═════════ HEADER ═════════ -->
 <header class="site-header" id="siteHeader">
   <a href="#" class="brand">

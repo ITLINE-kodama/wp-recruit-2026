@@ -125,33 +125,6 @@ ul, ol { list-style: none; }
   .hl-name { font-size: 16px; }
 }
 
-/* Plan switch chip */
-.plan-switch {
-  position: fixed; left: 24px; bottom: 24px;
-  z-index: 60;
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 10px 14px;
-  background: rgba(20,20,24,.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--line-2);
-  font-family: var(--en); font-size: 11px; font-weight: 700; letter-spacing: .2em;
-  color: var(--ink);
-  transition: transform .2s, background .2s, border-color .2s;
-}
-.plan-switch:hover {
-  transform: translateY(-2px);
-  background: rgba(255,255,255,.08);
-  border-color: var(--accent);
-}
-.plan-switch .ps-num {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #fff;
-  font-weight: 800;
-}
-
 /* ============================================================
    HERO
    ============================================================ */
@@ -165,24 +138,39 @@ ul, ol { list-style: none; }
 .hero-bg {
   position: absolute; inset: 0;
   background-size: cover;
-  background-position: center;
-  filter: brightness(.55) contrast(1.05) saturate(1.05) grayscale(.15);
+  background-position: center 35%;
+  filter: brightness(.72) contrast(1.12) saturate(1.05) grayscale(.08);
   transform: scale(1.04);
-  animation: heroDrift 20s ease-in-out infinite alternate;
+  animation: heroDrift 24s ease-in-out infinite alternate;
   z-index: 0;
 }
 @keyframes heroDrift {
   from { transform: scale(1.04); }
-  to   { transform: scale(1.12); }
+  to   { transform: scale(1.1); }
 }
 .hero-veil {
   position: absolute; inset: 0;
   z-index: 1;
   background:
-    linear-gradient(180deg, rgba(10,10,12,.65) 0%, rgba(10,10,12,.35) 30%, rgba(10,10,12,.55) 75%, rgba(10,10,12,.95) 100%),
-    radial-gradient(circle at 80% 20%, rgba(255,46,62,.18), transparent 50%),
-    radial-gradient(circle at 10% 90%, rgba(255,212,58,.08), transparent 40%);
+    linear-gradient(110deg, rgba(8,8,10,.88) 0%, rgba(8,8,10,.55) 38%, rgba(8,8,10,.15) 60%, rgba(8,8,10,.5) 100%),
+    linear-gradient(180deg, rgba(8,8,10,.4) 0%, transparent 25%, transparent 60%, rgba(8,8,10,.92) 100%),
+    radial-gradient(circle at 20% 85%, rgba(255,46,62,.22), transparent 45%);
 }
+/* Cinematic film-edge: subtle frame border + corner accents */
+.hero-edge {
+  position: absolute; inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-edge::before,
+.hero-edge::after {
+  content: ""; position: absolute;
+  width: 56px; height: 56px;
+  border-color: rgba(255,46,62,.7);
+  border-style: solid;
+}
+.hero-edge::before { top: 28px; right: 28px; border-width: 1px 1px 0 0; }
+.hero-edge::after  { bottom: 28px; left: 28px; border-width: 0 0 1px 1px; }
 
 /* Marquee text band — visible ticker just below the fixed header */
 .hero-marquee {
@@ -285,17 +273,25 @@ ul, ol { list-style: none; }
   border-top: 1px solid var(--line-2);
 }
 .hero-stats {
-  display: flex; gap: 40px;
+  display: flex; gap: 0;
 }
-.hero-stats > div { display: flex; flex-direction: column; gap: 6px; }
+.hero-stats > div {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 4px 28px 4px 28px;
+  border-left: 1px solid rgba(255,255,255,.18);
+}
+.hero-stats > div:first-child { border-left: 0; padding-left: 0; }
 .hero-stats b {
   font-family: var(--display);
-  font-size: 48px; line-height: 1;
+  font-size: 38px; line-height: 1;
   color: #fff;
+  letter-spacing: -0.01em;
 }
+.hero-stats > div:first-child b { color: var(--accent); }
 .hero-stats span {
-  font-family: var(--en); font-size: 10px; font-weight: 600;
-  letter-spacing: .3em; color: rgba(255,255,255,.55);
+  font-family: var(--en); font-size: 9px; font-weight: 700;
+  letter-spacing: .3em; color: rgba(255,255,255,.5);
+  text-transform: uppercase;
 }
 .hero-scroll {
   display: inline-flex; align-items: center; gap: 14px;

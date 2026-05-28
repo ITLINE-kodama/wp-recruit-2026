@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WonderPrax株式会社 ─ WE DON'T JUST ADVISE. WE EXECUTE.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0a0a;
+    --ink-2:#141414;
+    --ink-3:#1c1c1c;
+    --navy:#0f1722;
+    --paper:#f4f1ec;
+    --paper-2:#ebe6dd;
+    --line:#1f1f1f;
+    --line-light:#dcd6cb;
+    --muted:#8a8a8a;
+    --muted-2:#4a4a4a;
+    --red:#e63946;
+    --red-deep:#c1121f;
+    --serif: "Noto Serif JP", serif;
+    --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+    --jp: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:var(--ink);color:var(--paper);font-family:var(--sans),var(--jp);font-feature-settings:"palt";-webkit-font-smoothing:antialiased;}
+  body{overflow-x:hidden;}
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--red);color:#fff;}
+
+  /* ────────── shared bits ────────── */
+  .mono{font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;}
+  .jp{font-family:var(--jp);}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+    color:var(--red);text-transform:uppercase;font-weight:600;
+  }
+  .eyebrow::before{
+    content:"";display:inline-block;width:28px;height:1px;background:var(--red);
+  }
+  .display{
+    font-family:var(--sans);
+    font-weight:900;
+    line-height:.92;
+    letter-spacing:-.035em;
+  }
+  .display-jp{
+    font-family:var(--jp);
+    font-weight:900;
+    line-height:1.18;
+    letter-spacing:-.01em;
+  }
+  .link-arrow{
+    display:inline-flex;align-items:center;gap:14px;
+    font-family:var(--mono);font-size:12px;letter-spacing:.18em;font-weight:600;
+    border-bottom:1px solid currentColor;padding-bottom:6px;
+    transition:gap .25s ease;
+  }
+  .link-arrow:hover{gap:22px;}
+  .link-arrow .arr{font-family:var(--sans);font-weight:400;font-size:14px;letter-spacing:0;}
+
+  /* ────────── HEADER ────────── */
+  header.site{
+    position:fixed;top:0;left:0;right:0;z-index:90;
+    padding:22px 40px;
+    display:flex;align-items:center;justify-content:space-between;
+    transition:background .3s, padding .3s;
+  }
+  header.site::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to bottom, rgba(10,10,10,.78), rgba(10,10,10,0));
+    pointer-events:none;z-index:-1;
+  }
+  .brand{
+    display:flex;align-items:center;gap:12px;
+  }
+  .brand img{
+    height:26px;width:auto;display:block;
+  }
+  nav.primary{
+    display:flex;align-items:center;gap:36px;
+  }
+  nav.primary a.nav-item{
+    font-family:var(--sans);font-size:13px;letter-spacing:.04em;color:var(--paper);
+    position:relative;padding:6px 0;font-weight:500;
+  }
+  nav.primary a.nav-item::after{
+    content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--red);
+    transition:right .3s ease;
+  }
+  nav.primary a.nav-item:hover::after{right:0;}
+  .nav-meta{
+    font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--muted);margin-right:6px;
+  }
+  .nav-cta{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--red);color:#fff;padding:13px 22px;
+    font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.18em;
+    border:1px solid var(--red);
+    transition:background .25s, color .25s;
+  }
+  .nav-cta:hover{background:transparent;color:var(--red);}
+
+  /* ────────── 01 HERO ────────── */
+  .hero{
+    position:relative;min-height:100vh;height:100vh;background:var(--ink);
+    display:grid;
+    grid-template-columns: 1.05fr .95fr;
+    overflow:hidden;
+  }
+  .hero-left{
+    position:relative;z-index:3;
+    padding: 110px 60px 50px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    min-height:0;
+  }
+  .hero-tag{
+    display:flex;align-items:center;gap:14px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--muted);
+  }
+  .hero-tag .dot{width:8px;height:8px;background:var(--red);border-radius:50%;
+    box-shadow:0 0 0 4px rgba(230,57,70,.18);}
+  .hero-catch{
+    margin-top:28px;
+  }
+  .hero-catch .line{
+    font-family:var(--sans);font-weight:900;font-size:clamp(48px,7.2vw,104px);
+    line-height:.94;letter-spacing:-.045em;color:var(--paper);
+    display:block;
+  }
+  .hero-catch .line.red{color:var(--red);font-style:italic;}
+  .hero-catch .strike{
+    display:inline-block;position:relative;
+  }
+  .hero-catch .strike::after{
+    content:"";position:absolute;left:-2%;right:-2%;top:51%;height:8px;background:var(--red);
+    transform:skew(-12deg);
+  }
+  .hero-jp{
+    margin-top:28px;
+    font-family:var(--jp);font-weight:700;font-size:17px;line-height:1.7;color:var(--paper);
+    max-width:520px;letter-spacing:.02em;
+  }
+  .hero-jp small{
+    display:block;margin-top:12px;font-weight:400;font-size:12px;color:var(--muted);letter-spacing:.06em;
+  }
+  .hero-actions{
+    margin-top:30px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:14px;
+    padding:15px 24px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.18em;
+    border:1px solid transparent;cursor:pointer;
+    transition:all .25s ease;
+  }
+  .btn .arr{font-family:var(--sans);font-size:18px;font-weight:400;letter-spacing:0;}
+  .btn.solid{background:var(--red);color:#fff;border-color:var(--red);}
+  .btn.solid:hover{background:transparent;color:var(--red);}
+  .btn.ghost{background:transparent;color:var(--paper);border-color:rgba(244,241,236,.4);}
+  .btn.ghost:hover{border-color:var(--paper);background:rgba(244,241,236,.06);}
+  .btn.dark{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+
+  .hero-bottom{
+    display:flex;justify-content:space-between;align-items:flex-end;gap:30px;
+    margin-top:30px;
+  }
+  .hero-bottom .scroll{
+    display:flex;align-items:center;gap:12px;
+    font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--muted);
+  }
+  .hero-bottom .scroll .line-v{width:1px;height:36px;background:var(--muted);
+    position:relative;overflow:hidden;}
+  .hero-bottom .scroll .line-v::after{content:"";position:absolute;top:-50%;left:0;width:100%;height:50%;
+    background:var(--red);animation:scrollDown 1.8s infinite ease-in-out;}
+  @keyframes scrollDown{0%{top:-50%}100%{top:100%}}
+  .hero-bottom .meta{
+    font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--muted);text-align:right;line-height:1.7;
+  }
+  .hero-bottom .meta b{color:var(--paper);font-weight:600;}
+
+  .hero-right{
+    position:relative;overflow:hidden;
+  }
+  .hero-right .img{
+    position:absolute;inset:0;background:#1a1a1a;
+    background-size:cover;background-position:center;
+    filter:grayscale(.4) contrast(1.05);
+    opacity:0;transition:opacity 1.2s ease;
+  }
+  .hero-right .img.is-on{opacity:1;}
+  .hero-right .img.i1{background-image:url('images/hero1.webp');}
+  .hero-right .img.i2{background-image:url('images/team2.webp');background-position:center 30%;}
+  .hero-right .img.i3{background-image:url('images/hero3.webp');}
+  .hero-right .img.i4{background-image:url('images/team1.webp');}
+  .hero-right::after{
+    content:"";position:absolute;inset:0;
+    background: linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.15) 40%, rgba(10,10,10,.35) 100%),
+                linear-gradient(90deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,0) 35%);
+  }
+  .hero-right .badge{
+    position:absolute;left:-2px;top:48px;z-index:4;
+    background:var(--red);color:#fff;padding:10px 22px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.22em;font-weight:700;
+    display:flex;align-items:center;gap:14px;
+  }
+  .hero-right .badge .dots{display:flex;gap:6px;}
+  .hero-right .badge .dots i{display:block;width:6px;height:6px;background:rgba(255,255,255,.35);border-radius:50%;transition:background .3s;}
+  .hero-right .badge .dots i.on{background:#fff;}
+  .hero-right .badge .cnt b{font-weight:700;}
+  .hero-right .index{
+    position:absolute;right:36px;top:120px;z-index:4;
+    font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--paper);
+    writing-mode:vertical-rl;text-orientation:mixed;
+  }
+  .hero-right .index span{color:var(--red);}
+  .hero-right .quote-card{
+    position:absolute;right:36px;bottom:50px;z-index:4;
+    background:rgba(10,10,10,.78);backdrop-filter:blur(8px);
+    border:1px solid rgba(244,241,236,.18);
+    padding:24px 28px;max-width:300px;
+  }
+  .hero-right .quote-card .q{
+    font-family:var(--jp);font-weight:700;color:var(--paper);font-size:14px;line-height:1.8;
+  }
+  .hero-right .quote-card .who{
+    margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--red);
+  }
+
+  /* marquee */
+  .marquee{
+    background:var(--red);color:#fff;padding:18px 0;overflow:hidden;
+    border-top:1px solid var(--red-deep);border-bottom:1px solid var(--red-deep);
+  }
+  .marquee .track{
+    display:flex;gap:48px;white-space:nowrap;animation:marq 26s linear infinite;
+    font-family:var(--sans);font-weight:900;font-size:18px;letter-spacing:-.01em;
+  }
+  .marquee .track span{display:inline-flex;align-items:center;gap:48px;}
+  .marquee .track i{display:inline-block;width:10px;height:10px;background:#fff;border-radius:50%;font-style:normal;}
+  @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ────────── 02 ABOUT ────────── */
+  .about{
+    background:var(--paper);color:var(--ink);
+    padding:140px 60px 120px;position:relative;
+  }
+  .about .grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:90px;
+    max-width:1480px;margin:0 auto;align-items:start;
+  }
+  .about .copy h2.display-jp{
+    font-size:clamp(40px,4.4vw,68px);color:var(--ink);margin-top:22px;
+  }
+  .about .copy h2 em{font-style:normal;color:var(--red);position:relative;}
+  .about .copy h2 em::after{
+    content:"";position:absolute;left:-4px;right:-4px;bottom:6px;height:14px;background:rgba(230,57,70,.18);z-index:-1;
+  }
+  .about .copy .body{
+    margin-top:36px;font-family:var(--jp);font-size:15px;line-height:2.05;color:var(--muted-2);max-width:520px;
+  }
+  .about .copy .body p+p{margin-top:18px;}
+  .about .copy .sign{
+    margin-top:40px;display:flex;align-items:center;gap:18px;
+  }
+  .about .copy .sign .line{flex:0 0 56px;height:1px;background:var(--ink);}
+  .about .copy .sign .who{
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ink);
+  }
+  .about .copy .sign .who b{font-size:14px;font-family:var(--jp);font-weight:700;display:block;letter-spacing:.02em;margin-top:4px;}
+
+  .stats{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+    background:var(--line-light);border:1px solid var(--line-light);
+  }
+  .stat{
+    background:var(--paper);padding:36px 30px 32px;position:relative;
+  }
+  .stat .head{
+    display:flex;align-items:center;justify-content:space-between;
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--muted);font-weight:600;
+  }
+  .stat .num{
+    display:flex;align-items:flex-end;gap:6px;margin-top:18px;
+  }
+  .stat .num .n{
+    font-family:var(--sans);font-weight:900;font-size:74px;line-height:.9;letter-spacing:-.04em;color:var(--ink);
+  }
+  .stat .num .u{
+    font-family:var(--sans);font-weight:700;font-size:22px;color:var(--red);padding-bottom:10px;
+  }
+  .stat .label{
+    margin-top:14px;font-family:var(--jp);font-weight:700;font-size:15px;color:var(--ink);letter-spacing:.02em;
+  }
+  .stat .desc{
+    margin-top:8px;font-family:var(--jp);font-size:12px;line-height:1.7;color:var(--muted-2);
+  }
+  .stat .corner{
+    position:absolute;top:14px;right:14px;width:16px;height:16px;border-top:1px solid var(--red);border-right:1px solid var(--red);
+  }
+
+  /* manifest band */
+  .manifest{
+    background:var(--paper-2);padding:0;border-top:1px solid var(--line-light);border-bottom:1px solid var(--line-light);
+    overflow:hidden;
+  }
+  .manifest .row{
+    display:flex;align-items:center;gap:80px;padding:48px 60px;
+    font-family:var(--sans);font-weight:900;font-size:clamp(28px,3.2vw,46px);letter-spacing:-.02em;
+    color:var(--ink);line-height:1;
+    flex-wrap:wrap;
+  }
+  .manifest .row em{font-style:italic;color:var(--red);}
+  .manifest .row s{text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:5px;color:var(--muted);}
+
+  /* ────────── 03 SERVICE ────────── */
+  .service{
+    background:var(--ink);padding:140px 60px 0;position:relative;
+  }
+  .service::before{
+    content:"WHAT WE DO";position:absolute;left:60px;top:60px;
+    font-family:var(--sans);font-weight:900;font-size:11px;letter-spacing:.4em;color:var(--muted-2);
+  }
+  .service .head{
+    display:grid;grid-template-columns:1fr auto;gap:60px;align-items:end;
+    max-width:1480px;margin:0 auto 80px;
+  }
+  .service .head h2{
+    font-size:clamp(48px,6vw,96px);color:var(--paper);
+  }
+  .service .head h2 em{font-style:italic;color:var(--red);}
+  .service .head .lead{
+    font-family:var(--jp);font-size:14px;line-height:2;color:var(--muted);max-width:340px;
+  }
+  .service .head .lead b{color:var(--paper);font-weight:700;}
+
+  .svc-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line);
+    max-width:1480px;margin:0 auto;
+  }
+  .svc{
+    border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:38px 32px 40px;position:relative;
+    background:var(--ink);
+    transition:background .3s;
+    min-height:520px;
+    display:flex;flex-direction:column;
+  }
+  .svc:last-child{border-right:none;}
+  .svc:hover{background:#121212;}
+  .svc:hover .svc-num{color:var(--red);}
+  .svc:hover .svc-arr{transform:translate(6px,-6px);color:var(--red);}
+  .svc-row{display:flex;justify-content:space-between;align-items:flex-start;}
+  .svc-num{
+    font-family:var(--sans);font-weight:900;font-style:italic;font-size:64px;line-height:1;color:#2a2a2a;
+    letter-spacing:-.04em;transition:color .3s;
+  }
+  .svc-arr{
+    width:34px;height:34px;border:1px solid #333;border-radius:50%;
+    display:grid;place-items:center;color:var(--muted);transition:all .3s;
+  }
+  .svc-en{
+    margin-top:60px;font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--red);font-weight:700;
+  }
+  .svc-title{
+    margin-top:12px;font-family:var(--jp);font-weight:900;font-size:26px;line-height:1.3;color:var(--paper);
+  }
+  .svc-body{
+    margin-top:18px;font-family:var(--jp);font-size:13px;line-height:1.95;color:var(--muted);
+  }
+  .svc-tags{
+    margin-top:auto;padding-top:32px;
+    display:flex;flex-wrap:wrap;gap:6px;
+  }
+  .svc-tags .tag{
+    font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--paper);
+    border:1px solid #2a2a2a;padding:5px 9px;
+  }
+
+  /* approach band */
+  .approach{
+    background:var(--ink);border-top:1px solid var(--line);
+    padding:80px 60px 120px;
+  }
+  .approach .inner{
+    max-width:1480px;margin:0 auto;
+    display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:center;
+  }
+  .approach h3{
+    font-family:var(--sans);font-weight:900;font-size:18px;color:var(--paper);letter-spacing:-.01em;
+  }
+  .approach h3 b{color:var(--red);}
+  .approach .steps{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:8px;position:relative;
+  }
+  .step{
+    padding:22px 18px 24px;border-left:1px solid #222;
+  }
+  .step:first-child{border-left:none;padding-left:0;}
+  .step .s-num{
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--red);font-weight:700;
+  }
+  .step .s-title{
+    margin-top:10px;font-family:var(--jp);font-weight:700;font-size:15px;color:var(--paper);
+  }
+  .step .s-desc{
+    margin-top:8px;font-family:var(--jp);font-size:11px;line-height:1.75;color:var(--muted);
+  }
+
+  /* ────────── 04 CASE STUDY ────────── */
+  .case{
+    background:var(--paper);color:var(--ink);padding:140px 60px 120px;
+  }
+  .case .head{
+    display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:end;
+    max-width:1480px;margin:0 auto 70px;
+  }
+  .case .head .eye{color:var(--red);}
+  .case .head h2{font-size:clamp(72px,9vw,160px);}
+  .case .head h2 em{font-style:italic;color:var(--red);}
+  .case .head .right{justify-self:end;text-align:right;}
+  .case .head .right .meta{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--muted-2);}
+  .case .head .right .meta b{color:var(--ink);font-weight:700;}
+
+  .case-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
+    max-width:1480px;margin:0 auto;
+  }
+  .card{
+    background:var(--paper);overflow:hidden;cursor:pointer;
+  }
+  .card .ph{
+    position:relative;height:280px;overflow:hidden;background:#222;
+  }
+  .card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease;filter:grayscale(.2);}
+  .card:hover .ph img{transform:scale(1.06);}
+  .card .ph::after{
+    content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%);
+  }
+  .card .ph .industry{
+    position:absolute;left:18px;top:18px;z-index:3;
+    background:var(--ink);color:#fff;padding:6px 12px;
+    font-family:var(--mono);font-size:10px;letter-spacing:.18em;font-weight:600;
+  }
+  .card .ph .scope{
+    position:absolute;right:18px;bottom:18px;z-index:3;color:#fff;
+    font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+  }
+  .card .body{padding:28px 4px 4px;}
+  .card .body .case-no{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--muted);}
+  .card .body .case-no b{color:var(--red);font-weight:700;}
+  .card .body h3{
+    margin-top:14px;font-family:var(--jp);font-weight:900;font-size:21px;line-height:1.45;color:var(--ink);
+  }
+  .card .body .desc{
+    margin-top:14px;font-family:var(--jp);font-size:13px;line-height:1.85;color:var(--muted-2);
+  }
+  .card .body .kpis{
+    margin-top:22px;padding-top:22px;border-top:1px solid var(--line-light);
+    display:grid;grid-template-columns:repeat(2,1fr);gap:8px;
+  }
+  .kpi{
+    display:flex;align-items:baseline;gap:8px;
+  }
+  .kpi .n{font-family:var(--sans);font-weight:900;font-size:34px;color:var(--red);letter-spacing:-.03em;line-height:1;}
+  .kpi .l{font-family:var(--jp);font-size:11px;color:var(--muted-2);letter-spacing:.04em;}
+
+  .case-foot{
+    max-width:1480px;margin:60px auto 0;display:flex;justify-content:space-between;align-items:center;
+    border-top:1px solid var(--line-light);padding-top:32px;
+  }
+  .case-foot .left{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--muted-2);}
+  .case-foot .left b{color:var(--ink);}
+
+  /* ────────── 05 MEMBERS ────────── */
+  .members{
+    background:var(--ink);color:var(--paper);padding:140px 60px 120px;
+  }
+  .members .head{
+    display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px;
+    max-width:1480px;margin:0 auto 60px;
+  }
+  .members .head h2{font-size:clamp(72px,9vw,160px);}
+  .members .head h2 em{font-style:italic;color:var(--red);}
+  .members .head .lead{font-family:var(--jp);font-size:14px;line-height:2;color:var(--muted);max-width:380px;}
+
+  .mem-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+    max-width:1480px;margin:0 auto;
+  }
+  .mem{
+    background:#111;cursor:pointer;position:relative;overflow:hidden;
+  }
+  .mem .ph{
+    position:relative;aspect-ratio:3/4;overflow:hidden;background:#1a1a1a;
+  }
+  .mem .ph img{
+    width:100%;height:100%;object-fit:cover;object-position:top center;
+    filter:grayscale(.15) contrast(1.02);transition:all .6s;
+  }
+  .mem:hover .ph img{filter:grayscale(0);transform:scale(1.04);}
+  .mem .ph::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(10,10,10,.9) 100%);
+  }
+  .mem .num{
+    position:absolute;left:16px;top:16px;z-index:3;
+    font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--red);
+  }
+  .mem .info{
+    position:relative;padding:18px 18px 22px;background:var(--ink);
+  }
+  .mem .role{
+    font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--red);font-weight:700;
+  }
+  .mem .name{
+    margin-top:8px;font-family:var(--jp);font-weight:900;font-size:20px;color:var(--paper);
+  }
+  .mem .name small{font-family:var(--mono);font-size:10px;color:var(--muted);font-weight:400;margin-left:8px;letter-spacing:.1em;}
+  .mem .quote{
+    margin-top:10px;font-family:var(--jp);font-size:12px;line-height:1.75;color:var(--muted);
+  }
+
+  /* ────────── 06 NEWS ────────── */
+  .news{
+    background:var(--paper);color:var(--ink);padding:120px 60px;
+  }
+  .news .inner{max-width:1480px;margin:0 auto;display:grid;grid-template-columns:340px 1fr;gap:80px;}
+  .news .left h2{
+    font-family:var(--sans);font-weight:900;font-size:64px;letter-spacing:-.03em;color:var(--ink);line-height:.95;
+  }
+  .news .left .jp{font-family:var(--jp);font-weight:700;font-size:16px;color:var(--muted-2);margin-top:14px;}
+  .news .left .archive{margin-top:36px;}
+  .news-list{}
+  .news-item{
+    display:grid;grid-template-columns:110px 100px 1fr 30px;
+    align-items:center;gap:24px;
+    padding:22px 6px;border-top:1px solid var(--line-light);
+    cursor:pointer;transition:padding .25s, background .25s;
+  }
+  .news-item:last-child{border-bottom:1px solid var(--line-light);}
+  .news-item:hover{padding-left:18px;background:rgba(230,57,70,.04);}
+  .news-item:hover .news-arr{transform:translateX(8px);color:var(--red);}
+  .news-date{font-family:var(--mono);font-size:12px;color:var(--muted-2);}
+  .news-cat{
+    font-family:var(--mono);font-size:10px;letter-spacing:.15em;font-weight:700;
+    border:1px solid var(--ink);color:var(--ink);padding:5px 8px;text-align:center;
+  }
+  .news-cat.red{border-color:var(--red);color:var(--red);}
+  .news-title{font-family:var(--jp);font-size:15px;font-weight:500;color:var(--ink);line-height:1.55;}
+  .news-arr{font-family:var(--sans);font-size:18px;color:var(--muted);transition:all .25s;justify-self:end;}
+
+  /* ────────── 07 CTA ────────── */
+  .cta{
+    background:var(--ink);padding:0;position:relative;
+    display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);
+  }
+  .cta-block{
+    padding:110px 64px 110px;position:relative;overflow:hidden;
+    min-height:560px;display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .cta-block.contact{
+    background:var(--red);color:#fff;
+  }
+  .cta-block.recruit{
+    background:#0a0a0a;color:var(--paper);
+  }
+  .cta-block.recruit::before{
+    content:"";position:absolute;inset:0;background:url('images/team2.webp') center/cover;
+    opacity:.35;filter:grayscale(.6) contrast(1.05);
+  }
+  .cta-block.recruit::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(135deg, rgba(10,10,10,.85), rgba(10,10,10,.55));
+  }
+  .cta-block > *{position:relative;z-index:2;}
+  .cta-type{
+    font-family:var(--mono);font-size:11px;letter-spacing:.28em;font-weight:700;
+  }
+  .cta-block.contact .cta-type{color:#fff;}
+  .cta-block.recruit .cta-type{color:var(--red);}
+  .cta-block h3{
+    margin-top:24px;font-family:var(--sans);font-weight:900;font-size:clamp(56px,7vw,112px);
+    letter-spacing:-.04em;line-height:.9;
+  }
+  .cta-block.recruit h3 em{font-style:italic;color:var(--red);}
+  .cta-block .body-jp{
+    margin-top:30px;font-family:var(--jp);font-weight:700;font-size:18px;line-height:1.8;max-width:440px;
+  }
+  .cta-block.contact .body-jp{color:rgba(255,255,255,.92);}
+  .cta-block .actions{margin-top:auto;padding-top:50px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+  .btn.invert-red{background:#fff;color:var(--red);}
+  .btn.invert-red:hover{background:var(--ink);color:#fff;}
+  .btn.recruit{background:var(--red);color:#fff;border-color:var(--red);}
+  .btn.recruit:hover{background:#fff;color:var(--red);}
+  .cta-meta{
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;
+  }
+  .cta-block.contact .cta-meta{color:rgba(255,255,255,.8);}
+
+  /* ────────── FOOTER ────────── */
+  footer.site{
+    background:#070707;color:var(--paper);padding:80px 60px 40px;
+  }
+  .footer-top{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:60px;
+    border-bottom:1px solid #1a1a1a;padding-bottom:60px;margin-bottom:32px;
+  }
+  .f-brand .brand{margin-bottom:24px;}
+  .f-tag{
+    font-family:var(--sans);font-weight:900;font-size:32px;letter-spacing:-.02em;line-height:1.05;color:var(--paper);
+  }
+  .f-tag em{font-style:italic;color:var(--red);}
+  .f-addr{
+    margin-top:28px;font-family:var(--jp);font-size:12px;color:var(--muted);line-height:1.9;
+  }
+  .f-col-title{
+    font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--paper);font-weight:700;
+    padding-bottom:14px;border-bottom:1px solid #1a1a1a;margin-bottom:18px;
+  }
+  .f-col ul{list-style:none;}
+  .f-col li{margin-bottom:12px;}
+  .f-col li a{font-family:var(--jp);font-size:13px;color:var(--muted);transition:color .2s;display:inline-flex;align-items:center;gap:8px;}
+  .f-col li a::before{content:"";width:6px;height:1px;background:var(--muted);transition:width .2s, background .2s;}
+  .f-col li a:hover{color:var(--red);}
+  .f-col li a:hover::before{width:14px;background:var(--red);}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:#555;
+  }
+  .footer-bottom .links{display:flex;gap:24px;}
+  .footer-bottom .links a:hover{color:var(--paper);}
+  .footer-mega{
+    font-family:var(--sans);font-weight:900;font-size:clamp(120px,18vw,300px);
+    letter-spacing:-.06em;line-height:.85;color:transparent;
+    -webkit-text-stroke:1px #1a1a1a;
+    margin:40px 0 24px;text-align:center;user-select:none;
+  }
+
+  /* ────────── HAMBURGER ────────── */
+  .hamburger{
+    display:none;
+    width:44px;height:44px;background:transparent;border:1px solid rgba(244,241,236,.3);
+    cursor:pointer;position:relative;z-index:120;
+    align-items:center;justify-content:center;flex-direction:column;gap:5px;
+    padding:0;
+  }
+  .hamburger span{
+    display:block;width:18px;height:2px;background:var(--paper);transition:all .3s;
+  }
+  .hamburger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.is-open span:nth-child(2){opacity:0;}
+  .hamburger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  /* ────────── RESPONSIVE: TABLET ≤1100px ────────── */
+  @media (max-width: 1100px){
+    header.site{padding:18px 28px;}
+    nav.primary{gap:22px;}
+    nav.primary a.nav-item{font-size:12px;}
+    .nav-meta{display:none;}
+
+    .hero{grid-template-columns:1.15fr .85fr;}
+    .hero-left{padding:100px 36px 40px;}
+    .hero-right .quote-card{display:none;}
+    .hero-right .index{right:20px;top:90px;}
+
+    .about{padding:100px 36px 90px;}
+    .about .grid{grid-template-columns:1fr;gap:60px;}
+
+    .service{padding:110px 36px 0;}
+    .service::before{left:36px;top:40px;}
+    .svc-grid{grid-template-columns:repeat(2,1fr);}
+    .svc{border-bottom:1px solid var(--line);min-height:auto;}
+    .svc:nth-child(2n){border-right:none;}
+
+    .approach{padding:60px 36px 100px;}
+    .approach .inner{grid-template-columns:1fr;gap:30px;}
+    .approach .steps{grid-template-columns:repeat(5,1fr);gap:4px;}
+    .step{padding:18px 12px;}
+
+    .case{padding:100px 36px 90px;}
+    .case-grid{grid-template-columns:repeat(2,1fr);gap:24px;}
+    .case-grid .card:nth-child(3){grid-column:1 / -1;}
+
+    .members{padding:100px 36px 90px;}
+    .mem-grid{grid-template-columns:repeat(2,1fr);gap:20px;}
+
+    .news{padding:90px 36px;}
+    .news .inner{grid-template-columns:1fr;gap:40px;}
+
+    .cta-block{padding:80px 40px;min-height:480px;}
+
+    footer.site{padding:60px 36px 32px;}
+    .footer-top{grid-template-columns:1fr 1fr;gap:40px;}
+  }
+
+  /* ────────── RESPONSIVE: MOBILE ≤720px ────────── */
+  @media (max-width: 720px){
+    header.site{padding:14px 20px;}
+    .brand img{height:22px;}
+    nav.primary{
+      position:fixed;inset:0;background:var(--ink);
+      flex-direction:column;align-items:flex-start;justify-content:center;
+      padding:80px 32px 40px;gap:0;
+      transform:translateX(100%);transition:transform .35s ease;
+      z-index:100;
+    }
+    nav.primary.is-open{transform:translateX(0);}
+    nav.primary a.nav-item{
+      font-size:24px;font-family:var(--jp);font-weight:700;
+      padding:18px 0;width:100%;border-bottom:1px solid #1a1a1a;
+    }
+    nav.primary a.nav-item:first-child{border-top:1px solid #1a1a1a;}
+    nav.primary .nav-cta{
+      margin-top:32px;width:100%;justify-content:center;padding:18px 22px;
+    }
+    .hamburger{display:flex;}
+
+    .hero{
+      grid-template-columns:1fr;
+      min-height:auto;height:auto;
+    }
+    .hero-left{
+      padding:120px 24px 40px;order:2;
+    }
+    .hero-right{
+      order:1;height:42vh;min-height:280px;position:relative;
+    }
+    .hero-right .index{display:none;}
+    .hero-catch{margin-top:22px;}
+    .hero-catch .line{font-size:clamp(40px,11vw,64px);}
+    .hero-catch .strike::after{height:5px;}
+    .hero-jp{font-size:15px;margin-top:22px;}
+    .hero-actions{margin-top:24px;}
+    .btn{padding:13px 18px;font-size:11px;}
+    .hero-bottom{margin-top:40px;flex-direction:column;align-items:flex-start;gap:24px;}
+    .hero-bottom .meta{text-align:left;}
+
+    .marquee .track{font-size:14px;gap:32px;}
+    .marquee{padding:14px 0;}
+
+    .about{padding:80px 24px 70px;}
+    .about .grid{gap:50px;}
+    .about .copy h2.display-jp{font-size:clamp(32px,8vw,44px);}
+    .about .copy .body{font-size:14px;line-height:1.95;}
+    .stats{grid-template-columns:1fr 1fr;}
+    .stat{padding:24px 18px 22px;}
+    .stat .num .n{font-size:54px;}
+    .stat .num .u{font-size:18px;padding-bottom:8px;}
+    .stat .label{font-size:13px;}
+    .stat .desc{font-size:11px;}
+
+    .manifest .row{
+      padding:36px 24px;gap:24px;font-size:clamp(24px,7vw,36px);
+    }
+
+    .service{padding:80px 0 0;}
+    .service::before{left:24px;top:30px;}
+    .service .head{padding:0 24px;grid-template-columns:1fr;gap:24px;margin-bottom:50px;}
+    .service .head h2{font-size:clamp(40px,11vw,60px);}
+    .svc-grid{grid-template-columns:1fr;}
+    .svc{border-right:none !important;padding:32px 24px 36px;}
+    .svc-num{font-size:48px;}
+    .svc-title{font-size:22px;}
+    .svc-en{margin-top:36px;}
+
+    .approach{padding:60px 24px 80px;}
+    .approach .steps{grid-template-columns:repeat(2,1fr);gap:0;}
+    .step{
+      border-left:none;border-top:1px solid #222;
+      padding:18px 0;
+    }
+    .step:first-child{padding-left:0;}
+    .step:nth-child(2n){padding-left:18px;border-left:1px solid #222;}
+    .step:nth-child(5){grid-column:1 / -1;border-bottom:1px solid #222;}
+
+    .case{padding:80px 24px 70px;}
+    .case .head{grid-template-columns:1fr;gap:24px;margin-bottom:50px;}
+    .case .head .right{justify-self:start;text-align:left;}
+    .case .head h2{font-size:clamp(56px,16vw,90px);}
+    .case-grid{grid-template-columns:1fr;gap:36px;}
+    .case-grid .card:nth-child(3){grid-column:auto;}
+    .card .ph{height:220px;}
+    .card .body h3{font-size:19px;}
+    .kpi .n{font-size:28px;}
+    .case-foot{flex-direction:column;align-items:flex-start;gap:20px;}
+
+    .members{padding:80px 24px 70px;}
+    .members .head{grid-template-columns:1fr;gap:24px;margin-bottom:40px;}
+    .members .head h2{font-size:clamp(56px,16vw,90px);}
+    .mem-grid{grid-template-columns:1fr 1fr;gap:14px;}
+    .mem .info{padding:14px 14px 18px;}
+    .mem .name{font-size:16px;}
+    .mem .name small{display:block;margin-left:0;margin-top:2px;}
+    .mem .quote{font-size:11px;}
+
+    .news{padding:70px 24px;}
+    .news .left h2{font-size:48px;}
+    .news-item{
+      grid-template-columns:auto auto 1fr;
+      grid-template-rows:auto auto;
+      gap:10px 14px;
+      padding:18px 4px;
+    }
+    .news-date{font-size:11px;}
+    .news-cat{font-size:9px;padding:4px 6px;}
+    .news-title{
+      grid-column:1 / -1;grid-row:2;font-size:14px;
+    }
+    .news-arr{display:none;}
+    .news-item:hover{padding-left:4px;}
+
+    .cta{grid-template-columns:1fr;}
+    .cta-block{padding:64px 28px;min-height:auto;}
+    .cta-block h3{font-size:clamp(48px,14vw,76px);}
+    .cta-block .body-jp{font-size:16px;margin-top:24px;}
+    .cta-block .actions{padding-top:36px;flex-direction:column;align-items:flex-start;gap:18px;}
+
+    footer.site{padding:50px 24px 28px;}
+    .footer-mega{font-size:clamp(64px,18vw,120px);margin:24px 0 16px;}
+    .footer-top{grid-template-columns:1fr;gap:32px;padding-bottom:40px;margin-bottom:24px;}
+    .f-tag{font-size:24px;}
+    .footer-bottom{flex-direction:column;gap:18px;align-items:flex-start;}
+    .footer-bottom .links{flex-wrap:wrap;gap:14px 20px;}
+
+    /* gate */
+    #wp-gate > div{padding:36px 24px !important;}
+  }
+
+  /* tiny phones */
+  @media (max-width: 380px){
+    .stats{grid-template-columns:1fr;}
+    .mem-grid{grid-template-columns:1fr;}
+    .approach .steps{grid-template-columns:1fr;}
+    .step{border-left:none !important;padding:14px 0 !important;border-top:1px solid #222;}
+    .step:nth-child(5){border-bottom:1px solid #222;}
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ════════ PASSWORD GATE ════════ -->
+<div id="wp-gate" style="position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;align-items:center;justify-content:center;font-family:'Inter','Helvetica Neue',sans-serif;">
+  <div style="width:100%;max-width:420px;padding:48px 40px;text-align:center;">
+    <div style="display:flex;align-items:center;justify-content:center;margin-bottom:36px;">
+      <img src="images/wp_logo.png" alt="WonderPrax" style="height:28px;width:auto;">
+    </div>
+    <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.24em;color:#e63946;font-weight:700;margin-bottom:14px;">— PRIVATE PREVIEW</div>
+    <h1 style="font-weight:900;font-size:24px;color:#f4f1ec;letter-spacing:-.01em;line-height:1.4;margin-bottom:10px;font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;">パスワードを入力してください</h1>
+    <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;line-height:1.8;color:#8a8a8a;margin-bottom:28px;">本サイトは関係者限定のプレビューです。<br>ご担当者よりお知らせした閲覧用パスワードをご入力ください。</p>
+    <form id="wp-gate-form" style="display:flex;flex-direction:column;gap:14px;">
+      <input id="wp-gate-pw" type="password" autocomplete="off" autofocus placeholder="Password"
+        style="width:100%;padding:16px 18px;background:transparent;border:1px solid #2a2a2a;color:#f4f1ec;font-family:'Inter',sans-serif;font-size:14px;letter-spacing:.06em;text-align:center;outline:none;transition:border-color .2s;">
+      <button type="submit" style="padding:16px 22px;background:#e63946;color:#fff;border:1px solid #e63946;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;cursor:pointer;transition:all .25s;">
+        ENTER →
+      </button>
+    </form>
+    <div id="wp-gate-err" style="margin-top:18px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#e63946;opacity:0;transition:opacity .2s;">× INCORRECT PASSWORD</div>
+    <div style="margin-top:48px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#444;">© 2026 WonderPrax Inc.</div>
+  </div>
+</div>
+<script>
+  (function(){
+    const KEY = 'wp_gate_ok_v1';
+    const PW  = 'itlineWP';
+    const gate = document.getElementById('wp-gate');
+    const form = document.getElementById('wp-gate-form');
+    const pw   = document.getElementById('wp-gate-pw');
+    const err  = document.getElementById('wp-gate-err');
+    if (sessionStorage.getItem(KEY) === '1') {
+      gate.remove();
+      document.body.style.overflow = '';
+    } else {
+      document.body.style.overflow = 'hidden';
+      pw.addEventListener('input', ()=>{ err.style.opacity = 0; pw.style.borderColor = '#2a2a2a'; });
+      form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        if (pw.value === PW) {
+          sessionStorage.setItem(KEY, '1');
+          gate.style.transition = 'opacity .35s';
+          gate.style.opacity = '0';
+          document.body.style.overflow = '';
+          setTimeout(()=>gate.remove(), 360);
+        } else {
+          err.style.opacity = 1;
+          pw.style.borderColor = '#e63946';
+          pw.value = '';
+          pw.focus();
+        }
+      });
+    }
+  })();
+</script>
+
+<!-- ════════ HEADER ════════ -->
+<header class="site" data-screen-label="Header">
+  <a class="brand" href="#top" aria-label="WonderPrax">
+    <img src="images/wp_logo.png" alt="WonderPrax">
+  </a>
+  <nav class="primary" id="primaryNav">
+    <a class="nav-item" href="#about">私たちについて</a>
+    <a class="nav-item" href="#service">事業</a>
+    <a class="nav-item" href="#case">実績</a>
+    <a class="nav-item" href="#members">メンバー</a>
+    <a class="nav-item" href="#news">ニュース</a>
+    <span class="nav-meta">EN / JP</span>
+    <a class="nav-cta" href="#contact">CONTACT <span>↗</span></a>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ════════ 01 HERO ════════ -->
+<section class="hero" id="top" data-screen-label="01 Hero">
+  <div class="hero-left">
+    <div>
+      <div class="hero-tag"><span class="dot"></span> WONDERPRAX INC. ─ EST. 2026</div>
+      <h1 class="hero-catch">
+        <span class="line">WE DON'T</span>
+        <span class="line">JUST&nbsp;ADVISE.</span>
+        <span class="line red">WE EXECUTE.</span>
+      </h1>
+      <p class="hero-jp">
+        アドバイスで終わらない。<br>
+        戦略から実行まで、<br>事業成長のすべてに伴走する。
+        <small>NEW BUSINESS / MARKETING / SALES / AI&nbsp;·&nbsp;DX</small>
+      </p>
+      <div class="hero-actions">
+        <a class="btn solid" href="#case">VIEW WORKS <span class="arr">→</span></a>
+        <a class="btn ghost" href="#about">ABOUT US <span class="arr">→</span></a>
+      </div>
+    </div>
+    <div class="hero-bottom">
+      <div class="scroll"><div class="line-v"></div>SCROLL</div>
+      <div class="meta">
+        TOKYO / OSAKA<br>
+        <b>株式会社WonderPrax</b>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="img i1 is-on"></div>
+    <div class="img i2"></div>
+    <div class="img i3"></div>
+    <div class="img i4"></div>
+    <div class="index"><span>●</span>&nbsp;&nbsp;FROM STRATEGY TO EXECUTION</div>
+  </div>
+</section>
+
+<!-- marquee -->
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>WE DON'T JUST ADVISE. <i></i> WE EXECUTE. <i></i> 新規事業開発 <i></i> マーケティング <i></i> 営業 <i></i> AI&nbsp;/&nbsp;DX <i></i> WE DON'T JUST ADVISE. <i></i> WE EXECUTE. <i></i> 新規事業開発 <i></i> マーケティング <i></i> 営業 <i></i> AI&nbsp;/&nbsp;DX <i></i></span>
+    <span>WE DON'T JUST ADVISE. <i></i> WE EXECUTE. <i></i> 新規事業開発 <i></i> マーケティング <i></i> 営業 <i></i> AI&nbsp;/&nbsp;DX <i></i> WE DON'T JUST ADVISE. <i></i> WE EXECUTE. <i></i> 新規事業開発 <i></i> マーケティング <i></i> 営業 <i></i> AI&nbsp;/&nbsp;DX <i></i></span>
+  </div>
+</div>
+
+<!-- ════════ 02 ABOUT ════════ -->
+<section class="about" id="about" data-screen-label="02 About">
+  <div class="grid">
+    <div class="copy">
+      <div class="eyebrow">02 ─ ABOUT US</div>
+      <h2 class="display-jp">口だけじゃない。<br>最後まで、<em>走り切る</em>。</h2>
+      <div class="body">
+        <p>
+          「WonderPrax」の名は、<b style="color:#0a0a0a">Wonder（驚き）</b>と<b style="color:#0a0a0a">Praxis（実践）</b>から生まれた。新規事業・マーケティング・営業・AI/DX——4領域を横断し、構想から実行まで泥臭く伴走することが、私たちの存在意義です。
+        </p>
+        <p>
+          「コンサル＝口だけ」という負のイメージを、現場に立ち、KPIを背負い、結果が出るまで走り切ることで覆す。事業成長のパートナーとして、あなたの隣を走らせてください。
+        </p>
+      </div>
+      <div class="sign">
+        <span class="line"></span>
+        <span class="who">REPRESENTATIVE
+          <b>丸山 晴也 ／ Haruya Maruyama</b>
+        </span>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow" style="margin-bottom:22px;">BY THE NUMBERS</div>
+      <div class="stats">
+        <div class="stat">
+          <span class="corner"></span>
+          <div class="head"><span>01</span><span>SUPPORT</span></div>
+          <div class="num"><span class="n">120</span><span class="u">+</span></div>
+          <div class="label">支援実績社数</div>
+          <div class="desc">業界・規模を問わず多数の企業を支援</div>
+        </div>
+        <div class="stat">
+          <span class="corner"></span>
+          <div class="head"><span>02</span><span>RETENTION</span></div>
+          <div class="num"><span class="n">94</span><span class="u">%</span></div>
+          <div class="label">契約継続率</div>
+          <div class="desc">伴走型だからこそ生まれる長期パートナーシップ</div>
+        </div>
+        <div class="stat">
+          <span class="corner"></span>
+          <div class="head"><span>03</span><span>TEAM</span></div>
+          <div class="num"><span class="n">38</span><span class="u">名</span></div>
+          <div class="label">専門家チーム</div>
+          <div class="desc">4領域のプロフェッショナルが連携</div>
+        </div>
+        <div class="stat">
+          <span class="corner"></span>
+          <div class="head"><span>04</span><span>OUTCOME</span></div>
+          <div class="num"><span class="n">52</span><span class="u">億</span></div>
+          <div class="label">創出売上（累計）</div>
+          <div class="desc">支援プロジェクトでの事業成果合計</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- manifest band -->
+<div class="manifest" aria-hidden="true">
+  <div class="row">
+    <span>NOT&nbsp;<s>ADVISE</s>.</span>
+    <span><em>EXECUTE.</em></span>
+    <span>NOT&nbsp;<s>REPORT</s>.</span>
+    <span><em>RESULT.</em></span>
+    <span>NOT&nbsp;<s>PLAN</s>.</span>
+    <span><em>RUN.</em></span>
+  </div>
+</div>
+
+<!-- ════════ 03 SERVICE ════════ -->
+<section class="service" id="service" data-screen-label="03 Service">
+  <div class="head">
+    <div>
+      <div class="eyebrow">03 ─ SERVICE</div>
+      <h2 class="display" style="margin-top:22px;">4つの武器で、<br><em>事業を動かす</em>。</h2>
+    </div>
+    <div class="lead">
+      <b>"連動する4本柱"</b><br>
+      新規事業・マーケ・営業・AI/DXは独立した領域ではなく、互いに連動して事業を動かす。すべての領域を横断できる稀有なチーム構成が、WonderPraxの実行力の源です。
+    </div>
+  </div>
+
+  <div class="svc-grid">
+    <article class="svc">
+      <div class="svc-row">
+        <div class="svc-num">01</div>
+        <div class="svc-arr">↗</div>
+      </div>
+      <div class="svc-en">NEW BUSINESS</div>
+      <h3 class="svc-title">新規事業開発</h3>
+      <p class="svc-body">ゼロから事業を立ち上げる構想・検証・実行を一気通貫で支援。市場調査から事業計画、MVP、PMFまで12ヶ月単位で伴走します。</p>
+      <div class="svc-tags">
+        <span class="tag">事業企画</span>
+        <span class="tag">MVP開発</span>
+        <span class="tag">市場検証</span>
+      </div>
+    </article>
+    <article class="svc">
+      <div class="svc-row">
+        <div class="svc-num">02</div>
+        <div class="svc-arr">↗</div>
+      </div>
+      <div class="svc-en">MARKETING</div>
+      <h3 class="svc-title">マーケティング</h3>
+      <p class="svc-body">戦略立案から施策実行・効果検証まで内製化レベルで担当。デジタル・アナログを問わず、KPIに直結する打ち手を実行します。</p>
+      <div class="svc-tags">
+        <span class="tag">戦略設計</span>
+        <span class="tag">デジタルMKT</span>
+        <span class="tag">ブランド構築</span>
+      </div>
+    </article>
+    <article class="svc">
+      <div class="svc-row">
+        <div class="svc-num">03</div>
+        <div class="svc-arr">↗</div>
+      </div>
+      <div class="svc-en">SALES</div>
+      <h3 class="svc-title">営業</h3>
+      <p class="svc-body">営業組織の構築・強化・改革を現場レベルで支援。商談同席、トークスクリプト、仕組化まで泥臭く取り組み、再現性を残します。</p>
+      <div class="svc-tags">
+        <span class="tag">営業改革</span>
+        <span class="tag">組織構築</span>
+        <span class="tag">IS / FS</span>
+      </div>
+    </article>
+    <article class="svc">
+      <div class="svc-row">
+        <div class="svc-num">04</div>
+        <div class="svc-arr">↗</div>
+      </div>
+      <div class="svc-en">AI&nbsp;/&nbsp;DX</div>
+      <h3 class="svc-title">AI&nbsp;/&nbsp;DX</h3>
+      <p class="svc-body">業務効率化・データ活用・AI導入を現場に根ざした形で推進。「導入して終わり」にしない、運用定着まで責任を持つ実務支援。</p>
+      <div class="svc-tags">
+        <span class="tag">AI導入</span>
+        <span class="tag">業務自動化</span>
+        <span class="tag">データ活用</span>
+      </div>
+    </article>
+  </div>
+
+  <div class="approach">
+    <div class="inner">
+      <h3>HOW WE <b>RUN</b>.</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="s-num">STEP 01</div>
+          <div class="s-title">ヒアリング</div>
+          <div class="s-desc">事業背景・課題・KPIまで深く把握する。</div>
+        </div>
+        <div class="step">
+          <div class="s-num">STEP 02</div>
+          <div class="s-title">課題定義</div>
+          <div class="s-desc">表層課題でなく、原因に切り込む。</div>
+        </div>
+        <div class="step">
+          <div class="s-num">STEP 03</div>
+          <div class="s-title">戦略設計</div>
+          <div class="s-desc">実行可能なロードマップに落とす。</div>
+        </div>
+        <div class="step">
+          <div class="s-num">STEP 04</div>
+          <div class="s-title">実装・実行</div>
+          <div class="s-desc">現場に立ち、自ら手を動かす。</div>
+        </div>
+        <div class="step">
+          <div class="s-num">STEP 05</div>
+          <div class="s-title">定着・内製化</div>
+          <div class="s-desc">仕組みとして残し、卒業する。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 04 CASE STUDY ════════ -->
+<section class="case" id="case" data-screen-label="04 Case">
+  <div class="head">
+    <div>
+      <div class="eyebrow eye">04 ─ CASE STUDY</div>
+      <h2 class="display" style="margin-top:16px;">WORKS<em>.</em></h2>
+    </div>
+    <div></div>
+    <div class="right">
+      <div class="meta">SHOWING <b>03</b> OF <b>27</b><br>更新 ─ 2026.05.14</div>
+      <a class="link-arrow" style="color:#0a0a0a;margin-top:16px;" href="#">VIEW ALL CASES <span class="arr">→</span></a>
+    </div>
+  </div>
+
+  <div class="case-grid">
+    <article class="card">
+      <div class="ph">
+        <img src="images/hero1.webp" alt="製造業 新規事業 事例">
+        <span class="industry">製造業 / 新規事業</span>
+        <span class="scope">12 months</span>
+      </div>
+      <div class="body">
+        <div class="case-no">CASE <b>/01</b></div>
+        <h3>新規事業立ち上げで<br>初年度売上 8 億円を達成</h3>
+        <p class="desc">構想フェーズから実行チームに参加。市場検証から事業化まで12ヶ月で実現し、製造現場の知見を活かしたBtoBプラットフォームを立ち上げ。</p>
+        <div class="kpis">
+          <div class="kpi"><span class="n">8億</span><span class="l">初年度売上</span></div>
+          <div class="kpi"><span class="n">12<span style="font-size:18px">ヶ月</span></span><span class="l">事業化期間</span></div>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="ph">
+        <img src="images/hero2.webp" alt="IT マーケティング 事例">
+        <span class="industry">IT / マーケティング</span>
+        <span class="scope">9 months</span>
+      </div>
+      <div class="body">
+        <div class="case-no">CASE <b>/02</b></div>
+        <h3>マーケ戦略再設計で<br>リード獲得数 4.2 倍に</h3>
+        <p class="desc">属人的な営業依存からの脱却を目指し、マーケティング組織と施策を一から設計・実行。デジタル基盤の内製化まで支援。</p>
+        <div class="kpis">
+          <div class="kpi"><span class="n">4.2倍</span><span class="l">リード獲得</span></div>
+          <div class="kpi"><span class="n">38%</span><span class="l">商談率向上</span></div>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="ph">
+        <img src="images/hero3.webp" alt="流通 DX 事例">
+        <span class="industry">流通 / AI&nbsp;·&nbsp;DX</span>
+        <span class="scope">6 months</span>
+      </div>
+      <div class="body">
+        <div class="case-no">CASE <b>/03</b></div>
+        <h3>AI活用で業務工数を<br>6 割削減・現場定着を実現</h3>
+        <p class="desc">「AI導入したが誰も使わない」問題を解決。現場目線でツール選定から運用定着まで伴走し、店舗オペレーションへ組み込み。</p>
+        <div class="kpis">
+          <div class="kpi"><span class="n">60%</span><span class="l">工数削減</span></div>
+          <div class="kpi"><span class="n">91%</span><span class="l">現場定着率</span></div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="case-foot">
+    <div class="left">INDUSTRIES — <b>製造 / IT&nbsp;·&nbsp;SaaS / 流通 / 金融 / 不動産 / 医療 / 人材 / 公共</b></div>
+    <a class="btn dark" href="#">すべての実績を見る <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- ════════ 05 MEMBERS ════════ -->
+<section class="members" id="members" data-screen-label="05 Members">
+  <div class="head">
+    <div>
+      <div class="eyebrow">05 ─ MEMBERS</div>
+      <h2 class="display" style="margin-top:14px;">PEO<em>P</em>LE<em>.</em></h2>
+    </div>
+    <div class="lead">
+      事業成長は、結局のところ「誰と走るか」で決まる。WonderPraxを構成するのは、自走できるプロフェッショナルたち。
+      <a class="link-arrow" style="margin-top:20px;color:var(--paper);" href="#">VIEW ALL MEMBERS <span class="arr">→</span></a>
+    </div>
+  </div>
+
+  <div class="mem-grid">
+    <article class="mem">
+      <div class="ph">
+        <span class="num">— 01 / 38</span>
+        <img src="images/m1.webp" alt="丸山 晴也">
+      </div>
+      <div class="info">
+        <div class="role">REPRESENTATIVE</div>
+        <div class="name">丸山 晴也 <small>MARUYAMA</small></div>
+        <div class="quote">「結果が出るまで、現場を離れない」</div>
+      </div>
+    </article>
+    <article class="mem">
+      <div class="ph">
+        <span class="num">— 02 / 38</span>
+        <img src="images/m2.webp" alt="メンバー 02">
+      </div>
+      <div class="info">
+        <div class="role">PARTNER / 新規事業</div>
+        <div class="name">大野 陽平 <small>ONO</small></div>
+        <div class="quote">「ゼロイチに必要なのは、覚悟だ」</div>
+      </div>
+    </article>
+    <article class="mem">
+      <div class="ph">
+        <span class="num">— 03 / 38</span>
+        <img src="images/m3.webp" alt="メンバー 03">
+      </div>
+      <div class="info">
+        <div class="role">DIRECTOR / マーケティング</div>
+        <div class="name">高橋 駿 <small>TAKAHASHI</small></div>
+        <div class="quote">「数字に語らせる前に、現場で語れ」</div>
+      </div>
+    </article>
+    <article class="mem">
+      <div class="ph">
+        <span class="num">— 04 / 38</span>
+        <img src="images/m4.webp" alt="メンバー 04">
+      </div>
+      <div class="info">
+        <div class="role">MANAGER / 営業&nbsp;·&nbsp;AI</div>
+        <div class="name">石川 真央 <small>ISHIKAWA</small></div>
+        <div class="quote">「泥臭さは、最強の武器」</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ════════ 06 NEWS ════════ -->
+<section class="news" id="news" data-screen-label="06 News">
+  <div class="inner">
+    <div class="left">
+      <div class="eyebrow" style="color:var(--red);">06 ─ NEWS</div>
+      <h2 style="margin-top:18px;">LATEST.</h2>
+      <div class="jp">最新情報</div>
+      <a class="link-arrow archive" style="color:#0a0a0a;" href="#">VIEW ALL NEWS <span class="arr">→</span></a>
+    </div>
+    <div class="news-list">
+      <a class="news-item" href="#">
+        <span class="news-date">2026.05.14</span>
+        <span class="news-cat red">お知らせ</span>
+        <span class="news-title">社名を「WonderPrax株式会社」に変更しました</span>
+        <span class="news-arr">→</span>
+      </a>
+      <a class="news-item" href="#">
+        <span class="news-date">2026.04.01</span>
+        <span class="news-cat">実績</span>
+        <span class="news-title">○○株式会社の新規事業立ち上げ支援を開始しました</span>
+        <span class="news-arr">→</span>
+      </a>
+      <a class="news-item" href="#">
+        <span class="news-date">2026.03.15</span>
+        <span class="news-cat">メディア</span>
+        <span class="news-title">代表 丸山が「日経ビジネス」に取材されました</span>
+        <span class="news-arr">→</span>
+      </a>
+      <a class="news-item" href="#">
+        <span class="news-date">2026.02.28</span>
+        <span class="news-cat red">採用</span>
+        <span class="news-title">2026年度 中途採用を開始しました（コンサルタント・セールス）</span>
+        <span class="news-arr">→</span>
+      </a>
+      <a class="news-item" href="#">
+        <span class="news-date">2026.02.10</span>
+        <span class="news-cat">実績</span>
+        <span class="news-title">大手流通企業のAI/DX定着支援プロジェクトが完了しました</span>
+        <span class="news-arr">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 07 CTA ════════ -->
+<section class="cta" id="contact" data-screen-label="07 CTA">
+  <div class="cta-block contact">
+    <div>
+      <div class="cta-type">─ CONTACT</div>
+      <h3>CONTACT<br>US<em>.</em></h3>
+      <p class="body-jp">
+        課題の大小は問わない。<br>
+        まずは話してほしい。<br>
+        ─ 24時間以内にご返信します。
+      </p>
+    </div>
+    <div class="actions">
+      <a class="btn invert-red" href="#">お問い合わせ <span class="arr">→</span></a>
+      <div class="cta-meta">FOR — クライアント / 紹介 / 取材</div>
+    </div>
+  </div>
+  <div class="cta-block recruit">
+    <div>
+      <div class="cta-type">─ RECRUIT</div>
+      <h3>JOIN<br>U<em>S</em>.</h3>
+      <p class="body-jp">
+        やりきることに、<br>
+        喜びを感じる人と走りたい。<br>
+        ─ 中途・第二新卒・業務委託。
+      </p>
+    </div>
+    <div class="actions">
+      <a class="btn recruit" href="#">採用情報を見る <span class="arr">→</span></a>
+      <div class="cta-meta" style="color:var(--muted);">FOR — コンサルタント / セールス</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer class="site">
+  <div class="footer-mega" aria-hidden="true">WonderPrax</div>
+  <div class="footer-top">
+    <div class="f-brand">
+      <a class="brand" href="#top">
+        <img src="images/wp_logo.png" alt="WonderPrax" style="height:24px;">
+      </a>
+      <div class="f-tag">WE DON'T<br><em>JUST ADVISE.</em><br>WE EXECUTE.</div>
+      <div class="f-addr">
+        WonderPrax株式会社<br>
+        〒100-0000 東京都千代田区○○ 1-2-3 ○○ビル 8F<br>
+        TEL ─ 03-0000-0000
+      </div>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">CORPORATE</div>
+      <ul>
+        <li><a href="#about">私たちについて</a></li>
+        <li><a href="#service">事業内容</a></li>
+        <li><a href="#case">実績</a></li>
+        <li><a href="#members">メンバー</a></li>
+        <li><a href="#news">ニュース</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">RECRUIT</div>
+      <ul>
+        <li><a href="#">私たちの価値観</a></li>
+        <li><a href="#">社員インタビュー</a></li>
+        <li><a href="#">スキルアップ環境</a></li>
+        <li><a href="#">募集要項</a></li>
+        <li><a href="#">エントリー</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">LEGAL</div>
+      <ul>
+        <li><a href="#">プライバシーポリシー</a></li>
+        <li><a href="#">情報セキュリティ基準</a></li>
+        <li><a href="#">サイトマップ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 WonderPrax Inc. All rights reserved.</div>
+    <div class="links">
+      <a href="#">X / Twitter</a>
+      <a href="#">note</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">YouTube</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hero image rotator (4 frames, 4.5s each)
+  (function(){
+    const imgs = document.querySelectorAll('.hero-right .img');
+    let i = 0;
+    setInterval(()=>{
+      imgs[i].classList.remove('is-on');
+      i = (i+1) % imgs.length;
+      imgs[i].classList.add('is-on');
+    }, 4500);
+  })();
+
+  // Subtle header darkening on scroll
+  const h = document.querySelector('header.site');
+  const onScroll = () => {
+    if (window.scrollY > 60) {
+      h.style.background = 'rgba(10,10,10,.92)';
+      h.style.padding = '14px 40px';
+      h.style.borderBottom = '1px solid #1a1a1a';
+    } else {
+      h.style.background = 'transparent';
+      h.style.padding = '22px 40px';
+      h.style.borderBottom = 'none';
+    }
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Mobile hamburger menu
+  (function(){
+    const btn = document.getElementById('hamburger');
+    const nav = document.getElementById('primaryNav');
+    if (!btn || !nav) return;
+    const close = () => {
+      btn.classList.remove('is-open');
+      nav.classList.remove('is-open');
+      btn.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
+    };
+    const open = () => {
+      btn.classList.add('is-open');
+      nav.classList.add('is-open');
+      btn.setAttribute('aria-expanded','true');
+      document.body.style.overflow = 'hidden';
+    };
+    btn.addEventListener('click', () => {
+      nav.classList.contains('is-open') ? close() : open();
+    });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 720) close();
+    });
+  })();
+</script>
+
+</body>
+</html>

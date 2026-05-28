@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WonderPrax株式会社 / キネティック・タイポグラフィ</title>
+  
+  <!-- Fonts: Noto Sans JP & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            main: '#0A0A0A',
+            sub: '#444444',
+            light: '#666666',
+            bgLight: '#FAFAFA',
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+            noto: ['"Noto Sans JP"', 'sans-serif'],
+          },
+          letterSpacing: {
+            tighter: '-0.04em',
+            tight: '-0.02em',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: #0A0A0A;
+      background-color: #FAFAFA;
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+    .font-inter { font-family: 'Inter', sans-serif; }
+    
+    .hero-block {
+      height: 80vh;
+      min-height: 720px;
+    }
+    
+    /* === キネティック・タイポグラフィ用アニメーション === */
+    .marquee-container {
+      display: flex;
+      width: 200vw;
+      animation: marquee 20s linear infinite;
+    }
+    .marquee-container.reverse {
+      animation: marqueeRev 25s linear infinite;
+    }
+    .marquee-container.slow {
+      animation: marquee 40s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes marqueeRev {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+    .stagger-text span {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s forwards;
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 画像のキネティックなホバーエフェクト（モノクロからわずかにスケール） */
+    .kinetic-hover-img {
+      filter: grayscale(100%);
+      transition: filter 0.5s ease, transform 0.5s ease;
+    }
+    .group:hover .kinetic-hover-img {
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+
+    body > div:has(> .label-block) {
+      display: none;
+    }
+
+    .header-logo-img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    .footer-logo-img {
+      width: 164px;
+      height: auto;
+      filter: contrast(1.08);
+    }
+
+    .footer-logo-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 212px;
+      height: 56px;
+      padding: 0 18px;
+      margin-bottom: 1.5rem;
+      background: #0A0A0A;
+      border-radius: 999px;
+    }
+
+    .trusted-logo {
+      min-width: 148px;
+      height: 56px;
+      padding: 0 18px;
+      border: 1px solid #E5E7EB;
+      background: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      color: #171717;
+      box-shadow: 0 12px 28px rgba(10, 10, 10, 0.04);
+      filter: grayscale(100%);
+      opacity: 0.72;
+      transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .trusted-logo:hover {
+      opacity: 1;
+      filter: grayscale(0%);
+      transform: translateY(-2px);
+    }
+
+    .member-portrait {
+      object-position: center top;
+      filter: contrast(1.08) saturate(0.92) brightness(0.98);
+    }
+
+    .contact-kicker {
+      position: relative;
+      display: inline-block;
+      padding: 0 0 0.22em;
+      color: #FFFFFF;
+      letter-spacing: 0.04em !important;
+      text-shadow:
+        0 3px 18px rgba(0, 0, 0, 0.92),
+        0 0 34px rgba(255, 255, 255, 0.18);
+    }
+
+    .contact-kicker::before {
+      content: "";
+      position: absolute;
+      inset: -0.12em -0.18em 0.02em;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.18));
+      filter: blur(16px);
+      border-radius: 999px;
+    }
+
+    .contact-kicker::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: min(72%, 360px);
+      height: 3px;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.48);
+    }
+  </style>
+</head>
+<body class="text-main selection:bg-main selection:text-white">
+
+
+
+  <section id="home" class="hero-block relative w-full overflow-hidden bg-[#FAFAFA] flex flex-col justify-center items-center border-b border-gray-200">
+    
+    <!-- Header -->
+    <header class="absolute top-0 left-0 w-full px-6 md:px-12 py-6 flex justify-between items-center z-50">
+      <a href="#home" class="bg-white/90 backdrop-blur-sm px-5 py-3 rounded-full shadow-lg inline-flex items-center gap-3">
+        <span class="w-9 h-9 bg-main rounded-full inline-flex items-center justify-center">
+          <img src="image/ヘッダー会社ロゴ.webp" alt="WonderPrax" class="header-logo-img">
+        </span>
+        <span class="text-lg md:text-xl font-bold text-main tracking-tight leading-none">WonderPrax</span>
+      </a>
+      <nav class="hidden lg:flex gap-8 items-center text-base font-bold">
+        <a href="#strength" class="hover:opacity-60 transition">私たちについて</a>
+        <div class="relative group py-3">
+          <a href="#service" class="hover:opacity-60 transition">事業</a>
+          <div class="absolute top-full left-1/2 -translate-x-1/2 w-[260px] bg-white text-main rounded-3xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 overflow-hidden text-sm">
+            <a href="marketing.html" class="block px-6 py-4 hover:bg-gray-100 transition">マーケティング領域</a>
+            <a href="sales.html" class="block px-6 py-4 hover:bg-gray-100 transition">セールス</a>
+            <a href="dx-ai.html" class="block px-6 py-4 hover:bg-gray-100 transition">DX(AI)</a>
+            <a href="new-business.html" class="block px-6 py-4 hover:bg-gray-100 transition">新規事業支援</a>
+          </div>
+        </div>
+        <a href="#case" class="hover:opacity-60 transition">実績</a>
+        <a href="#member" class="hover:opacity-60 transition">メンバー</a>
+        <a href="#recruit" class="hover:opacity-60 transition">採用情報</a>
+        <a href="#contact" class="px-6 py-3 bg-main text-white rounded-full hover:scale-105 transition-transform duration-300">お問い合わせ</a>
+      </nav>
+    </header>
+
+    <!-- Marquee Top -->
+    <div class="absolute top-1/4 w-full overflow-hidden opacity-30 select-none pointer-events-none">
+      <div class="marquee-container font-inter font-black text-[80px] md:text-[140px] text-[#EAEAEA] whitespace-nowrap">
+        RUN WITH YOU ⚡ RUN WITH YOU ⚡ RUN WITH YOU ⚡ RUN WITH YOU ⚡ 
+      </div>
+    </div>
+    
+    <!-- Marquee Bottom -->
+    <div class="absolute bottom-1/4 w-full overflow-hidden opacity-30 select-none pointer-events-none">
+      <div class="marquee-container reverse font-inter font-black text-[80px] md:text-[140px] text-[#EAEAEA] whitespace-nowrap">
+        WONDERPRAX / BUSINESS GROWTH PARTNER / WONDERPRAX / BUSINESS GROWTH PARTNER /
+      </div>
+    </div>
+
+    <!-- Center Content -->
+    <div class="relative z-10 flex flex-col items-center text-center px-4 w-full max-w-[1440px]">
+      <h2 class="font-bold text-[32px] md:text-[56px] text-main mb-10 stagger-text flex flex-wrap justify-center gap-1 md:gap-2">
+        <span style="animation-delay: 0.1s">事</span><span style="animation-delay: 0.2s">業</span><span style="animation-delay: 0.3s">を</span><span style="animation-delay: 0.4s">、</span>
+        <span style="animation-delay: 0.5s">一</span><span style="animation-delay: 0.6s">緒</span><span style="animation-delay: 0.7s">に</span><span style="animation-delay: 0.8s">、</span>
+        <span style="animation-delay: 0.9s">走</span><span style="animation-delay: 1.0s">り</span><span style="animation-delay: 1.1s">切</span><span style="animation-delay: 1.2s">る</span><span style="animation-delay: 1.3s">。</span>
+      </h2>
+      <a href="#contact" class="px-10 py-5 bg-main text-white font-bold rounded-full hover:scale-105 transition-transform duration-300 shadow-xl">事業のご相談を始める</a>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECTION 02 / SERVICE
+  =============================================== -->
+  <div class="max-w-[1440px] mx-auto px-4 md:px-8 mt-20 md:mt-[120px]" id="service">
+    <div class="label-block mb-6">
+      <div class="text-xs tracking-widest text-gray-500 font-inter font-bold">SECTION 02 / SERVICE</div>
+      <h3 class="text-xl font-bold text-main mt-1">【SERVICE — 4事業柱】</h3>
+    </div>
+  </div>
+
+  <section class="w-full py-[80px] md:py-[120px] bg-white border-y border-gray-100 overflow-hidden">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-12 text-center">
+      <!-- Heading -->
+      <div class="mb-16">
+        <h2 class="font-inter font-black text-6xl md:text-8xl tracking-tighter text-main mb-4 leading-none">SERVICE</h2>
+        <p class="text-2xl font-bold tracking-tight">事業領域</p>
+      </div>
+
+      <p class="text-lg text-sub font-medium leading-relaxed mb-16 max-w-3xl mx-auto">
+        新規事業開発、マーケティング、セールス、AI・DX。<br>
+        分断されがちな4つの領域を貫通し、口出しだけでなく実行まで責任を持つ伴走パートナーとして機能します。
+      </p>
+
+      <div class="flex flex-col lg:flex-row gap-16 items-center justify-center text-left">
+        <!-- 4 Cards -->
+        <div class="w-full lg:w-3/5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <!-- Card 1 -->
+            <div class="p-8 bg-[#FAFAFA] rounded-3xl hover:bg-main hover:text-white transition-colors duration-300 group">
+              <div class="w-14 h-14 bg-white text-main flex items-center justify-center rounded-full mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+              <h4 class="font-bold text-xl mb-3">新規事業開発</h4>
+              <p class="text-sm text-gray-500 group-hover:text-gray-300 mb-6 font-medium">0から1の立ち上げを、リサーチから実行まで並走。</p>
+              <a href="#" class="inline-flex items-center text-xs font-bold font-inter tracking-widest gap-2">DETAIL <span class="group-hover:translate-x-1 transition-transform">&rarr;</span></a>
+            </div>
+            <!-- Card 2 -->
+            <div class="p-8 bg-[#FAFAFA] rounded-3xl hover:bg-main hover:text-white transition-colors duration-300 group">
+              <div class="w-14 h-14 bg-white text-main flex items-center justify-center rounded-full mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
+              <h4 class="font-bold text-xl mb-3">マーケティング</h4>
+              <p class="text-sm text-gray-500 group-hover:text-gray-300 mb-6 font-medium">認知獲得からリードジェネレーションまでを一気通貫。</p>
+              <a href="#" class="inline-flex items-center text-xs font-bold font-inter tracking-widest gap-2">DETAIL <span class="group-hover:translate-x-1 transition-transform">&rarr;</span></a>
+            </div>
+            <!-- Card 3 -->
+            <div class="p-8 bg-[#FAFAFA] rounded-3xl hover:bg-main hover:text-white transition-colors duration-300 group">
+              <div class="w-14 h-14 bg-white text-main flex items-center justify-center rounded-full mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <h4 class="font-bold text-xl mb-3">セールス</h4>
+              <p class="text-sm text-gray-500 group-hover:text-gray-300 mb-6 font-medium">営業組織の立ち上げ、型化、クロージング支援。</p>
+              <a href="#" class="inline-flex items-center text-xs font-bold font-inter tracking-widest gap-2">DETAIL <span class="group-hover:translate-x-1 transition-transform">&rarr;</span></a>
+            </div>
+            <!-- Card 4 -->
+            <div class="p-8 bg-[#FAFAFA] rounded-3xl hover:bg-main hover:text-white transition-colors duration-300 group">
+              <div class="w-14 h-14 bg-white text-main flex items-center justify-center rounded-full mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <h4 class="font-bold text-xl mb-3">AI・DX</h4>
+              <p class="text-sm text-gray-500 group-hover:text-gray-300 mb-6 font-medium">最新テクノロジーを用いた業務効率化と価値創造。</p>
+              <a href="#" class="inline-flex items-center text-xs font-bold font-inter tracking-widest gap-2">DETAIL <span class="group-hover:translate-x-1 transition-transform">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diagram (SVG) -->
+        <div class="w-full lg:w-2/5 flex flex-col items-center justify-center p-8 bg-[#FAFAFA] rounded-3xl">
+          <svg viewBox="0 0 400 400" class="w-full max-w-[320px] h-auto drop-shadow-sm">
+            <!-- 連結線 -->
+            <path d="M100,100 L300,300 M300,100 L100,300 M200,80 L200,320 M80,200 L320,200" stroke="#E5E7EB" stroke-width="2" stroke-dasharray="6 6" />
+            <!-- サークル -->
+            <circle cx="100" cy="100" r="45" fill="white" stroke="#0A0A0A" stroke-width="2" />
+            <text x="100" y="100" fill="#0A0A0A" font-size="14" font-weight="bold" text-anchor="middle" dominant-baseline="central">新規事業</text>
+            <circle cx="300" cy="100" r="45" fill="white" stroke="#0A0A0A" stroke-width="2" />
+            <text x="300" y="100" fill="#0A0A0A" font-size="14" font-weight="bold" text-anchor="middle" dominant-baseline="central">マーケ</text>
+            <circle cx="100" cy="300" r="45" fill="white" stroke="#0A0A0A" stroke-width="2" />
+            <text x="100" y="300" fill="#0A0A0A" font-size="14" font-weight="bold" text-anchor="middle" dominant-baseline="central">セールス</text>
+            <circle cx="300" cy="300" r="45" fill="white" stroke="#0A0A0A" stroke-width="2" />
+            <text x="300" y="300" fill="#0A0A0A" font-size="14" font-weight="bold" text-anchor="middle" dominant-baseline="central">AI・DX</text>
+            <!-- センターコア -->
+            <circle cx="200" cy="200" r="65" fill="#0A0A0A" />
+            <text x="200" y="195" fill="white" font-family="Inter" font-weight="900" font-size="16" text-anchor="middle">BUSINESS</text>
+            <text x="200" y="215" fill="white" font-family="Inter" font-weight="900" font-size="16" text-anchor="middle">GROWTH</text>
+          </svg>
+        </div>
+      </div>
+      
+      <div class="mt-16 text-center">
+        <a href="#" class="inline-flex items-center gap-2 px-10 py-5 bg-white border-2 border-main text-main font-bold rounded-full hover:bg-main hover:text-white hover:scale-105 transition-all duration-300">
+          事業領域の全体像を見る ⚡
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECTION 03 / STRENGTH
+  =============================================== -->
+  <div class="max-w-[1440px] mx-auto px-4 md:px-8 mt-20 md:mt-[120px]" id="strength">
+    <div class="label-block mb-6">
+      <div class="text-xs tracking-widest text-gray-500 font-inter font-bold">SECTION 03 / STRENGTH</div>
+      <h3 class="text-xl font-bold text-main mt-1">【STRENGTH — なぜWonderPraxか】</h3>
+    </div>
+  </div>
+
+  <section class="w-full py-[80px] md:py-[120px] bg-[#FAFAFA]">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-12 text-center">
+      <!-- Heading -->
+      <div class="mb-16">
+        <h2 class="font-inter font-black text-6xl md:text-8xl tracking-tighter text-main mb-4 leading-none uppercase">Why WonderPrax</h2>
+        <p class="text-2xl font-bold tracking-tight">3つの強み</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-12">
+        <div class="lg:col-span-3 h-[260px] md:h-[360px] rounded-[32px] overflow-hidden bg-gray-200">
+          <img src="image/スタッフ集合写真04.jpg" alt="WonderPraxメンバー集合写真" class="w-full h-full object-cover kinetic-hover-img">
+        </div>
+        <div class="lg:col-span-2 h-[260px] md:h-[360px] rounded-[32px] overflow-hidden bg-gray-200">
+          <img src="image/仕事中.jpg" alt="クライアントとの打ち合わせ風景" class="w-full h-full object-cover kinetic-hover-img">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+        <!-- Point 1 -->
+        <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-100">
+          <div class="font-inter font-black text-8xl text-gray-100 mb-4 leading-none">01</div>
+          <h4 class="text-2xl font-bold mb-4 flex items-center gap-2">教えるではなく、走る ⚡</h4>
+          <p class="text-sm text-gray-600 leading-relaxed font-medium">
+            きれいな戦略を描いて終わるアドバイザリー業務は行いません。クライアントのチームの一員として現場に入り込み、汗をかきながらゴールを目指します。
+          </p>
+        </div>
+        <!-- Point 2 -->
+        <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-100">
+          <div class="font-inter font-black text-8xl text-gray-100 mb-4 leading-none">02</div>
+          <h4 class="text-2xl font-bold mb-4 flex items-center gap-2">実行責任を持つ体制 ⚡</h4>
+          <p class="text-sm text-gray-600 leading-relaxed font-medium">
+            提案した施策が実行され、成果が出るまでコミットします。言い訳をせず、泥臭い課題解決に向き合う姿勢が私たちのアイデンティティです。
+          </p>
+        </div>
+        <!-- Point 3 -->
+        <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-100">
+          <div class="font-inter font-black text-8xl text-gray-100 mb-4 leading-none">03</div>
+          <h4 class="text-2xl font-bold mb-4 flex items-center gap-2">フロント人材の質 ⚡</h4>
+          <p class="text-sm text-gray-600 leading-relaxed font-medium">
+            各領域で圧倒的な実績を持つプロフェッショナルのみがフロントに立ちます。経験に裏打ちされた直感と論理で、事業成長を牽引します。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECTION 04 / CASE
+  =============================================== -->
+  <div class="max-w-[1440px] mx-auto px-4 md:px-8 mt-20 md:mt-[120px]" id="case">
+    <div class="label-block mb-6">
+      <div class="text-xs tracking-widest text-gray-500 font-inter font-bold">SECTION 04 / CASE</div>
+      <h3 class="text-xl font-bold text-main mt-1">【CASE — 事例】</h3>
+    </div>
+  </div>
+
+  <section class="w-full py-[80px] md:py-[120px] bg-white">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-12">
+      <!-- Heading & CTA -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div>
+          <h2 class="font-inter font-black text-6xl md:text-8xl tracking-tighter text-main mb-4 leading-none">CASE STUDY</h2>
+          <p class="text-2xl font-bold tracking-tight">実績</p>
+        </div>
+        <a href="#" class="hidden md:inline-flex items-center justify-center px-8 py-4 bg-main text-white font-bold rounded-full hover:scale-105 transition-transform duration-300">
+          事例一覧を見る
+        </a>
+      </div>
+
+      <!-- Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <!-- Case 1 -->
+        <a href="#" class="block group">
+          <div class="w-full h-[260px] overflow-hidden rounded-3xl mb-6 relative bg-gray-100">
+            <img src="image/実績01.png" alt="SaaS企業 事例" class="w-full h-full object-cover kinetic-hover-img">
+            <div class="absolute top-4 left-4 bg-white text-main px-4 py-2 text-xs font-bold font-inter rounded-full shadow-md">IT / SaaS</div>
+          </div>
+          <h4 class="text-xl font-bold mb-3 group-hover:text-gray-500 transition">大手エンタープライズ向け新規事業立ち上げ</h4>
+          <p class="text-sm text-gray-500 mb-4 font-medium">構想策定からMVP開発、初期PMFまでを6ヶ月で完遂。</p>
+          <div class="flex gap-4 items-end">
+            <span class="text-xs font-inter font-bold text-gray-400 block mb-1">ARR</span>
+            <span class="font-inter font-black text-main text-3xl">1.2<span class="text-sm font-noto font-bold ml-1">億円到達</span></span>
+          </div>
+        </a>
+        <!-- Case 2 -->
+        <a href="#" class="block group">
+          <div class="w-full h-[260px] overflow-hidden rounded-3xl mb-6 relative bg-gray-100">
+            <img src="image/実績02.png" alt="人材企業 事例" class="w-full h-full object-cover kinetic-hover-img">
+            <div class="absolute top-4 left-4 bg-white text-main px-4 py-2 text-xs font-bold font-inter rounded-full shadow-md">HR</div>
+          </div>
+          <h4 class="text-xl font-bold mb-3 group-hover:text-gray-500 transition">セールス組織の型化・イネーブルメント</h4>
+          <p class="text-sm text-gray-500 mb-4 font-medium">属人化していた営業手法を言語化し、組織全体の底上げを実現。</p>
+          <div class="flex gap-4 items-end">
+            <span class="text-xs font-inter font-bold text-gray-400 block mb-1">成約率</span>
+            <span class="font-inter font-black text-main text-3xl">+45<span class="text-sm font-noto font-bold ml-1">%改善</span></span>
+          </div>
+        </a>
+        <!-- Case 3 -->
+        <a href="#" class="block group">
+          <div class="w-full h-[260px] overflow-hidden rounded-3xl mb-6 relative bg-gray-100">
+            <img src="image/実績03.png" alt="製造業 事例" class="w-full h-full object-cover kinetic-hover-img">
+            <div class="absolute top-4 left-4 bg-white text-main px-4 py-2 text-xs font-bold font-inter rounded-full shadow-md">MANUFACTURING</div>
+          </div>
+          <h4 class="text-xl font-bold mb-3 group-hover:text-gray-500 transition">レガシー業務のAI・DXトランスフォーメーション</h4>
+          <p class="text-sm text-gray-500 mb-4 font-medium">紙ベースの管理をクラウド化し、AIによる需要予測を導入。</p>
+          <div class="flex gap-4 items-end">
+            <span class="text-xs font-inter font-bold text-gray-400 block mb-1">工数削減</span>
+            <span class="font-inter font-black text-main text-3xl">2,000<span class="text-sm font-noto font-bold ml-1">時間/月</span></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="md:hidden text-center mb-16">
+        <a href="#" class="inline-flex items-center justify-center px-8 py-4 bg-main text-white font-bold rounded-full">事例一覧を見る</a>
+      </div>
+
+      <!-- Client Logos (Dummy) -->
+      <div class="border-t border-gray-200 pt-12">
+        <p class="text-center text-xs font-inter font-bold tracking-widest text-gray-400 mb-10">TRUSTED BY</p>
+        <div class="flex flex-wrap justify-center gap-4 md:gap-5">
+          <div class="trusted-logo">NEXORA</div>
+          <div class="trusted-logo">KAIROS</div>
+          <div class="trusted-logo">LUMINA</div>
+          <div class="trusted-logo">ORBITAL</div>
+          <div class="trusted-logo">AURORA</div>
+          <div class="trusted-logo">VECTOR</div>
+          <div class="trusted-logo hidden md:inline-flex">SOLACE</div>
+          <div class="trusted-logo hidden lg:inline-flex">PRAXIS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECTION 05 / MEMBER
+  =============================================== -->
+  <div class="max-w-[1440px] mx-auto px-4 md:px-8 mt-20 md:mt-[120px]" id="member">
+    <div class="label-block mb-6">
+      <div class="text-xs tracking-widest text-gray-500 font-inter font-bold">SECTION 05 / MEMBER</div>
+      <h3 class="text-xl font-bold text-main mt-1">【MEMBER — 人】</h3>
+    </div>
+  </div>
+
+  <section class="w-full py-[80px] md:py-[120px] bg-[#FAFAFA]">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-12 text-center">
+      <!-- Heading -->
+      <div class="mb-16">
+        <h2 class="font-inter font-black text-6xl md:text-8xl tracking-tighter text-main mb-4 leading-none uppercase">Member</h2>
+        <p class="text-2xl font-bold tracking-tight">プロフェッショナル陣</p>
+      </div>
+
+      <!-- Grid -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12 text-left">
+        <!-- Member 1 -->
+        <div class="group cursor-pointer">
+          <div class="w-full aspect-[3/4] bg-gray-200 rounded-3xl mb-6 overflow-hidden relative">
+            <img src="image/メンバー01.png" alt="Member" class="w-full h-full object-cover member-portrait group-hover:scale-105 transition-all duration-500">
+          </div>
+          <p class="text-xs font-inter font-black text-gray-400 mb-2">CEO / FOUNDER</p>
+          <h4 class="text-xl font-bold mb-3">山田 太郎</h4>
+          <p class="text-sm text-gray-600 font-medium">「机上の空論ではなく、現場の泥臭い実行こそが事業を前進させる。」</p>
+        </div>
+        <!-- Member 2 -->
+        <div class="group cursor-pointer">
+          <div class="w-full aspect-[3/4] bg-gray-200 rounded-3xl mb-6 overflow-hidden relative">
+            <img src="image/メンバー02.png" alt="Member" class="w-full h-full object-cover member-portrait group-hover:scale-105 transition-all duration-500">
+          </div>
+          <p class="text-xs font-inter font-black text-gray-400 mb-2">DIRECTOR / MARKETING</p>
+          <h4 class="text-xl font-bold mb-3">佐藤 美咲</h4>
+          <p class="text-sm text-gray-600 font-medium">「数値と心理。両面から顧客のインサイトをえぐり出します。」</p>
+        </div>
+        <!-- Member 3 -->
+        <div class="group cursor-pointer">
+          <div class="w-full aspect-[3/4] bg-gray-200 rounded-3xl mb-6 overflow-hidden relative">
+            <img src="image/メンバー03.png" alt="Member" class="w-full h-full object-cover member-portrait group-hover:scale-105 transition-all duration-500">
+          </div>
+          <p class="text-xs font-inter font-black text-gray-400 mb-2">LEAD / AI・DX</p>
+          <h4 class="text-xl font-bold mb-3">田中 健一</h4>
+          <p class="text-sm text-gray-600 font-medium">「技術は目的ではなく手段。事業価値に直結する実装にこだわります。」</p>
+        </div>
+        <!-- Member 4 -->
+        <div class="group cursor-pointer">
+          <div class="w-full aspect-[3/4] bg-gray-200 rounded-3xl mb-6 overflow-hidden relative">
+            <img src="image/メンバー04.png" alt="Member" class="w-full h-full object-cover member-portrait group-hover:scale-105 transition-all duration-500">
+          </div>
+          <p class="text-xs font-inter font-black text-gray-400 mb-2">MANAGER / SALES</p>
+          <h4 class="text-xl font-bold mb-3">鈴木 翔</h4>
+          <p class="text-sm text-gray-600 font-medium">「最後の1マイルを走り切り、確実に『売上』という結果を創る。」</p>
+        </div>
+      </div>
+      
+      <div class="mt-16">
+        <a href="#" class="inline-flex items-center justify-center px-10 py-5 bg-white border-2 border-main text-main font-bold rounded-full hover:bg-main hover:text-white hover:scale-105 transition-all duration-300">
+          メンバー一覧を見る
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECTION 06 / NEWS
+  =============================================== -->
+  <div class="max-w-[1440px] mx-auto px-4 md:px-8 mt-20 md:mt-[120px]">
+    <div class="label-block mb-6">
+      <div class="text-xs tracking-widest text-gray-500 font-inter font-bold">SECTION 06 / NEWS</div>
+      <h3 class="text-xl font-bold text-main mt-1">【NEWS — 最新の動き】</h3>
+    </div>
+  </div>
+
+  <section class="w-full py-[80px] bg-white">
+    <div class="max-w-[1000px] mx-auto px-6 md:px-12">
+      <!-- Heading -->
+      <div class="mb-12">
+        <h2 class="font-inter font-black text-5xl text-main tracking-tighter uppercase">News.</h2>
+      </div>
+
+      <!-- List -->
+      <ul class="border-t-[3px] border-main">
+        <li class="border-b border-gray-200 py-6 hover:px-4 transition-all duration-300 group">
+          <a href="#" class="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+            <div class="flex items-center gap-4 md:w-[260px] shrink-0">
+              <span class="font-inter font-bold text-main text-sm tracking-widest">2026.05.20</span>
+              <span class="px-3 py-1 border border-gray-300 text-[10px] font-bold rounded-full text-main">プレスリリース</span>
+            </div>
+            <p class="font-bold text-gray-600 group-hover:text-main transition-colors">大手製造業向けのAI導入支援パッケージの提供を開始しました。</p>
+          </a>
+        </li>
+        <li class="border-b border-gray-200 py-6 hover:px-4 transition-all duration-300 group">
+          <a href="#" class="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+            <div class="flex items-center gap-4 md:w-[260px] shrink-0">
+              <span class="font-inter font-bold text-main text-sm tracking-widest">2026.05.10</span>
+              <span class="px-3 py-1 border border-gray-300 text-[10px] font-bold rounded-full text-main">イベント</span>
+            </div>
+            <p class="font-bold text-gray-600 group-hover:text-main transition-colors">【ウェビナー】「実行できない戦略を捨てる。泥臭い事業開発のリアル」を開催します。</p>
+          </a>
+        </li>
+        <li class="border-b border-gray-200 py-6 hover:px-4 transition-all duration-300 group">
+          <a href="#" class="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+            <div class="flex items-center gap-4 md:w-[260px] shrink-0">
+              <span class="font-inter font-bold text-main text-sm tracking-widest">2026.04.28</span>
+              <span class="px-3 py-1 border border-gray-300 text-[10px] font-bold rounded-full text-main">メディア掲載</span>
+            </div>
+            <p class="font-bold text-gray-600 group-hover:text-main transition-colors">日経クロストレンドにて、弊社CEO山田のインタビュー記事が掲載されました。</p>
+          </a>
+        </li>
+        <li class="border-b border-gray-200 py-6 hover:px-4 transition-all duration-300 group">
+          <a href="#" class="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+            <div class="flex items-center gap-4 md:w-[260px] shrink-0">
+              <span class="font-inter font-bold text-main text-sm tracking-widest">2026.04.15</span>
+              <span class="px-3 py-1 border border-gray-300 text-[10px] font-bold rounded-full text-main">お知らせ</span>
+            </div>
+            <p class="font-bold text-gray-600 group-hover:text-main transition-colors">事業拡大に伴い、東京オフィスを移転・増床いたしました。</p>
+          </a>
+        </li>
+        <li class="border-b border-gray-200 py-6 hover:px-4 transition-all duration-300 group">
+          <a href="#" class="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+            <div class="flex items-center gap-4 md:w-[260px] shrink-0">
+              <span class="font-inter font-bold text-main text-sm tracking-widest">2026.04.01</span>
+              <span class="px-3 py-1 border border-gray-300 text-[10px] font-bold rounded-full text-main">採用</span>
+            </div>
+            <p class="font-bold text-gray-600 group-hover:text-main transition-colors">2026年度 新卒採用の募集を開始いたしました。</p>
+          </a>
+        </li>
+      </ul>
+      
+      <div class="mt-10 text-right">
+        <a href="#" class="font-inter font-black text-sm hover:opacity-60 transition border-b-2 border-main pb-1">
+          VIEW ALL NEWS &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECTION 07 / RECRUIT
+  =============================================== -->
+  <div class="max-w-[1440px] mx-auto px-4 md:px-8 mt-20 md:mt-[120px]">
+    <div class="label-block mb-6">
+      <div class="text-xs tracking-widest text-gray-500 font-inter font-bold">SECTION 07 / RECRUIT</div>
+      <h3 class="text-xl font-bold text-main mt-1">【RECRUIT — 採用への橋渡し】</h3>
+    </div>
+  </div>
+
+  <section id="recruit" class="w-full py-[60px] md:py-[100px] bg-white relative overflow-hidden">
+    <!-- こだま：背景に静かに流れる巨大テキスト -->
+    <div class="absolute inset-0 flex items-center overflow-hidden opacity-5 pointer-events-none select-none">
+      <div class="marquee-container slow font-inter font-black text-[150px] text-main whitespace-nowrap">
+        JOIN OUR TEAM ⚡ WE ARE HIRING ⚡ JOIN OUR TEAM ⚡
+      </div>
+    </div>
+
+    <div class="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10">
+      <div class="flex flex-col lg:flex-row bg-main text-white rounded-[40px] overflow-hidden group shadow-2xl">
+        <!-- Left: Text -->
+        <div class="w-full lg:w-1/2 p-10 md:p-20 flex flex-col justify-center">
+          <span class="font-inter font-black text-gray-500 text-2xl md:text-3xl tracking-widest mb-4">RECRUIT.</span>
+          <h3 class="text-3xl md:text-5xl font-bold leading-tight mb-6">
+            事業を、一緒に走り切る。<br>
+            そんな仲間を探しています。
+          </h3>
+          <p class="text-sm md:text-base text-gray-400 mb-10 max-w-md leading-relaxed font-medium">
+            コンサルタントではなく、実行者としてのキャリアを。圧倒的な成長環境と、本質的な価値創造に挑むフィールドがここにあります。
+          </p>
+          <div>
+            <a href="#" class="inline-flex items-center justify-center px-10 py-5 bg-white text-main font-bold rounded-full hover:scale-105 transition-transform duration-300">
+              採用サイトへ ⚡
+            </a>
+          </div>
+        </div>
+        <!-- Right: Image -->
+        <div class="w-full lg:w-1/2 h-[400px] lg:h-auto relative overflow-hidden">
+          <img src="image/スタッフ集合写真02.jpg" alt="Recruit" class="w-full h-full object-cover kinetic-hover-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECTION 08 / CONTACT
+  =============================================== -->
+  <div class="max-w-[1440px] mx-auto px-4 md:px-8 mt-20 md:mt-[120px]" id="contact">
+    <div class="label-block mb-6">
+      <div class="text-xs tracking-widest text-gray-500 font-inter font-bold">SECTION 08 / CONTACT</div>
+      <h3 class="text-xl font-bold text-main mt-1">【CONTACT — クロージング】</h3>
+    </div>
+  </div>
+
+  <section class="w-full py-[120px] md:py-[200px] bg-main text-white relative overflow-hidden flex flex-col justify-center items-center">
+    
+    <!-- こだま：背景マーキー（強め） -->
+    <div class="absolute inset-0 flex flex-col justify-between py-12 overflow-hidden opacity-10 pointer-events-none select-none">
+      <div class="marquee-container font-inter font-black text-[120px] text-white whitespace-nowrap">
+        LET'S TALK ⚡ LET'S TALK ⚡ LET'S TALK ⚡ LET'S TALK ⚡ 
+      </div>
+      <div class="marquee-container reverse font-inter font-black text-[120px] text-white whitespace-nowrap">
+        CONTACT US ⚡ CONTACT US ⚡ CONTACT US ⚡ CONTACT US ⚡ 
+      </div>
+    </div>
+    
+    <div class="max-w-[1000px] mx-auto px-6 md:px-12 text-center relative z-10 w-full">
+      <h2 class="contact-kicker font-inter font-black text-6xl md:text-[100px] tracking-tighter mb-8 leading-none">CONTACT.</h2>
+      <h3 class="text-3xl md:text-5xl font-bold tracking-tight leading-snug mb-6">
+        まずは、事業の話を<br class="md:hidden">聞かせてください。
+      </h3>
+      <p class="text-gray-400 mb-16 font-medium text-lg">
+        30分のオンライン面談から、最適な伴走の形をご提案します。
+      </p>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-6 max-w-2xl mx-auto">
+        <a href="#" class="inline-flex items-center justify-center px-10 py-5 bg-white text-main font-bold rounded-full hover:scale-105 transition-transform duration-300 min-w-[240px] shadow-2xl">
+          事業のご相談
+        </a>
+        <div class="relative group w-full sm:w-auto">
+          <a href="#" class="inline-flex items-center justify-center px-10 py-5 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-main transition-colors duration-300 min-w-[240px] w-full">
+            紹介経由の方はこちら
+          </a>
+          <!-- 入力欄のホバー展開 -->
+          <div class="absolute bottom-full mb-4 left-0 w-full bg-white text-main p-6 rounded-3xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 text-left text-sm z-20 translate-y-4 group-hover:translate-y-0">
+            <label class="block font-bold mb-2">紹介者名をご入力ください</label>
+            <input type="text" class="w-full border-b-2 border-gray-300 py-2 outline-none focus:border-main bg-transparent text-base font-bold transition-colors" placeholder="例：山田 太郎">
+            <button class="mt-6 w-full bg-main text-white py-3 font-bold rounded-full hover:scale-105 transition-transform">次へ進む</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       FOOTER
+  =============================================== -->
+  <div class="max-w-[1440px] mx-auto px-4 md:px-8 mt-12">
+    <div class="label-block mb-6">
+      <div class="text-xs tracking-widest text-gray-500 font-inter font-bold">FOOTER</div>
+      <h3 class="text-xl font-bold text-main mt-1">【FOOTER — フッター】</h3>
+    </div>
+  </div>
+
+  <footer class="bg-[#FAFAFA] border-t border-gray-200 pt-20 pb-10">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-12">
+      <!-- 上段 -->
+      <div class="flex flex-col lg:flex-row justify-between mb-20 gap-12">
+        <div>
+          <!-- ロゴ黒固定 -->
+          <span class="footer-logo-mark mb-6">
+            <img src="image/フッター会社ロゴ.webp" alt="WonderPrax" class="footer-logo-img">
+          </span>
+          <div class="text-sm text-gray-600 leading-relaxed font-medium">
+            <p class="font-bold text-main mb-3 text-base">WonderPrax株式会社</p>
+            <p>〒141-0021</p>
+            <p>東京都品川区上大崎2丁目15-19BLOCKS MEGURO 524号</p>
+          </div>
+        </div>
+
+        <nav class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-14 gap-y-5 text-sm font-bold min-w-[520px]">
+          <a href="#home" class="hover:text-gray-400 transition-colors">ホーム</a>
+          <a href="#strength" class="hover:text-gray-400 transition-colors">私たちついて</a>
+          <div>
+            <a href="#service" class="hover:text-gray-400 transition-colors">事業</a>
+            <div class="mt-3 flex flex-col gap-2 pl-4 text-xs font-medium text-gray-500 border-l border-gray-200">
+              <a href="marketing.html" class="hover:text-main transition-colors">マーケティング領域</a>
+              <a href="sales.html" class="hover:text-main transition-colors">セールス</a>
+              <a href="dx-ai.html" class="hover:text-main transition-colors">DX(AI)</a>
+              <a href="new-business.html" class="hover:text-main transition-colors">新規事業支援</a>
+            </div>
+          </div>
+          <a href="#case" class="hover:text-gray-400 transition-colors">実績</a>
+          <a href="#member" class="hover:text-gray-400 transition-colors">メンバー</a>
+          <a href="#" class="hover:text-gray-400 transition-colors">ニュース</a>
+          <a href="#recruit" class="hover:text-gray-400 transition-colors">採用情報</a>
+          <a href="#contact" class="hover:text-gray-400 transition-colors">お問い合わせ</a>
+          <a href="#" class="hover:text-gray-400 transition-colors">プライバシーポリシー</a>
+          <a href="#" class="hover:text-gray-400 transition-colors">サイトマップ</a>
+        </nav>
+      </div>
+
+      <!-- 下段 -->
+      <div class="flex flex-col md:flex-row justify-between items-center border-t border-gray-200 pt-8 gap-6">
+        <div class="text-xs text-gray-500 font-medium">WonderPrax株式会社</div>
+        
+        <div class="flex gap-6">
+          <!-- SNS Icons (SVG) -->
+          <a href="#" class="text-main hover:opacity-50 transition-opacity">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+          </a>
+          <a href="#" class="text-main hover:opacity-50 transition-opacity">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="text-center text-[10px] text-gray-400 mt-8 font-inter font-bold tracking-widest uppercase">
+        &copy; 2026 WonderPrax Inc. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

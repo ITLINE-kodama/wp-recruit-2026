@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WonderPrax デザイン案 ｜ 提案 4 案 一覧</title>
-<meta name="description" content="WonderPrax 株式会社 様 サイトリニューアル デザイン提案 4 案一覧。インフォネット株式会社 × 株式会社 ITLINE 共同提案。">
+<meta name="description" content="WonderPrax 株式会社 様 サイトリニューアル デザイン提案 4 案一覧。株式会社インフォネット × 株式会社 ITLINE 共同提案。">
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -242,6 +242,132 @@
     margin-left: 8px;
   }
 
+  /* ========== RECRUIT SECTION ========== */
+  .recruit-section {
+    background: var(--ink);
+    color: #fff;
+    padding: 96px 32px;
+  }
+  .recruit-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .recruit-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .rh-eyebrow {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-family: var(--en); font-size: 11px; font-weight: 700;
+    letter-spacing: .35em;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+  .rh-eyebrow span {
+    display: inline-block;
+    width: 36px; height: 1px; background: var(--accent);
+  }
+  .rh-title {
+    font-family: var(--jp);
+    font-size: clamp(28px, 3.6vw, 44px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  .rh-sub {
+    font-size: 14px;
+    line-height: 1.95;
+    color: rgba(255,255,255,.7);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .recruit-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 48px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.12);
+    padding: 48px 44px;
+    overflow: hidden;
+    transition: border-color .25s, background .25s;
+  }
+  .recruit-card:hover {
+    border-color: var(--accent);
+    background: rgba(255,255,255,.06);
+  }
+  .recruit-card .rc-watermark {
+    position: absolute;
+    right: -20px; top: -30px;
+    font-family: var(--en);
+    font-size: 220px;
+    font-weight: 900;
+    line-height: 1;
+    color: rgba(255,255,255,.04);
+    letter-spacing: -0.05em;
+    pointer-events: none;
+    transition: color .3s;
+  }
+  .recruit-card:hover .rc-watermark { color: rgba(230,57,70,.18); }
+  .recruit-card .rc-body { position: relative; z-index: 1; }
+  .recruit-card .rc-tag {
+    display: inline-block;
+    font-family: var(--en); font-size: 11px; font-weight: 700;
+    letter-spacing: .3em;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .recruit-card h3 {
+    font-family: var(--jp); font-size: 26px; font-weight: 800;
+    letter-spacing: -0.015em;
+    line-height: 1.35;
+    color: #fff;
+    margin-bottom: 18px;
+  }
+  .recruit-card .rc-desc {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(255,255,255,.75);
+    margin-bottom: 24px;
+  }
+  .recruit-card .rc-meta {
+    display: flex;
+    gap: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,.12);
+  }
+  .recruit-card .rc-meta > div { display: flex; flex-direction: column; gap: 4px; }
+  .recruit-card .rc-meta b {
+    font-family: var(--en); font-size: 9px; font-weight: 700;
+    letter-spacing: .25em;
+    color: var(--accent);
+  }
+  .recruit-card .rc-meta span {
+    font-family: var(--jp); font-size: 14px; font-weight: 600;
+    color: #fff;
+  }
+  .recruit-card .rc-meta code {
+    font-family: var(--en); font-weight: 700;
+    letter-spacing: .08em;
+    background: rgba(230,57,70,.15);
+    color: var(--accent);
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+  .recruit-card .rc-actions {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+  }
+  .recruit-card .rc-note {
+    font-size: 11px;
+    color: rgba(255,255,255,.5);
+    line-height: 1.7;
+  }
+
   /* ========== FOOTER ========== */
   .top-footer {
     border-top: 1px solid var(--line);
@@ -267,6 +393,10 @@
     .proposal-card { padding: 32px 24px 28px; }
     .proposal-card .pc-watermark { font-size: 120px; }
     .th-providers { font-size: 10px; gap: 12px; padding: 12px 18px; }
+    .recruit-section { padding: 64px 20px; }
+    .recruit-card { grid-template-columns: 1fr; gap: 24px; padding: 32px 24px; }
+    .recruit-card .rc-watermark { font-size: 140px; }
+    .recruit-card .rc-meta { flex-direction: column; gap: 14px; }
   }
 </style>
 </head>
@@ -285,7 +415,7 @@
     デザイン提案 4 案一覧です。各案をクリックしてご覧ください。
   </p>
   <div class="th-providers">
-    <span>インフォネット株式会社</span>
+    <span>株式会社インフォネット</span>
     <span class="tp-x">×</span>
     <span>株式会社 ITLINE</span>
   </div>
@@ -297,7 +427,6 @@
   <article class="proposal-card">
     <span class="pc-watermark">A</span>
     <span class="pc-tag">PLAN A — XD PROTOTYPE</span>
-    <p class="pc-author">高橋さん デザイン案</p>
     <h2>WonderPrax<br>デザイン案 A</h2>
     <p class="pc-desc">
       Adobe XD で作成されたプロトタイプ。デザインフローと画面遷移を実機操作で確認できます。
@@ -313,7 +442,6 @@
   <article class="proposal-card">
     <span class="pc-watermark">B</span>
     <span class="pc-tag">PLAN B — HTML × 3 VARIANTS</span>
-    <p class="pc-author">藤澤さん デザイン案</p>
     <h2>WonderPrax<br>デザイン案 B</h2>
     <p class="pc-desc">
       TOP 構成 3 パターン。それぞれの世界観 ／ コンポジション ／ コンテンツ配置を比較いただけます。
@@ -329,7 +457,6 @@
   <article class="proposal-card">
     <span class="pc-watermark">C</span>
     <span class="pc-tag">PLAN C — FULL HTML SITE</span>
-    <p class="pc-author">岩本さん デザイン案</p>
     <h2>WonderPrax<br>デザイン案 C</h2>
     <p class="pc-desc">
       「プロフェッショナル × 躍動感 × カッチョいい」を体現する単独動作 HTML。実物に近いブラウザ表示でご確認ください。
@@ -343,7 +470,6 @@
   <article class="proposal-card">
     <span class="pc-watermark">D</span>
     <span class="pc-tag">PLAN D — HTML × 2 VARIANTS</span>
-    <p class="pc-author">遠山さん デザイン案</p>
     <h2>WonderPrax<br>デザイン案 D</h2>
     <p class="pc-desc">
       2 パターンのテイスト違いをご用意。それぞれのトーン ／ レイアウトの方向性をご比較ください。
@@ -356,9 +482,45 @@
 
 </section>
 
+<!-- ========== RECRUIT SITE SECTION ========== -->
+<section class="recruit-section">
+  <div class="recruit-inner">
+    <div class="recruit-header">
+      <p class="rh-eyebrow"><span></span>RECRUIT SITE PROPOSAL<span></span></p>
+      <h2 class="rh-title">採用サイト デザイン案</h2>
+      <p class="rh-sub">
+        WonderPrax 採用サイト（コーポレートとは別枠）のデザイン案です。<br>
+        コーポレートと別軸でブランディングを展開する想定でご提案しています。
+      </p>
+    </div>
+
+    <article class="recruit-card">
+      <span class="rc-watermark">R</span>
+      <div class="rc-body">
+        <span class="rc-tag">RECRUIT — DESIGN PLAN</span>
+        <h3>WonderPrax<br>採用サイト デザイン案</h3>
+        <p class="rc-desc">
+          コーポレートとは別ドメイン・別世界観で構築する採用サイトのデザイン案。<br>
+          MEMBERS／PHILOSOPHY／VALUES／BUSINESS／JOBS／ENTRY の章立てで構成。
+        </p>
+        <div class="rc-meta">
+          <div><b>PASSCODE</b><span><code>itline2026</code></span></div>
+          <div><b>STATUS</b><span>関係者限定プレビュー</span></div>
+        </div>
+      </div>
+      <div class="rc-actions">
+        <a href="https://itline-kodama.github.io/wp-recruit-2026/" target="_blank" rel="noopener" class="pc-btn pc-btn--primary">
+          採用サイト デザイン案を開く<span class="pc-arrow">→</span>
+        </a>
+        <p class="rc-note">※ パスコード入力後、デザイン案サイトが表示されます。</p>
+      </div>
+    </article>
+  </div>
+</section>
+
 <footer class="top-footer">
   <p class="tf-meta">© 2026 WONDERPRAX DESIGN PROPOSAL</p>
-  <p>提供：インフォネット株式会社 × 株式会社 ITLINE</p>
+  <p>提供：株式会社インフォネット × 株式会社 ITLINE</p>
   <p>本ページは提案検討用に限定公開しています。第三者への共有はお控えください。</p>
 </footer>
 

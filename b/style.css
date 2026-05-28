@@ -9,8 +9,8 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.8;
-  color: #1a1714;
-  background: #f7f4ee;
+  color: #161b22;
+  background: #eef4f9;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -19,14 +19,14 @@ a { color: inherit; text-decoration: none; }
 ol, ul { list-style: none; }
 
 :root {
-  --ink: #1a1714;
-  --ink-2: #3a3530;
-  --muted: #87807a;
-  --line: #e6e0d6;
-  --line-strong: #cfc8bd;
-  --paper: #f7f4ee;
-  --paper-2: #efeae0;
-  --cream: #fdfbf6;
+  --ink: #161b22;
+  --ink-2: #303a48;
+  --muted: #7a8593;
+  --line: #dde6ef;
+  --line-strong: #c5d2df;
+  --paper: #eef4f9;          /* light blue base (旧 #f7f4ee ベージュ) */
+  --paper-2: #e0ebf3;        /* slightly deeper light blue (旧 #efeae0) */
+  --cream: #f7fafd;          /* near-white with cool tint (旧 #fdfbf6) */
   --accent: #e63946;
   --accent-deep: #c0202d;
   --display: "Bebas Neue", "Public Sans", sans-serif;
@@ -48,7 +48,7 @@ ol, ul { list-style: none; }
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; gap: 32px;
   padding: 18px 40px;
-  background: rgba(247, 244, 238, .92);
+  background: rgba(238, 244, 249, .92);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid transparent;
   transition: border-color .3s, background .3s;

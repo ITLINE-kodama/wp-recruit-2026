@@ -142,6 +142,30 @@
   .dr-btn--xd .ar { color: var(--accent); }
   .dr-btn--xd:hover .ar { color: #fff; }
 
+  /* QR code (for A 案 mobile design preview) */
+  .dr-qr {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px 8px 8px;
+    background: #fff;
+    border: 1px solid var(--line);
+    margin-left: 4px;
+  }
+  .dr-qr img {
+    width: 64px; height: 64px;
+    display: block;
+  }
+  .dr-qr-label {
+    font-family: var(--jp);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--ink);
+    letter-spacing: .01em;
+    white-space: nowrap;
+  }
+
   /* ===== FOOTER ===== */
   footer.top {
     margin-top: 96px;
@@ -170,6 +194,9 @@
       gap: 6px;
     }
     .dr-btn { font-size: 11px; padding: 8px 12px; }
+    .dr-qr { padding: 6px 10px 6px 6px; gap: 8px; }
+    .dr-qr img { width: 52px; height: 52px; }
+    .dr-qr-label { font-size: 10px; }
   }
 </style>
 </head>
@@ -193,6 +220,10 @@
       </div>
       <div class="dr-actions">
         <a href="https://xd.adobe.com/view/e3ea0dcf-b623-4977-917d-7c7fd3b1259d-b6b9/?fullscreen" target="_blank" rel="noopener" class="dr-btn dr-btn--xd">Adobe XD で開く <span class="ar">↗</span></a>
+        <div class="dr-qr">
+          <img src="assets/qr_xd_a.png" alt="A案 スマホデザイン用 QR コード">
+          <span class="dr-qr-label">スマホデザインは<br>こちら</span>
+        </div>
       </div>
     </li>
 

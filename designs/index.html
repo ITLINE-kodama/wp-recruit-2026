@@ -142,6 +142,47 @@
   .dr-btn--xd .ar { color: var(--accent); }
   .dr-btn--xd:hover .ar { color: #fff; }
 
+  /* Design concept block (A 案 only) */
+  .dr-concept {
+    margin-top: 18px;
+    padding: 18px 20px 18px 22px;
+    background: var(--paper);
+    border-left: 3px solid var(--accent);
+  }
+  .dc-eyebrow {
+    display: inline-block;
+    font-family: var(--en);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .3em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .dc-title {
+    font-family: var(--jp);
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-bottom: 12px;
+    letter-spacing: -0.005em;
+  }
+  .dc-body {
+    font-size: 13px;
+    line-height: 1.95;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .dc-body:last-child { margin-bottom: 0; }
+  .dc-body em {
+    font-style: normal;
+    background: linear-gradient(transparent 60%, #f5c542 60%);
+    font-weight: 700;
+    padding: 0 2px;
+  }
+  /* Featured row: actions sit at top so the concept text isn't stretched */
+  .design-row--has-concept .dr-actions { align-self: start; padding-top: 4px; }
+
   /* QR code (for A 案 mobile design preview) */
   .dr-qr {
     display: inline-flex;
@@ -212,11 +253,25 @@
   <div class="group-label">CORPORATE SITE<span class="gl-jp">コーポレートサイト デザイン案</span></div>
   <ul class="design-list">
 
-    <li class="design-row">
+    <li class="design-row design-row--has-concept">
       <span class="dr-no">A</span>
       <div class="dr-body">
         <div class="dr-title">WonderPrax デザイン案 A</div>
         <div class="dr-meta">Adobe XD プロトタイプ（フルスクリーン表示）</div>
+
+        <div class="dr-concept">
+          <span class="dc-eyebrow">— DESIGN CONCEPT</span>
+          <p class="dc-title">『「伴走」がもたらす、確かな躍進。』</p>
+          <p class="dc-body">
+            ただの外部コンサルタントとして「教える」のではなく、クライアントの事業の現場に飛び込み、
+            <em>「一緒に走り切る」</em>という強い意志を視覚化しています。
+          </p>
+          <p class="dc-body">
+            モノトーンを基調とした<em>「プロとしての厳格さ・論理（ロジック）」</em>の中に、
+            ゴールドやイエローといった<em>「情熱・成長・確かな未来」</em>を差し込むことで、
+            冷たい印象にならず、血の通ったコンサルティングスタイルを表現したデザインです。
+          </p>
+        </div>
       </div>
       <div class="dr-actions">
         <a href="https://xd.adobe.com/view/e3ea0dcf-b623-4977-917d-7c7fd3b1259d-b6b9/?fullscreen" target="_blank" rel="noopener" class="dr-btn dr-btn--xd">Adobe XD で開く <span class="ar">↗</span></a>
